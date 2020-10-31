@@ -137,3 +137,47 @@
     font-size: 15px;
     font-weight: 600;
 }
+
+/* Room Options */
+.tf-add-single-room-wrap{
+    margin-bottom: 15px;
+}
+
+.tf-add-single-room-head {
+    padding: 15px 10px;
+    background: #f7f7f7;
+    position: relative;
+}
+
+.tf-add-single-room-head a{
+    text-decoration: none;
+}
+
+.room-expend {
+    text-decoration: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.room-action-btns {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    height: 100%;
+}
+
+.room-action-btns a{
+    display: inline-block;
+    opacity: 0.6;
+}
+
+.room-action-btns a{
+    opacity: 1;
+}
+
+.room-remove,
+.room-remove:hover {
+    color: #e24e4e;
+}

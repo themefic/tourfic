@@ -29,9 +29,11 @@ jQuery(function($){
         $(document).on('click', '.tf_add-room', function(){
             var $this = $(this);
 
+            var keyLen = jQuery('.tf-add-single-room-wrap').length;
 
             var data = {
                 action: 'tf_add_new_room',
+                key: keyLen,
             }
 
             $.ajax({
@@ -52,6 +54,12 @@ jQuery(function($){
                 console.error( result );
               }
             });
+        });
+
+        // Add Room Ajax
+        $(document).on('click', '.room-remove', function(){
+            $(this).closest('.tf-add-single-room-wrap').remove();
+            return false;
         });
 
 	});

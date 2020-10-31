@@ -11,6 +11,7 @@ if ( is_admin() ) {
     add_action( 'load-post-new.php', 'tf_load_metabox' );
 }
 
+
 /**
  * The Class.
  */
@@ -91,6 +92,7 @@ class Tourfic_Metabox_Class {
         // Sanitize the user input.
         $mydata = sanitize_text_field( $_POST['myplugin_new_field'] );
 
+
         // Update the meta field.
         update_post_meta( $post_id, '_my_meta_value_key', $mydata );
     }
@@ -134,7 +136,7 @@ class Tourfic_Metabox_Class {
 
                             </div>
                             <div class="tf_add-room-buttons">
-                                <button type="button" class="tf_add-room button">Add Room</button>
+                                <button type="button" class="tf_add-room button"><?php esc_html_e( 'Add Room', 'tourfic' ); ?></button>
                             </div>
 						</div>
 
