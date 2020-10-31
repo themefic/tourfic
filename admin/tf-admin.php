@@ -24,6 +24,7 @@ if ( ! class_exists( 'Tourfic_Admin_Init' ) ) :
          */
         function admin_action() {
             require_once( dirname( __FILE__ ) . '/inc/tf-custom-fields.php' );
+            require_once( dirname( __FILE__ ) . '/inc/tf-field-functions.php' );
         }
 
         /**

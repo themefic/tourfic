@@ -130,11 +130,12 @@ class Tourfic_Metabox_Class {
 						<h4><?php esc_html_e( 'Room Options', 'tourfic' ); ?></h4>
 
 						<div class="tf-field-wrap">
-							<div class="tf-label">
-								<label for="myplugin_new_field"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
-							</div>
+							<div class="tf_room-fields">
 
-					        <input type="text" id="myplugin_new_field" name="myplugin_new_field" value="<?php echo esc_attr( $value ); ?>" size="25" />
+                            </div>
+                            <div class="tf_add-room-buttons">
+                                <button type="button" class="tf_add-room button">Add Room</button>
+                            </div>
 						</div>
 
 					</div>

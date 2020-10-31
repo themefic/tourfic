@@ -25,6 +25,35 @@ jQuery(function($){
             var a = /^#?chapter(\d+)-section(\d+)\/?$/i.exec(location.hash);
         });
 
+        // Add Room Ajax
+        $(document).on('click', '.tf_add-room', function(){
+            var $this = $(this);
+
+
+            var data = {
+                action: 'tf_add_new_room',
+            }
+
+            $.ajax({
+              url: ajaxurl,
+              type: 'post',
+              data: data,
+              beforeSend : function ( xhr ) {
+                $this.prop('disabled', true);
+              },
+              success: function( res ) {
+                $this.prop('disabled', false);
+
+                // Data push
+                $('.tf_room-fields').append(res);
+              },
+              error: function( result ) {
+                $this.prop('disabled', false);
+                console.error( result );
+              }
+            });
+        });
+
 	});
 
 });
