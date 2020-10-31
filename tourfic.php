@@ -57,6 +57,11 @@ class Tourfic_WordPress_Plugin{
 
 		add_filter( 'single_template', [ $this, 'tourfic_single_page_template' ] );
 		add_filter('template_include', [ $this, 'tourfic_archive_page_template' ]);
+
+		// Admin Notice
+		add_filter('admin_notices', [ $this, 'admin_notices' ]);
+
+
 	}
 
 	public function includes(){
@@ -173,6 +178,20 @@ class Tourfic_WordPress_Plugin{
 	  }
 	  return $template;
 	}
+
+	/**
+	 * Notice if WooCommerce is inactive
+	 */
+	public function admin_notices() {
+		if ( !class_exists( 'WooCommerce' ) ) { ?>
+		    <div class="notice notice-warning is-dismissible">
+		        <p>
+		        	<strong><?php esc_html_e( 'Tourfic requires WooCommerce to be activated ', 'tourfic' ); ?> <a href="<?php echo esc_url( admin_url('/plugin-install.php?s=WooCommerce&tab=search&type=term') ); ?>">Install Now</a></strong>
+		        </p>
+		    </div> <?php
+	    }
+	}
+
 
 }
 new Tourfic_WordPress_Plugin;
