@@ -89,12 +89,22 @@ class Tourfic_Metabox_Class {
 
         /* OK, it's safe for us to save the data now. */
 
-        // Sanitize the user input.
-        $mydata = sanitize_text_field( $_POST['myplugin_new_field'] );
+
+        // Update the meta fields.
+
+        if ( isset( $_POST['formatted_location'] ) ) {
+        	update_post_meta( $post_id, 'formatted_location', sanitize_text_field( $_POST['formatted_location'] ) );
+        }
 
 
-        // Update the meta field.
-        update_post_meta( $post_id, '_my_meta_value_key', $mydata );
+		// Set room
+		$tf_room = isset( $_POST['tf_room'] ) ? (array) $_POST['tf_room'] : array();
+		// Sanitize
+		//$tf_room = array_map( 'esc_attr', $tf_room );
+ 		// Push to post meta
+        update_post_meta( $post_id, 'tf_room', (array) $tf_room );
+
+
     }
 
 
@@ -108,8 +118,13 @@ class Tourfic_Metabox_Class {
         // Add an nonce field so we can check for it later.
         wp_nonce_field( 'tourfic_custom_box_security', 'tourfic_custom_box_nonce' );
 
-        // Use get_post_meta to retrieve an existing value from the database.
-        $value = get_post_meta( $post->ID, '_my_meta_value_key', true );
+        // Room Data
+        $tf_room = get_post_meta( $post->ID, 'tf_room', true );
+
+        // Post meta
+        $formatted_location = get_post_meta( $post->ID, 'formatted_location', true );
+
+
 
         // Display the form, using the current value.
         ?>
@@ -120,6 +135,8 @@ class Tourfic_Metabox_Class {
 					<li class="active"><a href="#rooms"><?php echo esc_html__( 'Rooms', 'tourfic' ); ?></a></li>
 					<li><a href="#gallery"><?php echo esc_html__( 'Gallery', 'tourfic' ); ?></a></li>
 					<li><a href="#location"><?php echo esc_html__( 'Location', 'tourfic' ); ?></a></li>
+					<li><a href="#information"><?php echo esc_html__( 'Information', 'tourfic' ); ?></a></li>
+					<li><a href="#additional-info"><?php echo esc_html__( 'Additional Information', 'tourfic' ); ?></a></li>
 
 				</ul>
 			</div>
@@ -133,7 +150,14 @@ class Tourfic_Metabox_Class {
 
 						<div class="tf-field-wrap">
 							<div class="tf_room-fields">
-
+								<?php if ( $tf_room ) {
+									foreach ( $tf_room as $key => $room ) {
+										echo tf_add_single_room_wrap( array(
+											'key' => $key,
+											'room' => $room,
+										) );
+									}
+								} ?>
                             </div>
                             <div class="tf_add-room-buttons">
                                 <button type="button" class="tf_add-room button"><?php esc_html_e( 'Add Room', 'tourfic' ); ?></button>
@@ -162,10 +186,38 @@ class Tourfic_Metabox_Class {
 
 						<div class="tf-field-wrap">
 							<div class="tf-label">
-								<label for="tf_formatted-field"><?php esc_html_e( 'Formatted Location', 'tourfic' ); ?></label>
+								<label for="formatted_location"><?php esc_html_e( 'Formatted Location', 'tourfic' ); ?></label>
 							</div>
 
-					        <input type="text" id="tf_formatted-field" name="tf_formatted-field" value="<?php echo esc_attr( $value ); ?>" size="25" />
+					        <input type="text" id="formatted_location" name="formatted_location" value="<?php echo esc_attr( $formatted_location ); ?>" size="25" />
+						</div>
+
+					</div>
+
+					<div id="information" class="tf-tab-content">
+
+						<h4><?php esc_html_e( 'Information', 'tourfic' ); ?></h4>
+
+						<div class="tf-field-wrap">
+							<div class="tf-label">
+								<label for="formatted_location"><?php esc_html_e( 'Formatted Location', 'tourfic' ); ?></label>
+							</div>
+
+					        <input type="text" id="formatted_location" name="formatted_location" value="<?php echo esc_attr( $formatted_location ); ?>" size="25" />
+						</div>
+
+					</div>
+
+					<div id="additional-info" class="tf-tab-content">
+
+						<h4><?php esc_html_e( 'Additional Information', 'tourfic' ); ?></h4>
+
+						<div class="tf-field-wrap">
+							<div class="tf-label">
+								<label for="formatted_location"><?php esc_html_e( 'Formatted Location', 'tourfic' ); ?></label>
+							</div>
+
+					        <input type="text" id="formatted_location" name="formatted_location" value="<?php echo esc_attr( $formatted_location ); ?>" size="25" />
 						</div>
 
 					</div>

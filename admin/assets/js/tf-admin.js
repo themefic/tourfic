@@ -62,6 +62,18 @@ jQuery(function($){
             return false;
         });
 
+        // Room Field toggle
+        $(document).on('click', '.room-expend', function(){
+            $(this).closest('.tf-add-single-room-wrap').toggleClass('active').find('.tf-add-single-room-body').slideToggle('fast');
+            return false;
+        });
+
+        // Room title push on head
+        $(document).on('keyup change', '.tf_room-name', function(){
+            var thisVal = ( $(this).val() ) ? $(this).val() : "# Room Title";
+            $(this).closest('.tf-add-single-room-wrap').find('.tf-room-title').text( thisVal );
+        });
+
 	});
 
 });
