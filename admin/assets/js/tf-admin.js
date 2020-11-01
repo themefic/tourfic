@@ -56,6 +56,7 @@ jQuery(function($){
             });
         });
 
+
         // Add Room Ajax
         $(document).on('click', '.room-remove', function(){
             $(this).closest('.tf-add-single-room-wrap').remove();
@@ -72,6 +73,58 @@ jQuery(function($){
         $(document).on('keyup change', '.tf_room-name', function(){
             var thisVal = ( $(this).val() ) ? $(this).val() : "# Room Title";
             $(this).closest('.tf-add-single-room-wrap').find('.tf-room-title').text( thisVal );
+        });
+
+
+
+        // Add Gallery
+        $(document).on('click', '.tf_add-gallery', function(){
+            var $this = $(this);
+
+            var file_frame, image_data;
+
+            if ( undefined !== file_frame ) {
+
+                file_frame.open();
+                return;
+
+            }
+
+            file_frame = wp.media.frames.file_frame = wp.media({
+                title: 'Insert Gallery Images',
+                //frame:    'post',
+                //state:    'insert',
+                multiple: true,
+                library: {
+                    type: [ 'video', 'image' ]
+                },
+                button: {text: 'Insert'}
+            });
+
+            file_frame.on( 'select', function() {
+
+                var fileHtml = "";
+                var fieldIds = [];
+
+                files = file_frame.state().get( 'selection' ).toJSON();
+
+                files.forEach(function(file, i){
+                    fileHtml += '<span class="tf_gallery-img" id="'+file.id+'" title="'+file.title+'">';
+                    fileHtml += '<img  src="'+file.url+'" />';
+                    fileHtml += '</span>';
+
+                    fieldIds.push( file.id );
+                });
+
+                $this.closest('.tf_gallery-field-wrap').find('.tf_gallery-images').html( fileHtml );
+                $this.closest('.tf_gallery-field-wrap').find('.tf_gallery_ids_push').val( fieldIds );
+
+            });
+
+            // Now display the actual file_frame
+            file_frame.open();
+
+
         });
 
 	});

@@ -91,9 +91,12 @@ class Tourfic_Metabox_Class {
 
 
         // Update the meta fields.
-
         if ( isset( $_POST['formatted_location'] ) ) {
         	update_post_meta( $post_id, 'formatted_location', sanitize_text_field( $_POST['formatted_location'] ) );
+        }
+
+        if ( isset( $_POST['tf_gallery_ids'] ) ) {
+        	update_post_meta( $post_id, 'tf_gallery_ids', sanitize_text_field( $_POST['tf_gallery_ids'] ) );
         }
 
 
@@ -121,10 +124,9 @@ class Tourfic_Metabox_Class {
         // Room Data
         $tf_room = get_post_meta( $post->ID, 'tf_room', true );
 
-        // Post meta
+        // Get Post meta
         $formatted_location = get_post_meta( $post->ID, 'formatted_location', true );
-
-
+        $tf_gallery_ids = get_post_meta( $post->ID, 'tf_gallery_ids', true );
 
         // Display the form, using the current value.
         ?>
@@ -170,14 +172,25 @@ class Tourfic_Metabox_Class {
 
 						<h4><?php esc_html_e( 'Gallery', 'tourfic' ); ?></h4>
 
-						<div class="tf-field-wrap">
-							<div class="tf-label">
-								<label for="myplugin_new_field"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
-							</div>
+						<div class="tf-field-wrap tf_gallery-field-wrap">
+							<div class="tf_gallery-images">
+								<?php if ( $tf_gallery_ids ) {
 
-					        <input type="text" id="myplugin_new_field" name="myplugin_new_field" value="<?php echo esc_attr( $value ); ?>" size="25" />
+									// Comma seperated list to array
+									$tf_gallery_id_arr = explode(',', $tf_gallery_ids);
+
+									foreach ( $tf_gallery_id_arr as $key => $id ) {
+										echo '<span class="tf_gallery-img" id="'.$id.'">';
+										echo wp_get_attachment_image( $id, 'full' );
+										echo '</span>';
+									}
+								} ?>
+                            </div>
+                            <input type="hidden" name="tf_gallery_ids" class="tf_gallery_ids_push" value="<?php echo esc_attr( $tf_gallery_ids ); ?>">
+                            <div class="tf_add-gallery-buttons">
+                                <button type="button" class="tf_add-gallery button"><?php esc_html_e( 'Add Gallery Images', 'tourfic' ); ?></button>
+                            </div>
 						</div>
-
 					</div>
 
 					<div id="location" class="tf-tab-content">

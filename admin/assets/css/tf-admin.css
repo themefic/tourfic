@@ -210,3 +210,22 @@
     border: 1px solid #f7f7f7;
     display: none;
 }
+
+/* Gallery Images */
+.tf_gallery-img {
+    width: 24%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+
+.tf_gallery-img img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+.tf_gallery-images {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
