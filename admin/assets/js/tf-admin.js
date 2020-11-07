@@ -76,12 +76,13 @@ jQuery(function($){
         });
 
 
+        var file_frame, image_data;
 
         // Add Gallery
         $(document).on('click', '.tf_add-gallery', function(){
             var $this = $(this);
 
-            var file_frame, image_data;
+
 
             if ( undefined !== file_frame ) {
 

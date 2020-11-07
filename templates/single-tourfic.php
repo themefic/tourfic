@@ -14,7 +14,9 @@ if( function_exists('get_wt_single_page') ){
 
 
 // Get all rooms
-$add_room_type = get_field('add_room_type') ? get_field('add_room_type') : array();
+$tf_room = get_field('tf_room') ? get_field('tf_room') : array();
+
+$location = get_field('formatted_location') ? get_field('formatted_location') : null;
 
 
 ?>
@@ -35,7 +37,7 @@ $add_room_type = get_field('add_room_type') ? get_field('add_room_type') : array
 							</div>
 						</div>
 						<div class="reserve-button">
-							<a href="#" class="tf_button button"><?php esc_html_e( 'Reserve', 'tourfic' ); ?></a>
+							<a href="#rooms" class="tf_button button"><?php esc_html_e( 'Reserve', 'tourfic' ); ?></a>
 						</div>
 					</div>
 				</div>
@@ -43,7 +45,7 @@ $add_room_type = get_field('add_room_type') ? get_field('add_room_type') : array
 
 				<!-- Start map link -->
 				<div class="tf_map-link">
-					<?php echo tf_get_svg('checkin'); ?> Kakra Beach, Marine Drive Road Near Baitus Salam Jame Mosjid, Ramu, 4700 Samader Bāzār, Bangladesh
+					<?php echo tf_get_svg('checkin'); ?> <?php echo esc_html( $location ); ?>
 				</div>
 				<!-- End map link -->
 			</div>
@@ -66,27 +68,27 @@ $add_room_type = get_field('add_room_type') ? get_field('add_room_type') : array
 				<!-- End content -->
 
 
-				<?php if( $add_room_type ) : ?>
+				<?php if( $tf_room ) : ?>
 				<!-- Start Room Type -->
-				<div class="tf_room-type">
+				<div class="tf_room-type" id="rooms">
 					<div class="tf_room-type-head">Room Type</div>
 					<div class="tf_room-row">
 
 						<!-- Start Single Room -->
-						<?php foreach ( $add_room_type as $key => $room_type ) : ?>
+						<?php foreach ( $tf_room as $key => $room_type ) : ?>
 							<?php
 							// Array to variable
 							extract( $room_type );
 							?>
 							<form class="tf-room" id="tf_room-id-<?php echo esc_attr( $key ); ?>">
 								<div class="tf-room-header">
-									<div class="tf-room-title"><?php echo esc_html( $room_name ); ?></div>
+									<div class="tf-room-title"><?php echo esc_html( $name ); ?></div>
 									<div class="last-booked"><?php echo esc_html__( 'Last booked 6 hrs ago' ); ?></div>
 								</div>
 								<div class="tf-room-content-wrap">
 									<div class="tf-room-content-inner">
 										<div class="tf-room-inner-column first">
-											<div class="bed-facilities"><?php echo $bed_description; ?></div>
+											<div class="bed-facilities"><?php echo $short_desc; ?></div>
 											<div class="tf-sale-tag"><?php esc_html_e( 'Save 53% Today', 'tourfic' ); ?></div>
 											<div class="img-price-row">
 												<div class="tf-room-image">
@@ -100,7 +102,7 @@ $add_room_type = get_field('add_room_type') ? get_field('add_room_type') : array
 											</div>
 										</div>
 										<div class="tf-room-inner-column tf-short-desc">
-											<?php echo $room_description; ?>
+											<?php echo $desc; ?>
 										</div>
 									</div>
 									<div class="room-selection-wrap">

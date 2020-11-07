@@ -211,13 +211,6 @@ class Tourfic_Metabox_Class {
 
 						<h4><?php esc_html_e( 'Information', 'tourfic' ); ?></h4>
 
-						<div class="tf-field-wrap">
-							<div class="tf-label">
-								<label for="formatted_location"><?php esc_html_e( 'Formatted Location', 'tourfic' ); ?></label>
-							</div>
-
-					        <input type="text" id="formatted_location" name="formatted_location" value="<?php echo esc_attr( $formatted_location ); ?>" size="25" />
-						</div>
 
 					</div>
 
@@ -225,13 +218,7 @@ class Tourfic_Metabox_Class {
 
 						<h4><?php esc_html_e( 'Additional Information', 'tourfic' ); ?></h4>
 
-						<div class="tf-field-wrap">
-							<div class="tf-label">
-								<label for="formatted_location"><?php esc_html_e( 'Formatted Location', 'tourfic' ); ?></label>
-							</div>
-
-					        <input type="text" id="formatted_location" name="formatted_location" value="<?php echo esc_attr( $formatted_location ); ?>" size="25" />
-						</div>
+						<
 
 					</div>
 
