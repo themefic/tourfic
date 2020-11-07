@@ -37,6 +37,10 @@
     padding-right: 30px;
 }
 
+.wfull{
+    width: 100%;
+}
+
 
 #tourfic_options_metabox input[type=date], #tourfic_options_metabox input[type=datetime-local], #tourfic_options_metabox input[type=datetime], #tourfic_options_metabox input[type=email], #tourfic_options_metabox input[type=month], #tourfic_options_metabox input[type=number], #tourfic_options_metabox input[type=password], #tourfic_options_metabox input[type=search], #tourfic_options_metabox input[type=tel], #tourfic_options_metabox input[type=text], #tourfic_options_metabox input[type=time], #tourfic_options_metabox input[type=url], #tourfic_options_metabox input[type=week], #tourfic_options_metabox textarea {
     border: solid 1px #ddd;

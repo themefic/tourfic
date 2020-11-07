@@ -100,6 +100,16 @@ class Tourfic_Metabox_Class {
         }
 
 
+        if ( isset( $_POST['information'] ) ) {
+            update_post_meta( $post_id, 'information', sanitize_text_field( $_POST['information'] ) );
+        }
+
+        if ( isset( $_POST['additional_information'] ) ) {
+            update_post_meta( $post_id, 'additional_information', sanitize_text_field( $_POST['additional_information'] ) );
+        }
+
+
+
 		// Set room
 		$tf_room = isset( $_POST['tf_room'] ) ? (array) $_POST['tf_room'] : array();
 		// Sanitize
@@ -127,6 +137,8 @@ class Tourfic_Metabox_Class {
         // Get Post meta
         $formatted_location = get_post_meta( $post->ID, 'formatted_location', true );
         $tf_gallery_ids = get_post_meta( $post->ID, 'tf_gallery_ids', true );
+        $information = get_post_meta( $post->ID, 'information', true );
+        $additional_information = get_post_meta( $post->ID, 'additional_information', true );
 
         // Display the form, using the current value.
         ?>
@@ -202,7 +214,7 @@ class Tourfic_Metabox_Class {
 								<label for="formatted_location"><?php esc_html_e( 'Formatted Location', 'tourfic' ); ?></label>
 							</div>
 
-					        <input type="text" id="formatted_location" name="formatted_location" value="<?php echo esc_attr( $formatted_location ); ?>" size="25" />
+					        <input type="text" class="wfull" id="formatted_location" name="formatted_location" value="<?php echo esc_attr( $formatted_location ); ?>" size="25" />
 						</div>
 
 					</div>
@@ -211,6 +223,12 @@ class Tourfic_Metabox_Class {
 
 						<h4><?php esc_html_e( 'Information', 'tourfic' ); ?></h4>
 
+                        <div class="tf-field-wrap">
+                            <div class="tf-label">
+                                <label for="tf_information"><?php esc_html_e( 'Add Information', 'tourfic' ); ?></label>
+                            </div>
+                            <textarea name="information" class="wfull" rows="5" id="tf_information"><?php _e( $information ); ?></textarea>
+                        </div>
 
 					</div>
 
@@ -218,7 +236,14 @@ class Tourfic_Metabox_Class {
 
 						<h4><?php esc_html_e( 'Additional Information', 'tourfic' ); ?></h4>
 
-						<
+                        <div class="tf-field-wrap">
+                            <div class="tf-label">
+                                <label for="tf_additional_information"><?php esc_html_e( 'Add Information', 'tourfic' ); ?></label>
+                            </div>
+                            <textarea name="additional_information" class="wfull" rows="5" id="tf_additional_information"><?php _e( $additional_information ); ?></textarea>
+                        </div>
+
+
 
 					</div>
 
