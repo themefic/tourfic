@@ -8,15 +8,12 @@
 get_header('tourfic'); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php
-if( function_exists('get_wt_single_page') ){
-	//get_wt_single_page();
-}
-
 
 // Get all rooms
 $tf_room = get_field('tf_room') ? get_field('tf_room') : array();
-
 $location = get_field('formatted_location') ? get_field('formatted_location') : null;
+$information = get_field('information') ? get_field('information') : null;
+$additional_information = get_field('additional_information') ? get_field('additional_information') : null;
 
 
 ?>
@@ -140,13 +137,19 @@ $location = get_field('formatted_location') ? get_field('formatted_location') : 
 
 					<div class="tf-tab-container">
 						<div class="tf_tab-content active" id="description">
-							<?php the_content(); ?>
+							<?php _e($information); ?>
 						</div>
 						<div class="tf_tab-content" id="additional-information">
-							Gigabyte Z97X-UD3H-BK GA-Z97X-UD3H-BK |  i5 4690K |  HD 4600 Dell Optiplex 9020 MT Q77 Board |  i7 4790 |  AORUS Radeon RX 580 Gigabyte Z68MA-D2H-B3 GA-Z68MA-D2H-B3 |  i3 2105 |  HD 3000 Dell Optiplex 9010 SFF Q77 Board |  i7 3770 |  HD 4000 Dell Optiplex 7010 USFF Q77 Board |  i5 3475S |  HD 4000
+							<?php _e($additional_information); ?>
 						</div>
 						<div class="tf_tab-content" id="reviews">
-							If you have a Haswell system simply purchase OS X Snow leopard DVD for 19.99 from Apple. Use iBoot Haswell to install Snow Leopard on your I3-4130 system. https://www.tonymacx86.com/threads/install-mac-os-x-10-6-snow-leopard-on-haswell-based-pcs.106903/ If you don't have access to a Mac or CustoMac this is the only way to get macOS from the Mac App Store. Do not get it anywhere else.
+							<?php
+							// If comments are open or we have at least one comment, load up the comment template.
+							if ( comments_open() || get_comments_number() ) :
+								comments_template();
+							endif;
+							?>
+
 						</div>
 					</div>
 

@@ -60,7 +60,7 @@ function cptui_register_my_cpts_tourfic() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "tourfic", "with_front" => false ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
+		"supports" => [ "title", "editor", "thumbnail", "comments" ],
 	];
 
 	register_post_type( "tourfic", $args );
