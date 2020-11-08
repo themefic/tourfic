@@ -24,8 +24,8 @@ if ( ! defined( 'TOURFIC_VERSION' ) ) {
 }
 
 define( 'TF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'TF_TEMPLATES_URL', TF_PLUGIN_URL.'templates/' );
 define( 'TF_ADMIN_URL', TF_PLUGIN_URL.'admin/' );
-
 
 /**
 * Including Plugin file for security
@@ -57,6 +57,7 @@ class Tourfic_WordPress_Plugin{
 
 		add_filter( 'single_template', [ $this, 'tourfic_single_page_template' ] );
 		add_filter('template_include', [ $this, 'tourfic_archive_page_template' ]);
+		add_filter('comments_template', [ $this, 'load_comment_template' ]);
 
 		// Admin Notice
 		add_filter('admin_notices', [ $this, 'admin_notices' ]);
@@ -177,6 +178,29 @@ class Tourfic_WordPress_Plugin{
 
 	  }
 	  return $template;
+	}
+
+	// Review form load
+	public function load_comment_template( $comment_template ) {
+	    global $post;
+
+	    if ( !( is_singular() && ( have_comments() || 'open' == $post->comment_status ) ) ) {
+	       // leave the standard comments template for standard post types
+	       return;
+	    }
+
+		if ( 'tourfic' === $post->post_type ) {
+		    $theme_files = array('review.php', 'templates/review.php');
+		    $exists_in_theme = locate_template($theme_files, false);
+		    if ( $exists_in_theme != '' ) {
+		      	return $exists_in_theme;
+		    } else {
+		      	return dirname( __FILE__ ) . '/templates/review.php';
+		    }
+		}
+
+		return $comment_template;
+
 	}
 
 	/**
