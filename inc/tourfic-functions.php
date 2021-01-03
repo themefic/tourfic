@@ -100,9 +100,7 @@ function tourfic_gallery_slider( $file_list_meta_key = array(), $post_id = null 
 
 	// Comma seperated list to array
 	$files = explode(',', $tf_gallery_ids);
-	//$gallery = get_post_meta( get_the_ID(), 'tourfic_gallery', true );
 
-	ppr( $files );
 	?>
 	<div class="list-single-main-media fl-wrap" id="sec1">
 	    <div class="single-slider-wrapper fl-wrap">
