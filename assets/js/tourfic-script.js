@@ -6,27 +6,27 @@
             sbn = $('.swiper-button-next');
 
         $('.single-slider-wrapper .tf_slider-for').slick({
-            //slidesToShow: 1,
+            slidesToShow: 1,
             slidesToScroll: 1,
             arrows: false,
             fade: false,
             dots: false,
-            asNavFor: '.slider-nav'
+            asNavFor: '.tf_slider-nav'
         });
         $('.single-slider-wrapper .tf_slider-nav').slick({
-            //slidesToShow: 6,
+            slidesToShow: 4,
             slidesToScroll: 1,
-            asNavFor: '.slider-for',
+            asNavFor: '.tf_slider-for',
             dots: false,
             arrows: false,
             centerMode: true,
             focusOnSelect: true
         });
         sbp.on("click", function () {
-            $(this).closest(".single-slider-wrapper").find('.slider-for').slick('slickPrev');
+            $(this).closest(".single-slider-wrapper").find('.tf_slider-for').slick('slickPrev');
         });
         sbn.on("click", function () {
-            $(this).closest(".single-slider-wrapper").find('.slider-for').slick('slickNext');
+            $(this).closest(".single-slider-wrapper").find('.tf_slider-for').slick('slickNext');
         });
 
         // Tab controlling

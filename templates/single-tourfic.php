@@ -54,7 +54,7 @@ $additional_information = get_field('additional_information') ? get_field('addit
 
 				<!-- Start gallery -->
 				<div class="tf_gallery-wrap">
-					<?php echo tourfic_gallery_slider('tourfic_gallery'); ?>
+					<?php echo tourfic_gallery_slider('tf_gallery_ids'); ?>
 				</div>
 				<!-- End gallery-->
 

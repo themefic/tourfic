@@ -2,8 +2,21 @@
 /*================================
 =            Basic CSS            =
 ================================*/
+.tourfic-wrap {
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.tourfic-wrap ul {
+  list-style: none;
+}
+
 .tourfic-wrap svg {
   display: block;
+}
+
+.tourfic-wrap p {
+  margin-bottom: 3px;
 }
 
 .tf_container {
@@ -42,18 +55,6 @@
 .tf_col-6 {
   padding: 0 10px;
   width: 50%;
-}
-
-.tourfic-wrap {
-  font-size: 14px;
-}
-
-.tourfic-wrap ul {
-  list-style: none;
-}
-
-.tourfic-wrap p {
-  margin-bottom: 3px;
 }
 
 .mb-15 {

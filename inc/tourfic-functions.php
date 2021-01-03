@@ -21,7 +21,7 @@ if ( !function_exists('get_field') ) {
 		}
 
 		// return
-		return ($value) ? $value : __('no_value','tourfic');
+		return ($value) ? $value : null;
 
 	}
 }
@@ -96,10 +96,13 @@ function tourfic_gallery_slider( $file_list_meta_key = array(), $post_id = null 
 
 	$post_id = ( $post_id ) ? $post_id : get_the_ID();
 	// Get the list of files
-	$files = (array) get_post_meta( $post_id, $file_list_meta_key, 1 );
+	$tf_gallery_ids = get_post_meta( $post_id, $file_list_meta_key, 1 );
+
+	// Comma seperated list to array
+	$files = explode(',', $tf_gallery_ids);
 	//$gallery = get_post_meta( get_the_ID(), 'tourfic_gallery', true );
 
-	//return;
+	ppr( $files );
 	?>
 	<div class="list-single-main-media fl-wrap" id="sec1">
 	    <div class="single-slider-wrapper fl-wrap">
