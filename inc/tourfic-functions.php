@@ -349,7 +349,7 @@ function tf_booking_search_action(){
 }
 
 /**
- *
+ * Pre get posts [tourfic]
  */
 add_action('pre_get_posts','tourfic_search_pre_get_posts_filter', 999);
 function tourfic_search_pre_get_posts_filter( $query ) {
@@ -369,4 +369,20 @@ function tourfic_search_pre_get_posts_filter( $query ) {
 	}
 
   	return $query;
+}
+
+function tf_price_html( $price = null, $sale_price = null ) {
+	if ( !$price ) {
+		return;
+	}
+	ob_start();
+	?>
+	<?php if ( $sale_price > 0 ) { ?>
+		<span class="tf-price"><del><?php echo wc_price( $sale_price ); ?></del></span>
+	<?php } ?>
+
+	<span class="tf-price"><?php echo wc_price( $price ); ?></span>
+	<div class="price-per-night"><?php esc_html_e( 'Price per night as low as', 'tourfic' ); ?></div>
+	<?php
+	return ob_get_clean();
 }

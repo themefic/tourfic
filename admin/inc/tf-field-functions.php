@@ -79,7 +79,7 @@ function tf_add_single_room_wrap( $args ){
 							<div class="tf-label">
 								<label for="tf_room-price-<?php _e( $key ); ?>"><?php esc_html_e( 'Price', 'tourfic' ); ?></label>
 							</div>
-						    <input type="number" step="any" min="0" name="tf_room[<?php _e( $key ); ?>][price]" class="tf_room-price" id="tf_room-price-<?php _e( $key ); ?>" value="<?php echo esc_attr( $sale_price ); ?>">
+						    <input type="number" step="any" min="0" name="tf_room[<?php _e( $key ); ?>][price]" class="tf_room-price" id="tf_room-price-<?php _e( $key ); ?>" value="<?php echo esc_attr( $price ); ?>">
 						</div>
 					</div>
 					<div class="tf-col-6">

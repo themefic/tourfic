@@ -210,7 +210,7 @@ class Tourfic_WordPress_Plugin{
 		if ( !class_exists( 'WooCommerce' ) ) { ?>
 		    <div class="notice notice-warning is-dismissible">
 		        <p>
-		        	<strong><?php esc_html_e( 'Tourfic requires WooCommerce to be activated ', 'tourfic' ); ?> <a href="<?php echo esc_url( admin_url('/plugin-install.php?s=WooCommerce&tab=search&type=term') ); ?>">Install Now</a></strong>
+		        	<strong><?php esc_html_e( 'Tourfic requires WooCommerce to be activated ', 'tourfic' ); ?> <a href="<?php echo esc_url( admin_url('/plugin-install.php?s=slug:woocommerce&tab=search&type=term') ); ?>">Install Now</a></strong>
 		        </p>
 		    </div> <?php
 	    }

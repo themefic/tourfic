@@ -252,6 +252,10 @@
   border: 1px solid #ddd;
 }
 
+.tf_room-type {
+  margin-top: 40px;
+}
+
 .tf_room-row {
   display: flex;
   flex-wrap: wrap;
@@ -327,6 +331,11 @@
 
 .bed-facilities {
   margin: 8px 0;
+}
+
+.tf_room-type-head {
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .tf_form-row .tf_label-row {

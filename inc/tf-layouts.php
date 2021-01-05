@@ -19,22 +19,9 @@ function tourfic_archive_single() {
 						<div class="tf-hotel__title-wrap">
 							<a href="<?php the_permalink(); ?>"><h3 class="tourfic_hotel-title"><?php the_title(); ?></h3></a>
 						</div>
+						<?php tf_map_link(); ?>
 					</div>
-					<div class="tf_item_review_block">
-						<div class="reviewFloater reviewFloaterBadge__container">
-						    <div class="sr-review-score">
-						        <a class="sr-review-score__link" href="/" target="_blank">
-						            <div class="bui-review-score c-score bui-review-score--end">
-						                <div class="bui-review-score__badge" aria-label="Scored 9.2 "> 9.2 </div>
-						                <div class="bui-review-score__content">
-						                    <div class="bui-review-score__title"> Superb </div>
-						                    <div class="bui-review-score__text"> 44 reviews </div>
-						                </div>
-						            </div>
-						        </a>
-						    </div>
-						</div>
-					</div>
+					<?php tf_item_review_block(); ?>
 				</div>
 				<!-- Title area End -->
 
@@ -76,5 +63,37 @@ function tourfic_archive_single() {
 		</div>
 	</div>
 
+	<?php
+}
+
+function tf_item_review_block(){
+	return;
+	?>
+	<div class="tf_item_review_block">
+		<div class="reviewFloater reviewFloaterBadge__container">
+		    <div class="sr-review-score">
+		        <a class="sr-review-score__link" href="/" target="_blank">
+		            <div class="bui-review-score c-score bui-review-score--end">
+		                <div class="bui-review-score__badge" aria-label="Scored 9.2 "> 9.2 </div>
+		                <div class="bui-review-score__content">
+		                    <div class="bui-review-score__title"> Superb </div>
+		                    <div class="bui-review-score__text"> 44 reviews </div>
+		                </div>
+		            </div>
+		        </a>
+		    </div>
+		</div>
+	</div>
+	<?php
+}
+
+function tf_map_link(){
+	$location = get_field('formatted_location') ? get_field('formatted_location') : null;
+	?>
+	<!-- Start map link -->
+	<div class="tf_map-link">
+		<?php echo tf_get_svg('checkin'); ?> <?php echo esc_html( $location ); ?>
+	</div>
+	<!-- End map link -->
 	<?php
 }

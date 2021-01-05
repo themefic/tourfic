@@ -99,7 +99,6 @@ class Tourfic_Metabox_Class {
         	update_post_meta( $post_id, 'tf_gallery_ids', sanitize_text_field( $_POST['tf_gallery_ids'] ) );
         }
 
-
         if ( isset( $_POST['information'] ) ) {
             update_post_meta( $post_id, 'information', sanitize_text_field( $_POST['information'] ) );
         }
@@ -108,15 +107,12 @@ class Tourfic_Metabox_Class {
             update_post_meta( $post_id, 'additional_information', sanitize_text_field( $_POST['additional_information'] ) );
         }
 
-
-
 		// Set room
 		$tf_room = isset( $_POST['tf_room'] ) ? (array) $_POST['tf_room'] : array();
 		// Sanitize
 		//$tf_room = array_map( 'esc_attr', $tf_room );
  		// Push to post meta
         update_post_meta( $post_id, 'tf_room', (array) $tf_room );
-
 
     }
 

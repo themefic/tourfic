@@ -104,9 +104,9 @@ class TourficWooCommerceHandle{
 			$tf_room_data['tf_data']['check_in'] = $check_in;
 			$tf_room_data['tf_data']['check_out'] = $check_out;
 
-			$get_room_type = get_field('add_room_type', $tour_id)[$room_key];
+			$get_room_type = get_field('tf_room', $tour_id)[$room_key];
 			if ( $get_room_type ) {
-				$tf_room_data['tf_data']['room_name'] = $get_room_type['room_name'];
+				$tf_room_data['tf_data']['room_name'] = $get_room_type['name'];
 				$tf_room_data['tf_data']['price'] = $get_room_type['price'];
 				$tf_room_data['tf_data']['sale_price'] = $get_room_type['sale_price'];
 			}
@@ -119,6 +119,7 @@ class TourficWooCommerceHandle{
 
 			$response['product_id'] = $product_id;
 			$response['add_to_cart'] = 'true';
+			//$response['redirect_to'] = wc_get_checkout_url();
 		} else {
 			$response['status'] = 'error';
 		}
@@ -140,6 +141,8 @@ class TourficWooCommerceHandle{
 	        return;
 
 	    foreach ( $cart->get_cart() as $cart_item ) {
+	    	ppr( $cart_item );
+
 	        if( isset($cart_item['tf_data']['price']) ){
 	            $cart_item['data']->set_price( $cart_item['tf_data']['price'] );
 	        }

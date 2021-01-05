@@ -11,7 +11,6 @@ get_header('tourfic'); ?>
 
 // Get all rooms
 $tf_room = get_field('tf_room') ? get_field('tf_room') : array();
-$location = get_field('formatted_location') ? get_field('formatted_location') : null;
 $information = get_field('information') ? get_field('information') : null;
 $additional_information = get_field('additional_information') ? get_field('additional_information') : null;
 
@@ -42,7 +41,7 @@ $additional_information = get_field('additional_information') ? get_field('addit
 
 				<!-- Start map link -->
 				<div class="tf_map-link">
-					<?php echo tf_get_svg('checkin'); ?> <?php echo esc_html( $location ); ?>
+					<?php tf_map_link(); ?>
 				</div>
 				<!-- End map link -->
 			</div>
@@ -92,9 +91,7 @@ $additional_information = get_field('additional_information') ? get_field('addit
 													<a href="#" class="room-image-trigger"><?php tf_svg('images'); ?></a>
 												</div>
 												<div class="tf-price-column">
-													<span class="tf-price"><del><?php echo wc_price( $sale_price ); ?></del></span>
-													<span class="tf-price"><?php echo wc_price( $price ); ?></span>
-													<div class="price-per-night"><?php esc_html_e( 'Price per night as low as', 'tourfic' ); ?></div>
+													<?php echo tf_price_html($price, $sale_price); ?>
 												</div>
 											</div>
 										</div>
