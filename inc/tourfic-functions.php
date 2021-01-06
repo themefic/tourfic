@@ -386,3 +386,16 @@ function tf_price_html( $price = null, $sale_price = null ) {
 	<?php
 	return ob_get_clean();
 }
+
+// return only raw price
+function tf_price_raw( $price = null, $sale_price = null ) {
+	if ( !$price ) {
+		return;
+	}
+
+	if ( $sale_price > 0 ) {
+		return $sale_price;
+	}
+
+	return $price;
+}
