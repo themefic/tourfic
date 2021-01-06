@@ -45,10 +45,19 @@ class TourficWooCommerceHandle{
 
 		// Check errors
 		if ( !$check_in ) {
-			$response['errors'][] = __('Check-in date missing','tourfic');
+			$response['errors'][] = __('Check-in date missing.','tourfic');
 		}
 		if ( !$check_out ) {
-			$response['errors'][] = __('Check-out date missing','tourfic');
+			$response['errors'][] = __('Check-out date missing.','tourfic');
+		}
+		if ( !$adults ) {
+			$response['errors'][] = __('Select Adult(s).','tourfic');
+		}
+		if ( !$room ) {
+			$response['errors'][] = __('Select Room(s).','tourfic');
+		}
+		if ( !$tour_id  ) {
+			$response['errors'][] = __('Unknown Error! Please try again.','tourfic');
 		}
 
 		$post_title = get_the_title( $tour_id );
@@ -109,14 +118,18 @@ class TourficWooCommerceHandle{
 				$tf_room_data['tf_data']['room_name'] = $get_room_type['name'];
 				$tf_room_data['tf_data']['price'] = $get_room_type['price'];
 				$tf_room_data['tf_data']['sale_price'] = $get_room_type['sale_price'];
-				$tf_room_data['tf_data']['price_total'] = tf_price_raw($get_room_type['price'], $get_room_type['sale_price']);
+
+				$price_total = tf_price_raw($get_room_type['price'], $get_room_type['sale_price']);
+				$price_total = $price_total*$room_selected;
+
+				$tf_room_data['tf_data']['price_total'] = $price_total;
 			}
 
 			// If want to empty the cart
 			//WC()->cart->empty_cart();
 
 			// Add product to cart with the custom cart item data
-			WC()->cart->add_to_cart( $product_id, $room_selected, '0', array(), $tf_room_data );
+			WC()->cart->add_to_cart( $product_id, 1, '0', array(), $tf_room_data );
 
 			$response['product_id'] = $product_id;
 			$response['add_to_cart'] = 'true';
