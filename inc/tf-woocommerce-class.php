@@ -107,9 +107,9 @@ class TourficWooCommerceHandle{
 			$get_room_type = get_field('tf_room', $tour_id)[$room_key];
 			if ( $get_room_type ) {
 				$tf_room_data['tf_data']['room_name'] = $get_room_type['name'];
-
-				$tf_room_data['tf_data']['price'] = tf_price_raw($get_room_type['price'], $get_room_type['sale_price']);
+				$tf_room_data['tf_data']['price'] = $get_room_type['price'];
 				$tf_room_data['tf_data']['sale_price'] = $get_room_type['sale_price'];
+				$tf_room_data['tf_data']['price_total'] = tf_price_raw($get_room_type['price'], $get_room_type['sale_price']);
 			}
 
 			// If want to empty the cart
@@ -144,8 +144,8 @@ class TourficWooCommerceHandle{
 	    foreach ( $cart->get_cart() as $cart_item ) {
 	    	ppr( $cart_item );
 
-	        if( isset($cart_item['tf_data']['price']) ){
-	            $cart_item['data']->set_price( $cart_item['tf_data']['price'] );
+	        if( isset($cart_item['tf_data']['price_total']) ){
+	            $cart_item['data']->set_price( $cart_item['tf_data']['price_total'] );
 	        }
 	    }
 
