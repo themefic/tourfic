@@ -227,7 +227,7 @@ function tf_posts_navigation(){
 	    'current' => $paged,
 	    'total'   => $max_num_pages,
 	    'mid_size'        => 2,
-	    'prev_next'       => false,
+	    'prev_next'       => true,
 	) );
 	echo "</div>";
 }
@@ -383,6 +383,7 @@ function tf_price_html( $price = null, $sale_price = null ) {
 
 	<span class="tf-price"><?php echo wc_price( $price ); ?></span>
 	<div class="price-per-night"><?php esc_html_e( 'Price per night as low as', 'tourfic' ); ?></div>
+
 	<?php
 	return ob_get_clean();
 }

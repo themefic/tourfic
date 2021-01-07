@@ -4,6 +4,7 @@
  * Archive post layout
  */
 function tourfic_archive_single() {
+	$tf_room = get_field('tf_room') ? get_field('tf_room') : array();
 	?>
 	<div class="single-tour-wrap">
 		<div class="single-tour-inner">
@@ -25,38 +26,44 @@ function tourfic_archive_single() {
 				</div>
 				<!-- Title area End -->
 
+				<?php if( $tf_room ) : ?>
 				<!-- Room details start -->
 				<div class="sr_rooms_table_block">
-					<div class="room_details">
-						<div class="featuredRooms">
-							<div class="roomrow_flex">
+					<?php foreach ( $tf_room as $key => $room_type ) : ?>
+						<?php
+						// Array to variable
+						extract( $room_type );
+						?>
+						<div class="room_details">
+							<div class="featuredRooms">
+								<div class="roomrow_flex">
 
-								<div class="roomName_flex">
-									<div class="roomNameInner">
-										<div class="room_link">
-											<div><strong>Deluxe Double Room</strong> - <span class="c-occupancy-icons"></span></div>
-											<div>1 bed(<span class="sr_gr_bed_type">1 large double</span>)</div>
+									<div class="roomName_flex">
+										<div class="roomNameInner">
+											<div class="room_link">
+												<div><strong><?php echo esc_html( $name ); ?></strong></div>
+												<div><?php echo $short_desc; ?></div>
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="roomPrice roomPrice_flex sr_discount">
-									<div class="prco-ltr-right-align-helper">
-										<div class="bui-price-display__label prco-inline-block-maker-helper">1 night, 2 adults</div>
+									<div class="roomPrice roomPrice_flex sr_discount">
+										<div class="prco-ltr-right-align-helper">
+											<div class="bui-price-display__value prco-inline-block-maker-helper" aria-hidden="true"><?php echo tf_price_html($price, $sale_price); ?></div>
+										</div>
 									</div>
-									<div class="prco-ltr-right-align-helper">
-										<div class="bui-price-display__value prco-inline-block-maker-helper" aria-hidden="true">BDT&nbsp;5,129</div>
-									</div>
-								</div>
 
+								</div>
 							</div>
 						</div>
-					</div>
+					<?php endforeach; ?>
 				</div>
 				<!-- Room details end -->
+
 				<div class="availability-btn-area">
 					<a href="<?php the_permalink(); ?>" class="button tf_button"><?php esc_html_e( 'See availability', 'tourfic' ); ?></a>
 				</div>
+				<?php endif; ?>
 
 
 			</div>
