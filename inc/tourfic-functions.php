@@ -371,6 +371,7 @@ function tourfic_search_pre_get_posts_filter( $query ) {
   	return $query;
 }
 
+// price with html format
 function tf_price_html( $price = null, $sale_price = null ) {
 	if ( !$price ) {
 		return;
@@ -401,16 +402,13 @@ function tf_price_raw( $price = null, $sale_price = null ) {
 	return $price;
 }
 
-
+// Sale tag
 function tf_sale_tag( $price = null, $sale_price = null ) {
 	if ( !$sale_price ) {
 		return;
 	}
 
-
-
 	$parsent = number_format((($price-$sale_price)/$price)*100,1);
-
 
 	ob_start();
 	?>
