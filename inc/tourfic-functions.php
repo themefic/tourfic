@@ -400,3 +400,23 @@ function tf_price_raw( $price = null, $sale_price = null ) {
 
 	return $price;
 }
+
+
+function tf_sale_tag( $price = null, $sale_price = null ) {
+	if ( !$sale_price ) {
+		return;
+	}
+
+
+
+	$parsent = number_format((($price-$sale_price)/$price)*100,1);
+
+
+	ob_start();
+	?>
+	<?php if ( $sale_price > 0 ) { ?>
+		<div class="tf-sale-tag"><?php printf( esc_html( 'Save %s%% Today', 'tourfic' ), $parsent ); ?></div>
+	<?php } ?>
+	<?php
+	return ob_get_clean();
+}
