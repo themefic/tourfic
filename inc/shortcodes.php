@@ -216,7 +216,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
   ob_start(); ?>
 
     <!-- Start Booking widget -->
-    <form class="tf_booking-widget <?php esc_attr_e( $classes ); ?>" method="post" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+    <form class="tf_booking-widget <?php esc_attr_e( $classes ); ?>" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
         <div class="tf_widget-title"><?php esc_html_e( $title ); ?></div>
         <div class="tf_widget-subtitle"><?php esc_html_e( $subtitle ); ?></div>
 
@@ -303,32 +303,68 @@ add_shortcode('tf_search', 'tourfic_search_shortcode');
  * Shortcode Function
  */
 function tourfic_search_result_shortcode( $atts, $content = null ){
+
+    // Unwanted Slashes Remove
+    if ( isset( $_GET ) ) {
+        $_GET = array_map( 'stripslashes_deep', $_GET );
+    }
+
+    // Shortcode extract
     extract(
       shortcode_atts(
         array(
             'style'  => 'default',
             'max'  => '50',
+            'search' => isset( $_GET['destination'] ) ? $_GET['destination'] : '',
           ),
         $atts
       )
     );
 
-    if ( $style == 'default' ) {
-        $classes = " default-form ";
-    }
-
+    // Propertise args
     $args = array(
         'post_type' => 'tourfic',
         'post_status' => 'publish',
         'posts_per_page' => $max,
     );
 
+    // 1st search on Destination taxonomy
+    $destinations = get_terms( array(
+        'taxonomy' => 'destination',
+        'orderby' => 'name',
+        'order' => 'ASC',
+        'hide_empty' => 0, //can be 1, '1' too
+        'hierarchical' => true, //can be 1, '1' too
+        'search' => $search,
+        'name__like' => '',
+    ) );
+
+    if ( $destinations ) {
+        // Define Featured Category IDs first
+        $destinations_ids = array();
+
+        // Creating loop to insert IDs to array.
+        foreach( $destinations as $cat ) {
+            $destinations_ids[] = $cat->term_id;
+        }
+
+        $args['tax_query'] = array(
+            'relation' => 'OR',
+            array(
+                'taxonomy' => 'destination',
+                'terms'    => $destinations_ids,
+            )
+        );
+    } else {
+        $args['s'] = $search;
+    }
+
     $loop = new WP_Query( $args );
 
     ob_start(); ?>
 
     <!-- Start Content -->
-    <div class="tf_content">
+    <div class="tf_search_result">
 
         <div class="archive_ajax_result">
             <?php if ( $loop->have_posts() ) : ?>
