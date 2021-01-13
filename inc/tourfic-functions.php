@@ -175,7 +175,7 @@ function tf_booking_widget_field( $args ){
 	    	$output .= "<label class='tf_label-row'>";
 	    		$output .= "<div class='tf_form-inner'>";
 	    		$output .= "<span class='icon'>";
-	    			$output .= tf_get_svg('checkin');
+	    			$output .= tf_get_svg($svg_icon);
 	    		$output .= "</span>";
 	    		$output .= "<select $required name='$name' id='$id' class='$class'>";
 
@@ -188,6 +188,22 @@ function tf_booking_widget_field( $args ){
 			</label>
 		</div>";
 
+    } elseif ( $type == 'number' ) {
+
+    	$output .= "<div class='tf_form-row'>";
+	    	$output .= "<label class='tf_label-row'>";
+	    		$output .= $label;
+	    		$output .= "<div class='tf_form-inner'>";
+	    			$output .= "<span class='icon'>";
+	    				$output .= tf_get_svg($svg_icon);
+	    			$output .= "</span>";
+
+					$output .= "<input type='number' name='$name' $required  id='$id' $disabled class='$class' placeholder='$placeholder' value='$default' />";
+
+				$output .= "</div>
+			</label>
+		</div>";
+
     } else {
 
     	$output .= "<div class='tf_form-row'>";
@@ -195,7 +211,7 @@ function tf_booking_widget_field( $args ){
 	    		$output .= $label;
 	    		$output .= "<div class='tf_form-inner'>";
 	    			$output .= "<span class='icon'>";
-	    				$output .= tf_get_svg('checkin');
+	    				$output .= tf_get_svg($svg_icon);
 	    			$output .= "</span>";
 
 					$output .= "<input type='text' name='$name' $required  id='$id' $disabled class='$class' placeholder='$placeholder' value='$default' />";
@@ -227,7 +243,7 @@ function tf_posts_navigation(){
 	    'current' => $paged,
 	    'total'   => $max_num_pages,
 	    'mid_size'        => 2,
-	    'prev_next'       => true,
+	    'prev_next'       => false,
 	) );
 	echo "</div>";
 }
@@ -345,7 +361,7 @@ add_action( 'tf_before_container', 'tf_notice_wrapper', 10 );
 
 // Booking Form Action Link
 function tf_booking_search_action(){
-	return apply_filters( 'tf_booking_search_action', esc_url( get_post_type_archive_link('tourfic') ) );
+	return apply_filters( 'tf_booking_search_action', esc_url( home_url('/search-result/') ) );
 }
 
 /**
@@ -371,7 +387,6 @@ function tourfic_search_pre_get_posts_filter( $query ) {
   	return $query;
 }
 
-// price with html format
 function tf_price_html( $price = null, $sale_price = null ) {
 	if ( !$price ) {
 		return;
@@ -384,7 +399,6 @@ function tf_price_html( $price = null, $sale_price = null ) {
 
 	<span class="tf-price"><?php echo wc_price( $price ); ?></span>
 	<div class="price-per-night"><?php esc_html_e( 'Price per night as low as', 'tourfic' ); ?></div>
-
 	<?php
 	return ob_get_clean();
 }
@@ -400,21 +414,4 @@ function tf_price_raw( $price = null, $sale_price = null ) {
 	}
 
 	return $price;
-}
-
-// Sale tag
-function tf_sale_tag( $price = null, $sale_price = null ) {
-	if ( !$sale_price ) {
-		return;
-	}
-
-	$parsent = number_format((($price-$sale_price)/$price)*100,1);
-
-	ob_start();
-	?>
-	<?php if ( $sale_price > 0 ) { ?>
-		<div class="tf-sale-tag"><?php printf( esc_html( 'Save %s%% Today', 'tourfic' ), $parsent ); ?></div>
-	<?php } ?>
-	<?php
-	return ob_get_clean();
 }

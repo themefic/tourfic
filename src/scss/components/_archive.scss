@@ -245,7 +245,7 @@
 
 .room_details {
     border-top: 1px solid #bdbdbd;
-    padding: 8px;
+    padding-top: 8px;
 }
 
 .featuredRooms {
@@ -285,7 +285,10 @@
 }
 
 .bui-price-display__value {
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: #383838;
 }
 
 .availability-btn {

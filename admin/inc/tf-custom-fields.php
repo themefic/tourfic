@@ -100,19 +100,11 @@ class Tourfic_Metabox_Class {
         }
 
         if ( isset( $_POST['information'] ) ) {
-            update_post_meta(
-                $post_id,
-                'information',
-                implode( "\n", array_map( 'sanitize_textarea_field', explode( "\n", $_POST['information'] ) ) )
-            );
+            update_post_meta( $post_id, 'information', sanitize_text_field( $_POST['information'] ) );
         }
 
         if ( isset( $_POST['additional_information'] ) ) {
-            update_post_meta(
-                $post_id,
-                'additional_information',
-                implode( "\n", array_map( 'sanitize_textarea_field', explode( "\n", $_POST['additional_information'] ) ) )
-            );
+            update_post_meta( $post_id, 'additional_information', sanitize_text_field( $_POST['additional_information'] ) );
         }
 
 		// Set room

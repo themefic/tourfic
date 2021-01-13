@@ -85,7 +85,7 @@ $additional_information = get_field('additional_information') ? get_field('addit
 									<div class="tf-room-content-inner">
 										<div class="tf-room-inner-column first">
 											<div class="bed-facilities"><?php echo $short_desc; ?></div>
-											<?php echo tf_sale_tag($price, $sale_price); ?>
+											<div class="tf-sale-tag"><?php esc_html_e( 'Save 53% Today', 'tourfic' ); ?></div>
 											<div class="img-price-row">
 												<div class="tf-room-image">
 													<a href="#" class="room-image-trigger"><?php tf_svg('images'); ?></a>
