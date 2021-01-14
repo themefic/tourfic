@@ -260,6 +260,12 @@
   margin-top: 40px;
 }
 
+.tf-room ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .tf_room-row {
   display: flex;
   flex-wrap: wrap;

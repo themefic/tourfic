@@ -153,7 +153,7 @@ class Tourfic_Metabox_Class {
 					<li class="active"><a href="#rooms"><?php echo esc_html__( 'Rooms', 'tourfic' ); ?></a></li>
 					<li><a href="#gallery"><?php echo esc_html__( 'Gallery', 'tourfic' ); ?></a></li>
 					<li><a href="#location"><?php echo esc_html__( 'Location', 'tourfic' ); ?></a></li>
-					<li><a href="#information"><?php echo esc_html__( 'Information', 'tourfic' ); ?></a></li>
+					<li><a href="#tf_information"><?php echo esc_html__( 'Property Description', 'tourfic' ); ?></a></li>
 					<li><a href="#additional-info"><?php echo esc_html__( 'Additional Information', 'tourfic' ); ?></a></li>
 
 				</ul>
@@ -223,15 +223,30 @@ class Tourfic_Metabox_Class {
 
 					</div>
 
-					<div id="information" class="tf-tab-content">
+					<div id="tf_information" class="tf-tab-content">
 
 						<h4><?php esc_html_e( 'Information', 'tourfic' ); ?></h4>
 
                         <div class="tf-field-wrap">
                             <div class="tf-label">
-                                <label for="tf_information"><?php esc_html_e( 'Add Information', 'tourfic' ); ?></label>
+                                <label for="tf_information"><?php esc_html_e( 'Add Property Description', 'tourfic' ); ?></label>
                             </div>
-                            <textarea name="information" class="wfull" rows="5" id="tf_information"><?php _e( $information ); ?></textarea>
+                            <?php
+                                $content   = $information;
+                                $editor_id = 'information';
+
+                                $settings = array(
+                                    'quicktags' => array('buttons' => 'em,strong,link',),
+                                    'quicktags' => true,
+                                    'tinymce' => 1,
+                                    'textarea_rows' => 20,
+                                    'media_buttons' => 1,
+                                );
+
+                                wp_editor( $content, $editor_id, $settings );
+
+
+                            ?>
                         </div>
 
 					</div>

@@ -68,7 +68,7 @@ function tf_add_single_room_wrap( $args ){
 
 				<div class="tf-field-wrap label-left">
 					<div class="tf-label">
-						<label for="tf_room-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
+						<label for="tf_room-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Property Description', 'tourfic' ); ?></label>
 					</div>
 				    <textarea name="tf_room[<?php _e( $key ); ?>][desc]" class="tf_room-desc" rows="5" id="tf_room-desc-<?php _e( $key ); ?>"><?php _e( $desc ); ?></textarea>
 				</div>
