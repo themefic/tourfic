@@ -23,7 +23,7 @@ function tourfic_tours_shortcode( $atts, $content = null ){
 
   ob_start(); ?>
 
-  <?php if ($style == "recomended" ){ ?>
+  <?php if( $style == "recomended" ){ ?>
   <!-- Recommended destinations  -->
   <section id="recomended_section_wrapper">
     <div class="recomended_inner">
@@ -101,7 +101,7 @@ function tourfic_tours_shortcode( $atts, $content = null ){
   </section>
   <!-- Recommended destinations  End-->
 
-  <?php } elseif($style == "populer" ){
+  <?php } elseif( $style == "populer" ){
 
 
     $hotel_loop = new WP_Query( $args );
@@ -334,9 +334,9 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
         'orderby' => 'name',
         'order' => 'ASC',
         'hide_empty' => 0, //can be 1, '1' too
-        'hierarchical' => true, //can be 1, '1' too
+        'hierarchical' => 0, //can be 1, '1' too
         'search' => $search,
-        'name__like' => '',
+        //'name__like' => '',
     ) );
 
     if ( $destinations ) {

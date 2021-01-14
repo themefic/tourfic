@@ -160,8 +160,9 @@ function tf_booking_widget_field( $args ){
 
     $placeholder = esc_attr( $args['placeholder'] );
 
-    $default_val =  isset( $_POST[$name] ) ? $_POST[$name] : tf_getcookie( $name );
-    $default = $args['default'] ? esc_attr( $args['default'] ) : $default_val;
+    //$default_val =  isset( $_POST[$name] ) ? $_POST[$name] : tf_getcookie( $name );
+    $default_val =  isset( $_GET[$name] ) ? $_GET[$name] : '';
+    $default = $args['default'] ? sanitize_text_field( $args['default'] ) : $default_val;
 
     if ( !$name ) {
     	return;
@@ -387,6 +388,7 @@ function tourfic_search_pre_get_posts_filter( $query ) {
   	return $query;
 }
 
+// price with html format
 function tf_price_html( $price = null, $sale_price = null ) {
 	if ( !$price ) {
 		return;
@@ -394,11 +396,14 @@ function tf_price_html( $price = null, $sale_price = null ) {
 	ob_start();
 	?>
 	<?php if ( $sale_price > 0 ) { ?>
-		<span class="tf-price"><del><?php echo wc_price( $sale_price ); ?></del></span>
+		<span class="tf-price"><del><?php echo wc_price( $price ); ?></del></span>
+		<span class="tf-price"><?php echo wc_price( $sale_price ); ?></span>
+	<?php } else { ?>
+		<span class="tf-price"><?php echo wc_price( $price ); ?></span>
 	<?php } ?>
 
-	<span class="tf-price"><?php echo wc_price( $price ); ?></span>
 	<div class="price-per-night"><?php esc_html_e( 'Price per night as low as', 'tourfic' ); ?></div>
+
 	<?php
 	return ob_get_clean();
 }
@@ -414,4 +419,21 @@ function tf_price_raw( $price = null, $sale_price = null ) {
 	}
 
 	return $price;
+}
+
+// Sale tag
+function tf_sale_tag( $price = null, $sale_price = null ) {
+	if ( !$sale_price ) {
+		return;
+	}
+
+	$parsent = number_format((($price-$sale_price)/$price)*100,1);
+
+	ob_start();
+	?>
+	<?php if ( $sale_price > 0 ) { ?>
+		<div class="tf-sale-tag"><?php printf( esc_html( 'Save %s%% Today', 'tourfic' ), $parsent ); ?></div>
+	<?php } ?>
+	<?php
+	return ob_get_clean();
 }

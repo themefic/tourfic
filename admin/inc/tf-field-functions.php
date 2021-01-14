@@ -34,7 +34,7 @@ function tf_add_single_room_wrap( $args ){
     // Array key
     $key =  isset( $args['key'] ) ? $args['key'] : "";
 
-    $room_title = ( $name ) ? $name : __( '# Room Title', 'tourfic' );
+    $room_title = ( $args['room']['name'] ) ? $args['room']['name'] : __( '# Room Title', 'tourfic' );
 
 	ob_start();
 	?>
@@ -70,7 +70,7 @@ function tf_add_single_room_wrap( $args ){
 					<div class="tf-label">
 						<label for="tf_room-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
 					</div>
-				    <textarea name="tf_room[<?php _e( $key ); ?>][desc]" class="tf_room-desc" rows="5" id="tf_room-desc-<?php _e( $key ); ?>"><?php _e( $short_desc ); ?></textarea>
+				    <textarea name="tf_room[<?php _e( $key ); ?>][desc]" class="tf_room-desc" rows="5" id="tf_room-desc-<?php _e( $key ); ?>"><?php _e( $desc ); ?></textarea>
 				</div>
 
 				<div class="tf-row">

@@ -218,6 +218,10 @@
   overflow: hidden;
 }
 
+.tf_contents {
+  margin-top: 40px;
+}
+
 .tf_tab-wrap {
   margin-top: 50px;
 }
@@ -802,4 +806,8 @@ span.review_num {
 
 .availability-btn i {
   margin-left: 8px;
+}
+
+#am_posts_navigation {
+  display: none;
 }
