@@ -92,7 +92,14 @@
             dateFormat: dateFormat,
             minDate: 0,
             onSelect: function(date) {
-                checkout_input.datepicker( "option", "minDate", new Date( checkin_input.datepicker( "getDate" ) ) );
+                // Catch the date
+                date = new Date( checkin_input.datepicker( "getDate" ) );
+                // Set minimum +1 day
+                date.setDate(date.getDate() + 1);
+
+                checkout_input.datepicker( "option", "minDate", date );
+                checkout_input.datepicker( "setDate", date );
+                
                 console.log(date);
             }
         });
@@ -169,6 +176,8 @@
 
                         if ( response.redirect_to ) {
                             window.location.replace( response.redirect_to );
+                        } else {
+                            jQuery(document.body).trigger('added_to_cart');
                         }
 
                     }

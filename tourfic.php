@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Tourfic - Tour / Travel / Trip Booking for WooCommerce
  * Plugin URI: https://psdtowpservice.com/tourfic
- * Bitbucket Plugin URI: https://bitbucket.org/devshuvo/tourfic
+ * Bitbucket Plugin URI: http://github.com/themefic/tourfic
  * Description:
  * Author: BootPeople
  * Text Domain: tourfic

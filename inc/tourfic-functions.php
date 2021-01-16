@@ -156,7 +156,7 @@ function tf_booking_widget_field( $args ){
 
     $label = $args['label'] ? "<span class='tf-label'>".$args['label']."</span>" : '';
 
-    $disabled = $args['disabled'] ? "onkeypress='return false;" : '';
+    $disabled = $args['disabled'] ? "onkeypress='return false';" : '';
 
     $placeholder = esc_attr( $args['placeholder'] );
 
