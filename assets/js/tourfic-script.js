@@ -99,7 +99,9 @@
 
                 checkout_input.datepicker( "option", "minDate", date );
                 checkout_input.datepicker( "setDate", date );
-                
+
+                //checkout_input.datepicker( "show" );
+
                 console.log(date);
             }
         });
@@ -111,6 +113,11 @@
             onSelect: function(date) {
 
             }
+        });
+
+        // Trigger Check-in Date
+        $(document).on('click', '.tf_selectdate-wrap', function(e){
+            $(this).find('#check-in-date').focus();
         });
 
     });
