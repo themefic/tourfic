@@ -587,6 +587,94 @@ span.review_num {
   padding: 20px 5px;
 }
 
+.tf_homepage-booking {
+  display: flex;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: #333;
+  border-radius: 4px;
+  position: relative;
+  border: 4px solid #febb02;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tf_destination-wrap,
+.tf_selectdate-wrap,
+.tf_selectperson-wrap,
+.tf_submit-wrap {
+  border-right: 4px solid #febb02;
+}
+
+.tf_destination-wrap {
+  border-left: 0;
+  width: 40%;
+}
+
+.tf_submit-wrap {
+  border-right: 0;
+}
+
+.tf_selectdate-wrap .tf_input-inner {
+  display: flex;
+  align-items: center;
+}
+
+.tf_selectperson-wrap .tf_input-inner {
+  display: flex;
+  align-items: center;
+}
+
+.tf_homepage-booking .tf_form-row .tf_label-row {
+  margin: 0;
+}
+
+.date-sep {
+  padding: 0 10px;
+}
+
+.tf_selectdate-wrap {
+  padding: 0 15px;
+}
+
+.tf_selectperson-wrap {
+  padding: 0 15px;
+}
+
+.person-sep {
+  padding: 0 8px;
+}
+
+.checkin-date-text,
+.date-sep,
+.checkout-date-text,
+.adults-text,
+.person-sep,
+.child-text,
+.room-text {
+  white-space: nowrap;
+}
+
+.tf_destination-wrap .tf_input-inner {
+  padding: 0 15px;
+}
+
+.tf_selectdate-wrap {
+  width: 20%;
+}
+
+.tf_selectperson-wrap {
+  width: 25%;
+}
+
+.tf_submit-wrap {
+  width: 15%;
+}
+
+.tf_submit-wrap button {
+  width: 100%;
+  height: 100%;
+}
+
 /*Archive page*/
 .single-tour-inner {
   display: block;
