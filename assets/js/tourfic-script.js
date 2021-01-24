@@ -85,40 +85,22 @@
         var checkin_input = jQuery( "#check-in-date" ),
             checkout_input = jQuery( "#check-out-date" );
 
-        var dateFormat = 'dd-mm-yy';
-
-        checkin_input.datepicker({
-            //format: 'dd/mm/yyyy',
-            dateFormat: dateFormat,
-            minDate: 0,
-            onSelect: function(date) {
-                // Catch the date
-                date = new Date( checkin_input.datepicker( "getDate" ) );
-                // Set minimum +1 day
-                date.setDate(date.getDate() + 1);
-
-                checkout_input.datepicker( "option", "minDate", date );
-                checkout_input.datepicker( "setDate", date );
-
-                //checkout_input.datepicker( "show" );
-
-                console.log(date);
-            }
-        });
-
-        checkout_input.datepicker({
-            //format: 'dd/mm/yyyy',
-            dateFormat: dateFormat,
-            minDate: 0,
-            onSelect: function(date) {
-
-            }
-        });
+        var dateFormat = 'DD-MM-YYYY';
 
         // Trigger Check-in Date
-        $(document).on('click', '.tf_selectdate-wrap', function(e){
-            $(this).find('#check-in-date').focus();
+        $('.tf_selectdate-wrap').daterangepicker({
+            minDate : dateToday,
+            autoApply: true,
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+
+            checkin_input.val( start.format(dateFormat) );
+            $('.checkin-date-text').text( start.format(dateFormat) );
+
+            checkout_input.val( end.format(dateFormat) );
+            $('.checkout-date-text').text( end.format(dateFormat) );
         });
+
 
     });
 

@@ -165,7 +165,7 @@ span.review_num {
 
 // Homepage Widget
 .tf_homepage-booking {
-    display: flex;
+    display: table;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     color: #333;
     border-radius: 4px;
@@ -173,6 +173,12 @@ span.review_num {
     border: 4px solid #febb02;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 100%;
+
+    svg{
+        display: block;
+    }
 }
 
 .tf_destination-wrap,
@@ -180,13 +186,13 @@ span.review_num {
 .tf_selectperson-wrap,
 .tf_submit-wrap {
     border-right: 4px solid #febb02;
+    display: table-cell;
+    vertical-align: middle;
 }
-
-
 
 .tf_destination-wrap {
     border-left: 0;
-    width: 40%;
+    width: 25%;
 }
 
 .tf_submit-wrap {
@@ -211,12 +217,10 @@ span.review_num {
     padding: 0 10px;
 }
 
-.tf_selectdate-wrap {
-    padding: 0 15px;
-}
-
+.tf_destination-wrap .tf_input-inner,
+.tf_selectdate-wrap,
 .tf_selectperson-wrap {
-    padding: 0 15px;
+    padding: 0 7px;
 }
 
 .person-sep {
@@ -231,11 +235,6 @@ span.review_num {
 .child-text,
 .room-text {
     white-space: nowrap;
-}
-
-
-.tf_destination-wrap .tf_input-inner {
-    padding: 0 15px;
 }
 
 .tf_selectdate-wrap {
