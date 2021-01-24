@@ -151,12 +151,11 @@
         'icon'   => 'el el-idea',
         'fields' => array(
             array(
-                'id'       => 'opt-select-pages',
+                'id'       => 'search-result-pages',
                 'type'     => 'select',
                 'data'     => 'pages',
-                'title'    => __( 'Select Search Result Page', 'redux-framework-demo' ),
-
-                'desc'     => __( 'This is the description field, again good for additional info.', 'redux-framework-demo' ),
+                'title'    => __( 'Select Search Result Page', 'tourfic' ),
+                'desc'     => __( '<code>[tf_search_result]</code> shortcode must be in page content', 'tourfic' ),
             ),
         )
     ) );
@@ -172,7 +171,7 @@
                 'title'    => __( 'Custom CSS', 'tourfic' ),
                 'mode'   => 'css',
                 'theme'    => 'monokai',
-                'default'  => "#settings-toggle {\n    width: 30px;\n}"
+                'default'  => ""
             ),
         )
     ) );
