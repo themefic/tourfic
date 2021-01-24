@@ -199,14 +199,11 @@ span.review_num {
     border-right: 0;
 }
 
-.tf_selectdate-wrap .tf_input-inner {
-    display: flex;
-    align-items: center;
-}
-
+.tf_selectdate-wrap .tf_input-inner,
 .tf_selectperson-wrap .tf_input-inner {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .tf_homepage-booking .tf_form-row .tf_label-row {
@@ -243,6 +240,7 @@ span.review_num {
 
 .tf_selectperson-wrap {
     width: 25%;
+    position: relative;
 }
 
 .tf_submit-wrap {

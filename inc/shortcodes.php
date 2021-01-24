@@ -298,47 +298,43 @@ function tourfic_search_shortcode( $atts, $content = null ){
                     <span class="tf_date-icon">
                         <?php echo tf_get_svg('checkin'); ?>
                     </span>
-                    <div class="adults-text">
-                        2 Adults
-                    </div>
+                    <div class="adults-text">2 Adults</div>
                     <div class="person-sep">.</div>
-                    <div class="child-text">
-                        0 Childreen
-                    </div>
+                    <div class="child-text">0 Childreen</div>
                     <div class="person-sep">.</div>
-                    <div class="room-text">
-                        1 Room
+                    <div class="room-text">1 Room</div>
+                </div>
+
+                <div class="tf_acrselection-wrap">
+                    <div class="tf_acrselection-inner">
+
+                        <div class="tf_acrselection">
+                            <div class="acr-label">Adults</div>
+                            <div class="acr-select">
+                                <div class="acr-dec">-</div>
+                                <input type="number" name="adults" id="adults" min="1" value="2">
+                                <div class="acr-inc">+</div>
+                            </div>
+                        </div>
+                        <div class="tf_acrselection">
+                            <div class="acr-label">Children</div>
+                            <div class="acr-select">
+                                <div class="acr-dec">-</div>
+                                <input type="number" name="children" id="children" min="0" value="0">
+                                <div class="acr-inc">+</div>
+                            </div>
+                        </div>
+                        <div class="tf_acrselection">
+                            <div class="acr-label">Rooms</div>
+                            <div class="acr-select">
+                                <div class="acr-dec">-</div>
+                                <input type="number" name="room" id="room" min="1" value="1">
+                                <div class="acr-inc">+</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tf_date-wrap-srt screen-reader-text">
-                <?php tf_booking_widget_field(
-                    array(
-                        'placeholder' => 'Adults',
-                        'type' => 'number',
-                        'name' => 'adults',
-                        'id' => 'adults'
-                    )
-                ); ?>
-
-                <?php tf_booking_widget_field(
-                    array(
-                        'placeholder' => 'Rooms',
-                        'type' => 'number',
-                        'name' => 'room',
-                        'id' => 'room',
-                    )
-                ); ?>
-
-                <?php tf_booking_widget_field(
-                    array(
-                        'placeholder' => 'Children',
-                        'type' => 'number',
-                        'name' => 'children',
-                        'id' => 'children',
-                    )
-                ); ?>
-                </div>
             </div>
 
             <div class="tf_submit-wrap">

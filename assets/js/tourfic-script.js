@@ -101,6 +101,65 @@
             $('.checkout-date-text').text( end.format(dateFormat) );
         });
 
+        // Number Decrement
+        $('.acr-dec').on('click',function(e){
+
+            var input = $(this).parent().find('input');
+            var min = input.attr('min');
+
+            if ( input.val() > min ) {
+                input.val( input.val()-1 ).change();
+            }
+
+        });
+
+        // Number Increment
+        $('.acr-inc').on('click',function(e){
+            var input = $(this).parent().find('input');
+            input.val( parseInt(input.val())+1 ).change();
+        });
+
+        // Adults change trigger
+        $(document).on('change', '#adults', function(){
+            var thisVal = $(this).val();
+
+            if ( thisVal > 1 ) {
+                $('.adults-text').text(thisVal+" Adults");
+            } else {
+                $('.adults-text').text(thisVal+" Adult");
+            }
+
+        });
+
+        // Children change trigger
+        $(document).on('change', '#children', function(){
+            var thisVal = $(this).val();
+
+            if ( thisVal > 1 ) {
+                $('.child-text').text(thisVal+" Children");
+            } else {
+                $('.child-text').text(thisVal+" Child");
+            }
+
+        });
+
+        // Room change trigger
+        $(document).on('change', '#room', function(){
+            var thisVal = $(this).val();
+
+            if ( thisVal > 1 ) {
+                $('.room-text').text(thisVal+" Rooms");
+            } else {
+                $('.room-text').text(thisVal+" Room");
+            }
+        });
+
+
+        // Adult, Child, Room Selection toggle
+        $(document).on('click', '.tf_selectperson-wrap .tf_input-inner', function(){
+            $('.tf_acrselection-wrap').slideToggle('fast');
+        });
+
 
     });
 
