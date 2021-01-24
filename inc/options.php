@@ -151,7 +151,7 @@
         'icon'   => 'el el-idea',
         'fields' => array(
             array(
-                'id'       => 'search-result-pages',
+                'id'       => 'search-result-page',
                 'type'     => 'select',
                 'data'     => 'pages',
                 'title'    => __( 'Select Search Result Page', 'tourfic' ),

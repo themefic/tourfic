@@ -365,6 +365,20 @@ function tf_booking_search_action(){
 	return apply_filters( 'tf_booking_search_action', esc_url( home_url('/search-result/') ) );
 }
 
+// Set search reult page
+function tf_booking_set_search_result( $url ){
+	global $tourfic_opt;
+
+	if ( isset( $tourfic_opt['search-result-page'] ) ) {
+		$url = get_permalink( $tourfic_opt['search-result-page'] );
+	}
+
+	return $url;
+
+}
+add_filter( 'tf_booking_search_action', 'tf_booking_set_search_result' );
+
+
 /**
  * Pre get posts [tourfic]
  */
