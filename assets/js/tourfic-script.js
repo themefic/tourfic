@@ -88,7 +88,7 @@
         var dateFormat = 'DD-MM-YYYY';
 
         // Trigger Check-in Date
-        $('.tf_selectdate-wrap').daterangepicker({
+        $('.tf_selectdate-wrap, .tf_booking-dates').daterangepicker({
             minDate : dateToday,
             autoApply: true,
         }, function(start, end, label) {
