@@ -17,20 +17,7 @@ get_header('tourfic'); ?>
 		<div class="tf_row">
 			<!-- Start Content -->
 			<div class="tf_content">
-
-				<div class="archive_ajax_result">
-					<?php if ( have_posts() ) : ?>
-						<?php while ( have_posts() ) : the_post(); ?>
-							<?php tourfic_archive_single(); ?>
-						<?php endwhile; ?>
-					<?php else : ?>
-						<?php get_template_part( 'template-parts/content', 'none' ); ?>
-					<?php endif; ?>
-				</div>
-				<div class="tf_posts_navigation">
-					<?php tf_posts_navigation(); ?>
-				</div>
-
+				<?php echo do_shortcode("[tf_search_result]"); ?>
 			</div>
 			<!-- End Content -->
 
@@ -38,7 +25,7 @@ get_header('tourfic'); ?>
 			<div class="tf_sidebar">
 
 				<!-- Start Booking widget -->
-				<form class="tf_booking-widget" method="post" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+				<form class="tf_booking-widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
 					<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
 
 					<!-- Start form row -->

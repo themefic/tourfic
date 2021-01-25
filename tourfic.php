@@ -156,21 +156,10 @@ class Tourfic_WordPress_Plugin{
 	 */
 	public function enqueue_datepicker() {
 
-		$TOURFIC_VERSION = current_time('timestamp');
+	    wp_enqueue_style('daterangepicker', plugin_dir_url( __FILE__ ) . 'assets/daterangepicker/daterangepicker.css', null, TOURFIC_VERSION );
 
-	   wp_enqueue_script('jquery');
-	   wp_enqueue_script('jquery-ui-datepicker');
-	   wp_enqueue_script('jquery-ui-core');
-
-	    wp_register_style( 'jquery-ui', plugin_dir_url( __FILE__ ) . '/assets/css/jquery-ui-datepicker.css' );
-	    wp_enqueue_style( 'jquery-ui' );
-
-
-	    wp_enqueue_style('daterangepicker', plugin_dir_url( __FILE__ ) . 'assets/daterangepicker/daterangepicker.css', null, $TOURFIC_VERSION );
-
-
-	    wp_enqueue_script( 'moment', plugin_dir_url( __FILE__ ) . 'assets/daterangepicker/moment.min.js', array('jquery'), $TOURFIC_VERSION, true );
-	    wp_enqueue_script( 'daterangepicker', plugin_dir_url( __FILE__ ) . 'assets/daterangepicker/daterangepicker.js', array('jquery'), $TOURFIC_VERSION, true );
+	    wp_enqueue_script( 'moment', plugin_dir_url( __FILE__ ) . 'assets/daterangepicker/moment.min.js', array('jquery'), TOURFIC_VERSION, true );
+	    wp_enqueue_script( 'daterangepicker', plugin_dir_url( __FILE__ ) . 'assets/daterangepicker/daterangepicker.js', array('jquery'), TOURFIC_VERSION, true );
 
 
 	}
