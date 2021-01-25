@@ -57,10 +57,14 @@ class Tourfic_WordPress_Plugin{
 
 		add_filter( 'single_template', [ $this, 'tourfic_single_page_template' ] );
 		add_filter('template_include', [ $this, 'tourfic_archive_page_template' ]);
+		add_filter ('theme_page_templates', [ $this, 'page_templates' ], 10, 4 );
+		add_filter ('page_template', [ $this, 'load_page_templates' ]);
+
 		add_filter('comments_template', [ $this, 'load_comment_template' ]);
 
 		// Admin Notice
 		add_filter('admin_notices', [ $this, 'admin_notices' ]);
+
 
 
 	}
@@ -169,6 +173,26 @@ class Tourfic_WordPress_Plugin{
 	    wp_enqueue_script( 'daterangepicker', plugin_dir_url( __FILE__ ) . 'assets/daterangepicker/daterangepicker.js', array('jquery'), $TOURFIC_VERSION, true );
 
 
+	}
+
+	// Page Templates
+	public function page_templates ($templates, $wp_theme, $post, $post_type) {
+	    $templates['tf_search-result'] = 'Torufic - Search Result';
+	    return $templates;
+	}
+
+	public function load_page_templates ($page_template) {
+
+		if ( get_page_template_slug() == 'tf_search-result' ) {
+		    $theme_files = array('search-tourfic.php', 'templates/search-tourfic.php');
+		    $exists_in_theme = locate_template($theme_files, false);
+		    if ( $exists_in_theme != '' ) {
+		      	return $exists_in_theme;
+		    } else {
+		      	return dirname( __FILE__ ) . '/templates/search-tourfic.php';
+		    }
+		}
+		return $page_template;
 	}
 
 	// Single Template
