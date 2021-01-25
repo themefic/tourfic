@@ -235,7 +235,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
                     <?php tf_booking_widget_field(
                         array(
                             'type' => 'text',
-                            'svg_icon' => 'checkin',
+                            'svg_icon' => 'search',
                             'name' => 'destination',
                             'label' => 'Destination/property name:',
                             'placeholder' => 'Destination',
@@ -250,7 +250,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_input-inner">
                     <span class="tf_date-icon">
-                        <?php echo tf_get_svg('checkin'); ?>
+                        <?php echo tf_get_svg('calendar_today'); ?>
                     </span>
                     <div class="checkin-date-text">
                         Check-in
@@ -296,7 +296,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_input-inner">
                     <span class="tf_date-icon">
-                        <?php echo tf_get_svg('checkin'); ?>
+                        <?php echo tf_get_svg('person'); ?>
                     </span>
                     <div class="adults-text">2 Adults</div>
                     <div class="person-sep">.</div>
