@@ -164,12 +164,13 @@ class Tourfic_WordPress_Plugin{
 
 	}
 
-	// Page Templates
+	// Show Page Template
 	public function page_templates ($templates, $wp_theme, $post, $post_type) {
 	    $templates['tf_search-result'] = 'Torufic - Search Result';
 	    return $templates;
 	}
 
+	// Load Page Template
 	public function load_page_templates ($page_template) {
 
 		if ( get_page_template_slug() == 'tf_search-result' ) {
