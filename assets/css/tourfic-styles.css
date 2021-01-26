@@ -222,6 +222,13 @@
   margin-top: 40px;
 }
 
+.tf_contents .slick-slide img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .tf_tab-wrap {
   margin-top: 50px;
 }
