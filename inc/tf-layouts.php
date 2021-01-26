@@ -115,7 +115,7 @@ function get_tf_sidebar(){
 					<?php tf_booking_widget_field(
 						array(
 							'type' => 'text',
-							'svg_icon' => 'checkin',
+							'svg_icon' => 'search',
 							'name' => 'destination',
 							'label' => 'Destination/property name:',
 							'placeholder' => 'Destination',
@@ -158,7 +158,7 @@ function get_tf_sidebar(){
 					<?php tf_booking_widget_field(
 						array(
 							'type' => 'select',
-							'svg_icon' => 'checkin',
+							'svg_icon' => 'person',
 							'name' => 'adults',
 							'id' => 'adults',
 							'options' => array(
@@ -197,7 +197,7 @@ function get_tf_sidebar(){
 							<?php tf_booking_widget_field(
 								array(
 									'type' => 'select',
-									'svg_icon' => 'checkin',
+									'svg_icon' => 'people_outline',
 									'name' => 'children',
 									'id' => 'children',
 									'options' => array(
