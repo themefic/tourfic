@@ -487,7 +487,7 @@ if ( ! class_exists( 'TOURFIC_TAX_META' ) ) {
 	 */
 	 public function add_category_image ( $taxonomy ) { ?>
 	   <div class="form-field term-group">
-	     <label for="category-image-id"><?php _e('Image', 'tourfic'); ?></label>
+	     <label for="category-image-id"><?php _e('Destination Image', 'tourfic'); ?></label>
 	     <input type="hidden" id="category-image-id" name="category-image-id" class="custom_media_url" value="">
 	     <div id="category-image-wrapper"></div>
 	     <p>
@@ -516,7 +516,7 @@ if ( ! class_exists( 'TOURFIC_TAX_META' ) ) {
 	 public function update_category_image ( $term, $taxonomy ) { ?>
 	   <tr class="form-field term-group-wrap">
 	     <th scope="row">
-	       <label for="category-image-id"><?php _e( 'Image', 'tourfic' ); ?></label>
+	       <label for="category-image-id"><?php _e( 'Destination Image', 'tourfic' ); ?></label>
 	     </th>
 	     <td>
 	       <?php $image_id = get_term_meta ( $term -> term_id, 'category-image-id', true ); ?>
