@@ -2,11 +2,85 @@
 /**
  * Shortcode Function
  */
+function tourfic_destinations_shortcode( $atts, $content = null ){
+
+    // Shortcode extract
+    extract(
+      shortcode_atts(
+        array(
+            'orderby' => 'name',
+            'order' => 'ASC',
+            'hide_empty' => 0,
+          ),
+        $atts
+      )
+    );
+
+    // Propertise args
+    $args = array(
+        'post_type' => 'tourfic',
+        'post_status' => 'publish',
+        'posts_per_page' => $max,
+    );
+
+    // 1st search on Destination taxonomy
+    $destinations = get_terms( array(
+        'taxonomy' => 'destination',
+        'orderby' => $orderby,
+        'order' => $order,
+        'hide_empty' => $hide_empty, //can be 1, '1' too
+        'hierarchical' => 0, //can be 1, '1' too
+        'search' => '',
+        //'name__like' => '',
+    ) );
+
+    ob_start();
+
+    if ( $destinations ) : ?>
+        <?php ppr($destinations); ?>
+    <!-- Recommended destinations  -->
+    <section id="recomended_section_wrapper">
+        <div class="recomended_inner">
+        <?php foreach( $destinations as $term ) :
+            $image_id = get_term_meta( $term->term_id, 'category-image-id', true );
+            $term_link = get_term_link( $term );
+
+            if ( is_wp_error( $term_link ) ) {
+                continue;
+            }
+            ?>
+
+          <div class="single_recomended_item">
+            <a href="<?php echo esc_url( $term_link ); ?>">
+              <div class="single_recomended_content" style="background-image: url(<?php echo wp_get_attachment_url( $image_id ); ?>);">
+                <div class="recomended_place_info_header">
+                  <h3><?php _e($term->name); ?></h3>
+                  <p><?php printf( esc_html__( "%s properties", 'tourfic' ), $term->count); ?></p>
+                </div>
+                <?php if( $term->description ): ?>
+                    <div class="recomended_place_info_footer">
+                        <p><?php echo nl2br($term->description); ?></p>
+                    </div>
+                <?php endif; ?>
+              </div>
+            </a>
+          </div>
+
+        <?php endforeach; ?>
+        </div>
+     </section>
+    <!-- Recommended destinations  End-->
+    <?php endif; ?>
+    <?php return ob_get_clean();
+}
+
+add_shortcode('tourfic_destinations', 'tourfic_destinations_shortcode');
+
 function tourfic_tours_shortcode( $atts, $content = null ){
   extract(
     shortcode_atts(
       array(
-          'style'  => 'populer', //recomended, populer
+          'style'  => 'recomended', //recomended, populer
           'title'  => 'Populer Destinaiton',  //title populer section
           'subtitle'  => 'Populer Destinaiton Subtitle',   // Sub title populer section
           'count'  => 6,
@@ -188,7 +262,7 @@ function tourfic_tours_shortcode( $atts, $content = null ){
 
   <!-- Populer Destinaiton End-->
   <?php }  ?>
-  <?php return ob_get_clean(); }
+<?php return ob_get_clean(); }
 
 add_shortcode('tours', 'tourfic_tours_shortcode');
 
