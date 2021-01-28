@@ -20,7 +20,7 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
     $args = array(
         'post_type' => 'tourfic',
         'post_status' => 'publish',
-        'posts_per_page' => $max,
+        'posts_per_page' => -1,
     );
 
     // 1st search on Destination taxonomy
