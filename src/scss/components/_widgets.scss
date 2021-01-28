@@ -1,16 +1,17 @@
 .single_recomended_content {
-  height: 270px;
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    height: 270px;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .single_recomended_item {
-  box-sizing: border-box;
-  margin-bottom: 15px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    float: left;
+    width: 33%;
 }
-
 
 .recomended_inner .single_recomended_item {
   &:nth-child(1), &:nth-child(2) {
@@ -31,7 +32,6 @@
     margin-right: 14.9px;
   }
 }
-
 
 
 /* Inner Style */

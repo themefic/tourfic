@@ -31,13 +31,13 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
         'hide_empty' => $hide_empty, //can be 1, '1' too
         'hierarchical' => 0, //can be 1, '1' too
         'search' => '',
+        'number' => 5,
         //'name__like' => '',
     ) );
 
     ob_start();
 
     if ( $destinations ) : ?>
-        <?php ppr($destinations); ?>
     <!-- Recommended destinations  -->
     <section id="recomended_section_wrapper">
         <div class="recomended_inner">
@@ -80,7 +80,7 @@ function tourfic_tours_shortcode( $atts, $content = null ){
   extract(
     shortcode_atts(
       array(
-          'style'  => 'recomended', //recomended, populer
+          'style'  => 'populer', //recomended, populer
           'title'  => 'Populer Destinaiton',  //title populer section
           'subtitle'  => 'Populer Destinaiton Subtitle',   // Sub title populer section
           'count'  => 6,
@@ -95,87 +95,9 @@ function tourfic_tours_shortcode( $atts, $content = null ){
     'posts_per_page' => $count,
   );
 
-  ob_start(); ?>
+  ob_start();
 
-  <?php if( $style == "recomended" ){ ?>
-  <!-- Recommended destinations  -->
-  <section id="recomended_section_wrapper">
-    <div class="recomended_inner">
-      <div class="single_recomended_item">
-        <a href="#">
-          <div class="single_recomended_content" style="background-image: url(https://cf.bstatic.com/xdata/images/city/540x270/973074.webp?k=eb08e50edd7b3a74a6a631d1a8e06af061c1628590551b97550c086682fbf9d4&o=);">
-            <div class="recomended_place_info_header">
-              <h3>Port Dickson</h3>
-              <p>Port Dickson</p>
-            </div>
-            <div class="recomended_place_info_footer">
-              <h3>Average price</h3>
-              <p>BDT 6,010</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="single_recomended_item">
-        <a href="#">
-          <div class="single_recomended_content" style="background-image: url(https://cf.bstatic.com/xdata/images/city/540x270/973074.webp?k=eb08e50edd7b3a74a6a631d1a8e06af061c1628590551b97550c086682fbf9d4&o=);">
-            <div class="recomended_place_info_header">
-              <h3>Port Dickson</h3>
-              <p>Port Dickson</p>
-            </div>
-            <div class="recomended_place_info_footer">
-              <h3>Average price</h3>
-              <p>BDT 6,010</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="single_recomended_item">
-        <a href="#">
-          <div class="single_recomended_content" style="background-image: url(https://cf.bstatic.com/xdata/images/city/540x270/973074.webp?k=eb08e50edd7b3a74a6a631d1a8e06af061c1628590551b97550c086682fbf9d4&o=);">
-            <div class="recomended_place_info_header">
-              <h3>Port Dickson</h3>
-              <p>Port Dickson</p>
-            </div>
-            <div class="recomended_place_info_footer">
-              <h3>Average price</h3>
-              <p>BDT 6,010</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="single_recomended_item">
-        <a href="#">
-          <div class="single_recomended_content" style="background-image: url(https://cf.bstatic.com/xdata/images/city/540x270/973074.webp?k=eb08e50edd7b3a74a6a631d1a8e06af061c1628590551b97550c086682fbf9d4&o=);">
-            <div class="recomended_place_info_header">
-              <h3>Port Dickson</h3>
-              <p>Port Dickson</p>
-            </div>
-            <div class="recomended_place_info_footer">
-              <h3>Average price</h3>
-              <p>BDT 6,010</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="single_recomended_item">
-        <a href="#">
-          <div class="single_recomended_content" style="background-image: url(https://cf.bstatic.com/xdata/images/city/540x270/973074.webp?k=eb08e50edd7b3a74a6a631d1a8e06af061c1628590551b97550c086682fbf9d4&o=);">
-            <div class="recomended_place_info_header">
-              <h3>Port Dickson</h3>
-              <p>Port Dickson</p>
-            </div>
-            <div class="recomended_place_info_footer">
-              <h3>Average price</h3>
-              <p>BDT 6,010</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-  <!-- Recommended destinations  End-->
 
-  <?php } elseif( $style == "populer" ){
 
 
     $hotel_loop = new WP_Query( $args );
@@ -260,8 +182,6 @@ function tourfic_tours_shortcode( $atts, $content = null ){
   });
   </script>
 
-  <!-- Populer Destinaiton End-->
-  <?php }  ?>
 <?php return ob_get_clean(); }
 
 add_shortcode('tours', 'tourfic_tours_shortcode');

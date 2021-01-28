@@ -509,6 +509,8 @@
 .single_recomended_item {
   box-sizing: border-box;
   margin-bottom: 15px;
+  float: left;
+  width: 33%;
 }
 
 .recomended_inner .single_recomended_item:nth-child(1), .recomended_inner .single_recomended_item:nth-child(2) {

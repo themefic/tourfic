@@ -9,7 +9,7 @@
  * Domain Path: /lang/
  * Author URI: https://psdtowpservice.com
  * Tags:
- * Version: 1.0.24
+ * Version: 1.0.25
  */
 
 // don't load directly
