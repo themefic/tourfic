@@ -9,7 +9,7 @@
  * Domain Path: /lang/
  * Author URI: https://psdtowpservice.com
  * Tags:
- * Version: 1.0.25
+ * Version: 1.0.26
  */
 
 // don't load directly
@@ -34,13 +34,6 @@ define( 'TF_ADMIN_URL', TF_PLUGIN_URL.'admin/' );
 */
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-function ppr( $ppr ){
-	echo "<pre>";
-	print_r( $ppr  );
-	echo "</pre>";
-}
-
-
 /**
  *	Main Class
  *
@@ -63,8 +56,6 @@ class Tourfic_WordPress_Plugin{
 
 		// Admin Notice
 		add_filter('admin_notices', [ $this, 'admin_notices' ]);
-
-
 
 	}
 

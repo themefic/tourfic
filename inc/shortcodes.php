@@ -50,21 +50,21 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
             }
             ?>
 
-          <div class="single_recomended_item">
-            <a href="<?php echo esc_url( $term_link ); ?>">
-              <div class="single_recomended_content" style="background-image: url(<?php echo wp_get_attachment_url( $image_id ); ?>);">
-                <div class="recomended_place_info_header">
-                  <h3><?php _e($term->name); ?></h3>
-                  <p><?php printf( esc_html__( "%s properties", 'tourfic' ), $term->count); ?></p>
-                </div>
-                <?php if( $term->description ): ?>
-                    <div class="recomended_place_info_footer">
-                        <p><?php echo nl2br($term->description); ?></p>
+            <div class="single_recomended_item">
+                <a href="<?php echo esc_url( $term_link ); ?>">
+                  <div class="single_recomended_content" style="background-image: url(<?php echo wp_get_attachment_url( $image_id ); ?>);">
+                    <div class="recomended_place_info_header">
+                      <h3><?php _e($term->name); ?></h3>
+                      <p><?php printf( esc_html__( "%s properties", 'tourfic' ), $term->count); ?></p>
                     </div>
-                <?php endif; ?>
-              </div>
-            </a>
-          </div>
+                    <?php if( $term->description ): ?>
+                        <div class="recomended_place_info_footer">
+                            <p><?php echo nl2br($term->description); ?></p>
+                        </div>
+                    <?php endif; ?>
+                  </div>
+                </a>
+            </div>
 
         <?php endforeach; ?>
         </div>
@@ -73,116 +73,109 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
     <?php endif; ?>
     <?php return ob_get_clean();
 }
-
 add_shortcode('tourfic_destinations', 'tourfic_destinations_shortcode');
 
 function tourfic_tours_shortcode( $atts, $content = null ){
-  extract(
-    shortcode_atts(
-      array(
-          'style'  => 'populer', //recomended, populer
-          'title'  => 'Populer Destinaiton',  //title populer section
-          'subtitle'  => 'Populer Destinaiton Subtitle',   // Sub title populer section
-          'count'  => 6,
-        ),
-      $atts
-    )
-  );
+    extract(
+        shortcode_atts(
+          array(
+              'style'  => 'populer', //recomended, populer
+              'title'  => 'Populer Destinaiton',  //title populer section
+              'subtitle'  => 'Populer Destinaiton Subtitle',   // Sub title populer section
+              'count'  => 6,
+            ),
+          $atts
+        )
+    );
 
-  $args = array(
-    'post_type' => 'tourfic',
-    'post_status' => 'publish',
-    'posts_per_page' => $count,
-  );
+    $args = array(
+        'post_type' => 'tourfic',
+        'post_status' => 'publish',
+        'posts_per_page' => $count,
+    );
 
-  ob_start();
-
-
-
+    ob_start();
 
     $hotel_loop = new WP_Query( $args );
-   ?>
+    ?>
+    <?php if ( $hotel_loop->have_posts() ) : ?>
+    <!-- Populer Destinaiton -->
+    <section id="populer_section_wrapper">
+        <div class="populer_inner">
 
-  <!-- Populer Destinaiton -->
-  <section id="populer_section_wrapper">
-    <div class="populer_inner">
+            <div class="populer_section_heading">
+                <?php if (!empty($title)){ ?>
+                  <h3><?php echo esc_html($title) ?></h3>
+                <?php }?>
+                <?php if (!empty($subtitle)){ ?>
+                  <p><?php echo esc_html($subtitle) ?></p>
+                <?php }?>
+            </div>
 
-      <div class="populer_section_heading">
-        <?php if (!empty($title)){ ?>
-          <h3><?php echo esc_html($title) ?></h3>
-        <?php }?>
-        <?php if (!empty($subtitle)){ ?>
-          <p><?php echo esc_html($subtitle) ?></p>
-        <?php }?>
-      </div>
+            <div class="popupler_widget_wrapper">
+                <div class="populer_widget_inner">
+                    <?php while ( $hotel_loop->have_posts() ) : $hotel_loop->the_post(); ?>
+                        <div class="single_populer_item">
+                            <a href="<?php the_permalink(); ?>">
+                              <div class="populer_item_img" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
+                              </div>
+                              <div class="tourfic_location_widget_meta">
+                                  <p class="tourfic_widget_location_title"><?php the_title(); ?></p>
 
-      <div class="popupler_widget_wrapper">
-        <div class="populer_widget_inner">
-
-        <?php if ( $hotel_loop->have_posts() ) : ?>
-          <?php while ( $hotel_loop->have_posts() ) : $hotel_loop->the_post(); ?>
-
-          <div class="single_populer_item">
-            <a href="<?php the_permalink(); ?>">
-              <div class="populer_item_img" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
-              </div>
-              <div class="tourfic_location_widget_meta">
-                  <p class="tourfic_widget_location_title"><?php the_title(); ?></p>
-                  <p href="#" class="tourfic_widget_location_subtitle">Dhaka</p>
-                  <p class="price"> Price from <span>USD - </span> 350 </p>
-                  <div class="tourfic_review_part">
-                      <p class="review_number_wrap"><span class="review_num">9.8</span> . <span class="review_label">Good</span> - <span class="review_count">120 reviews.</span></p>
-                  </div>
-              </div>
-            </a>
-          </div>
-
-          <?php endwhile; ?>
-        <?php endif;  wp_reset_postdata(); ?>
-
+                                  <p href="#" class="tourfic_widget_location_subtitle">Dhaka</p>
+                                  <p class="price"> Price from <span>USD - </span> 350 </p>
+                                  <div class="tourfic_review_part">
+                                      <p class="review_number_wrap"><span class="review_num">9.8</span> . <span class="review_label">Good</span> - <span class="review_count">120 reviews.</span></p>
+                                  </div>
+                              </div>
+                            </a>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <script>
-    jQuery('.populer_widget_inner').slick({
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay:true,
-    autoplaySpeed:2500,
-    arrows:false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      }
-    ]
+    <script>
+        jQuery('.populer_widget_inner').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed:2500,
+        arrows:false,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+        ]
 
-  });
-  </script>
+      });
+    </script>
+    <?php endif; wp_reset_postdata(); ?>
 
-<?php return ob_get_clean(); }
+    <?php return ob_get_clean();
+}
 
 add_shortcode('tours', 'tourfic_tours_shortcode');
 

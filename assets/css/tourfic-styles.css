@@ -628,6 +628,7 @@ p.tourfic_widget_location_title {
   color: black;
   text-transform: capitalize;
   margin: 0px;
+  line-height: 1.3;
 }
 
 p.tourfic_widget_location_subtitle {
