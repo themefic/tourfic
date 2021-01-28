@@ -121,12 +121,6 @@ function tourfic_tours_shortcode( $atts, $content = null ){
                               </div>
                               <div class="tourfic_location_widget_meta">
                                   <p class="tourfic_widget_location_title"><?php the_title(); ?></p>
-
-                                  <p href="#" class="tourfic_widget_location_subtitle">Dhaka</p>
-                                  <p class="price"> Price from <span>USD - </span> 350 </p>
-                                  <div class="tourfic_review_part">
-                                      <p class="review_number_wrap"><span class="review_num">9.8</span> . <span class="review_label">Good</span> - <span class="review_count">120 reviews.</span></p>
-                                  </div>
                               </div>
                             </a>
                         </div>

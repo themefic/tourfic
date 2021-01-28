@@ -617,8 +617,7 @@
 
 .populer_widget_inner .slick-slide {
   padding: 0px;
-  margin-right: 7px;
-  margin-left: 7px;
+  margin: 30px 7px;
 }
 
 p.tourfic_widget_location_title {
@@ -666,7 +665,8 @@ span.review_num {
   height: 270px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
+  margin-bottom: 15px;
 }
 
 .populer_section_heading h3 {
