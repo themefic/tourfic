@@ -72,12 +72,12 @@ class Tourfic_WordPress_Plugin{
 		/**
 		 *	Layouts Function
 		 */
-		require_once( dirname( __FILE__ ) . '/inc/tf-layouts.php' );
+		require_once( dirname( __FILE__ ) . '/inc/layouts.php' );
 
 		/**
 		 *	Post type
 		 */
-		require_once( dirname( __FILE__ ) . '/inc/tf-posttype.php' );
+		require_once( dirname( __FILE__ ) . '/inc/post-type.php' );
 
 		/**
 		 *	Post type
