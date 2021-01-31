@@ -1,6 +1,6 @@
 <?php
 /**
- * Shortcode Function
+ * Destination Shortcode Function
  */
 function tourfic_destinations_shortcode( $atts, $content = null ){
 
@@ -75,14 +75,17 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
 }
 add_shortcode('tourfic_destinations', 'tourfic_destinations_shortcode');
 
+/**
+ * Tours Shortcode
+ */
 function tourfic_tours_shortcode( $atts, $content = null ){
     extract(
         shortcode_atts(
           array(
-              'style'  => 'populer', //recomended, populer
-              'title'  => 'Populer Destinaiton',  //title populer section
-              'subtitle'  => 'Populer Destinaiton Subtitle',   // Sub title populer section
-              'count'  => 6,
+              'title'  => '',  //title populer section
+              'subtitle'  => '',   // Sub title populer section
+              'count'  => 10,
+              'slidesToShow'  => 5,
             ),
           $atts
         )
@@ -97,6 +100,10 @@ function tourfic_tours_shortcode( $atts, $content = null ){
     ob_start();
 
     $hotel_loop = new WP_Query( $args );
+
+    // Generate an Unique ID
+    $thisid = uniqid('tfpopular_');
+
     ?>
     <?php if ( $hotel_loop->have_posts() ) : ?>
     <!-- Populer Destinaiton -->
@@ -113,7 +120,7 @@ function tourfic_tours_shortcode( $atts, $content = null ){
             </div>
 
             <div class="popupler_widget_wrapper">
-                <div class="populer_widget_inner">
+                <div id="<?php echo $thisid; ?>" class="populer_widget_inner">
                     <?php while ( $hotel_loop->have_posts() ) : $hotel_loop->the_post(); ?>
                         <div class="single_populer_item">
                             <a href="<?php the_permalink(); ?>">
@@ -131,14 +138,14 @@ function tourfic_tours_shortcode( $atts, $content = null ){
     </section>
 
     <script>
-        jQuery('.populer_widget_inner').slick({
+        jQuery('#<?php echo $thisid; ?>').slick({
         dots: false,
         infinite: true,
         speed: 300,
-        slidesToShow: 4,
+        slidesToShow: <?php echo $slidesToShow; ?>,
         slidesToScroll: 1,
         autoplay:true,
-        autoplaySpeed:2500,
+        //autoplaySpeed:2500,
         arrows:false,
         responsive: [
           {
@@ -171,11 +178,11 @@ function tourfic_tours_shortcode( $atts, $content = null ){
     <?php return ob_get_clean();
 }
 
-add_shortcode('tours', 'tourfic_tours_shortcode');
+add_shortcode('tf_tours', 'tourfic_tours_shortcode');
 
 
 /**
- * Shortcode Function
+ * Search Shortcode Function
  */
 function tourfic_search_shortcode( $atts, $content = null ){
     extract(
@@ -327,12 +334,12 @@ function tourfic_search_shortcode( $atts, $content = null ){
     </form>
     <!-- End Booking widget -->
 
-  <?php return ob_get_clean(); }
-
+    <?php return ob_get_clean();
+}
 add_shortcode('tf_search', 'tourfic_search_shortcode');
 
 /**
- * Shortcode Function
+ * Search Result Shortcode Function
  */
 function tourfic_search_result_shortcode( $atts, $content = null ){
 
@@ -417,7 +424,6 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
     <?php wp_reset_postdata(); ?>
     <?php return ob_get_clean();
 }
-
 add_shortcode('tf_search_result', 'tourfic_search_result_shortcode');
 
 
