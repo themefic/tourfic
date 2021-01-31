@@ -9,7 +9,7 @@
  * Domain Path: /lang/
  * Author URI: https://psdtowpservice.com
  * Tags:
- * Version: 1.0.27
+ * Version: 1.0.28
  */
 
 // don't load directly
@@ -56,6 +56,9 @@ class Tourfic_WordPress_Plugin{
 
 		// Admin Notice
 		add_filter('admin_notices', [ $this, 'admin_notices' ]);
+
+		// Image sizes
+		add_filter('after_setup_theme', [ $this, 'image_sizes' ]);
 
 	}
 
@@ -116,6 +119,11 @@ class Tourfic_WordPress_Plugin{
 	    if ( class_exists( 'ReduxFramework' ) ) {
 	        require_once dirname( __FILE__ ) . '/inc/options.php';
 	    }
+	}
+
+	// Image sizes
+	public function image_sizes() {
+	    add_image_size( 'tf_gallery', 960, 540, true );
 	}
 
 	/**

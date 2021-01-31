@@ -107,7 +107,7 @@ function tourfic_gallery_slider( $file_list_meta_key = array(), $post_id = null 
 	        <div class="tf_slider-for fl-wrap">
 				<?php foreach ( $files as $attachment_id ) {
 					echo '<div class="slick-slide-item">';
-						echo wp_get_attachment_image( $attachment_id, 'full' );
+						echo wp_get_attachment_image( $attachment_id, 'tf_gallery' );
 					echo '</div>';
 				} ?>
 	        </div>
@@ -244,7 +244,7 @@ function tf_posts_navigation(){
 	    'current' => $paged,
 	    'total'   => $max_num_pages,
 	    'mid_size'        => 2,
-	    'prev_next'       => false,
+	    'prev_next'       => true,
 	) );
 	echo "</div>";
 }

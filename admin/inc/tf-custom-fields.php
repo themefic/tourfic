@@ -229,11 +229,22 @@ class Tourfic_Metabox_Class {
 
                         <div class="tf-field-wrap">
                             <div class="tf-label">
-                                <label for="tf_information"><?php esc_html_e( 'Add Property Description', 'tourfic' ); ?></label>
+                                <label for="information"><?php esc_html_e( 'Add Property Description', 'tourfic' ); ?></label>
+                            </div>
+                            <textarea name="information" class="wfull" rows="5" id="information"><?php _e( $information ); ?></textarea>
+                        </div>
+
+					</div>
+
+					<div id="additional-info" class="tf-tab-content">
+                        <h4><?php esc_html_e( 'Additional Information', 'tourfic' ); ?></h4>
+                        <div class="tf-field-wrap">
+                            <div class="tf-label">
+                                <label for="additional_information"><?php esc_html_e( 'Add Property Informations', 'tourfic' ); ?></label>
                             </div>
                             <?php
-                                $content   = $information;
-                                $editor_id = 'information';
+                                $content   = $additional_information;
+                                $editor_id = 'additional_information';
 
                                 $settings = array(
                                     'quicktags' => array('buttons' => 'em,strong,link',),
@@ -245,24 +256,8 @@ class Tourfic_Metabox_Class {
 
                                 wp_editor( $content, $editor_id, $settings );
 
-
                             ?>
                         </div>
-
-					</div>
-
-					<div id="additional-info" class="tf-tab-content">
-
-						<h4><?php esc_html_e( 'Additional Information', 'tourfic' ); ?></h4>
-
-                        <div class="tf-field-wrap">
-                            <div class="tf-label">
-                                <label for="tf_additional_information"><?php esc_html_e( 'Add Information', 'tourfic' ); ?></label>
-                            </div>
-                            <textarea name="additional_information" class="wfull" rows="5" id="tf_additional_information"><?php _e( $additional_information ); ?></textarea>
-                        </div>
-
-
 
 					</div>
 
