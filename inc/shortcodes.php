@@ -141,7 +141,6 @@ function tourfic_tours_shortcode( $atts, $content = null ){
         jQuery('#<?php echo $thisid; ?>').slick({
         dots: false,
         infinite: true,
-        speed: 300,
         slidesToShow: <?php echo $slidesToShow; ?>,
         slidesToScroll: 1,
         autoplay:true,
@@ -151,21 +150,21 @@ function tourfic_tours_shortcode( $atts, $content = null ){
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
+              slidesToShow: 2,
+              slidesToScroll: 1,
             }
           },
           {
             breakpoint: 600,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToScroll: 1
             }
           },
           {
             breakpoint: 480,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: 1,
               slidesToScroll: 1
             }
           }
@@ -247,9 +246,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
                     <div class="checkin-date-text">
                         Check-in
                     </div>
-                    <div class="date-sep">
-                        --
-                    </div>
+                    <div class="date-sep"></div>
                     <div class="checkout-date-text">
                         Check-in
                     </div>
@@ -287,13 +284,13 @@ function tourfic_search_shortcode( $atts, $content = null ){
             <div class="tf_selectperson-wrap">
 
                 <div class="tf_input-inner">
-                    <span class="tf_date-icon">
+                    <span class="tf_person-icon">
                         <?php echo tf_get_svg('person'); ?>
                     </span>
                     <div class="adults-text">2 Adults</div>
-                    <div class="person-sep">.</div>
+                    <div class="person-sep"></div>
                     <div class="child-text">0 Childreen</div>
-                    <div class="person-sep">.</div>
+                    <div class="person-sep"></div>
                     <div class="room-text">1 Room</div>
                 </div>
 
