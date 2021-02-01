@@ -51,7 +51,7 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
             ?>
 
             <div class="single_recomended_item">
-                <a href="<?php echo esc_url( $term_link ); ?>">
+                <a href="<?php echo tf_booking_search_action(); ?>?destination=<?php _e( $term->slug ); ?>">
                   <div class="single_recomended_content" style="background-image: url(<?php echo wp_get_attachment_url( $image_id ); ?>);">
                     <div class="recomended_place_info_header">
                       <h3><?php _e($term->name); ?></h3>
