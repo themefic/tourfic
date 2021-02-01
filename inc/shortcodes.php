@@ -192,6 +192,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
             'title'  => '',  //title populer section
             'subtitle'  => '',   // Sub title populer section
             'classes'  => '',
+            'fullwidth'  => '',
           ),
         $atts
       )
@@ -201,7 +202,10 @@ function tourfic_search_shortcode( $atts, $content = null ){
         $classes = " default-form ";
     }
 
-  ob_start(); ?>
+    ob_start(); ?>
+
+
+    <?php tourfic_fullwidth_container_start( $fullwidth ); ?>
 
     <!-- Start Booking widget -->
     <form class="tf_booking-widget <?php esc_attr_e( $classes ); ?>" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
@@ -333,6 +337,8 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
     </form>
     <!-- End Booking widget -->
+
+    <?php tourfic_fullwidth_container_end( $fullwidth ); ?>
 
     <?php return ob_get_clean();
 }

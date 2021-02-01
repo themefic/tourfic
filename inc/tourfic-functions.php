@@ -609,3 +609,27 @@ if ( ! class_exists( 'TOURFIC_TAX_META' ) ) {
 	$CT_TAX_META -> init();
 
 }
+
+/**
+ * Full Width Container Start
+ */
+function tourfic_fullwidth_container_start( $fullwidth ){
+
+    if ( $fullwidth == "true" ) : ?>
+        <!-- Start Fullwidth Wrap -->
+        <div class="tf_tf_booking-widget-wrap" data-fullwidth="true">
+        <div class="tf_custom-container">
+        <div class="tf_custom-inner">
+    <?php endif;
+}
+
+/**
+ * Full Width Container Start
+ */
+function tourfic_fullwidth_container_end( $fullwidth ){
+
+    if ( $fullwidth == "true" ) : ?>
+        </div></div></div>
+        <!-- Close Fullwidth Wrap -->
+    <?php endif;
+}
