@@ -243,13 +243,9 @@ function tourfic_search_shortcode( $atts, $content = null ){
                     <span class="tf_date-icon">
                         <?php echo tf_get_svg('calendar_today'); ?>
                     </span>
-                    <div class="checkin-date-text">
-                        Check-in
-                    </div>
+                    <div class="checkin-date-text">Check-in</div>
                     <div class="date-sep"></div>
-                    <div class="checkout-date-text">
-                        Check-in
-                    </div>
+                    <div class="checkout-date-text">Check-out</div>
                 </div>
 
                 <div class="tf_date-wrap-srt screen-reader-text">
