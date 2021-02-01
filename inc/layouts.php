@@ -73,6 +73,7 @@ function tourfic_archive_single() {
 	<?php
 }
 
+// Review block
 function tf_item_review_block(){
 	return;
 	?>
@@ -94,6 +95,7 @@ function tf_item_review_block(){
 	<?php
 }
 
+// Map Link
 function tf_map_link(){
 	$location = get_field('formatted_location') ? get_field('formatted_location') : null;
 	?>
@@ -105,123 +107,124 @@ function tf_map_link(){
 	<?php
 }
 
+// Sidebar
 function get_tf_sidebar(){
 	?>
-		<!-- Start Booking widget -->
-				<form class="tf_booking-widget" method="post" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
-					<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
+	<!-- Start Booking widget -->
+	<form class="tf_booking-widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+		<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
 
-					<!-- Start form row -->
-					<?php tf_booking_widget_field(
-						array(
-							'type' => 'text',
-							'svg_icon' => 'search',
-							'name' => 'destination',
-							'label' => 'Destination/property name:',
-							'placeholder' => 'Destination',
-							'required' => 'true',
+		<!-- Start form row -->
+		<?php tf_booking_widget_field(
+			array(
+				'type' => 'text',
+				'svg_icon' => 'search',
+				'name' => 'destination',
+				'label' => 'Destination/property name:',
+				'placeholder' => 'Destination',
+				'required' => 'true',
+			)
+		); ?>
+		<!-- End form row -->
+
+		<div class="tf_booking-dates">
+			<!-- Start form row -->
+			<?php tf_booking_widget_field(
+				array(
+					'type' => 'text',
+					'svg_icon' => 'calendar_today',
+					'name' => 'check-in-date',
+					'placeholder' => 'Check-in date',
+					'label' => 'Check-in date',
+					'required' => 'true',
+					'disabled' => 'true',
+				)
+			); ?>
+			<!-- End form row -->
+
+			<!-- Start form row -->
+			<?php tf_booking_widget_field(
+				array(
+					'type' => 'text',
+					'svg_icon' => 'calendar_today',
+					'name' => 'check-out-date',
+					'placeholder' => 'Check-out date',
+					'required' => 'true',
+					'disabled' => 'true',
+					'label' => 'Check-out date',
+				)
+			); ?>
+			<!-- End form row -->
+		</div>
+
+		<!-- Start form row -->
+		<?php tf_booking_widget_field(
+			array(
+				'type' => 'select',
+				'svg_icon' => 'person',
+				'name' => 'adults',
+				'id' => 'adults',
+				'options' => array(
+					'1' => '1 adult',
+					'2' => '2 adults',
+					'3' => '3 adults',
+					'4' => '4 adults',
+					'5' => '5 adults',
+					'6' => '6 adults',
+				)
+			)
+		); ?>
+		<!-- End form row -->
+
+		<!-- Start form row -->
+		<div class="tf_row thin">
+			<div class="tf_col-6">
+				<?php tf_booking_widget_field(
+					array(
+						'type' => 'select',
+						'svg_icon' => 'checkin',
+						'name' => 'room',
+						'id' => 'room',
+						'options' => array(
+							'1' => '1 room',
+							'2' => '2 rooms',
+							'3' => '3 rooms',
+							'4' => '4 rooms',
+							'5' => '5 rooms',
 						)
-					); ?>
-					<!-- End form row -->
+					)
+				); ?>
+			</div>
 
-					<div class="tf_booking-dates">
-						<!-- Start form row -->
-						<?php tf_booking_widget_field(
-							array(
-								'type' => 'text',
-								'svg_icon' => 'calendar_today',
-								'name' => 'check-in-date',
-								'placeholder' => 'Check-in date',
-								'label' => 'Check-in date',
-								'required' => 'true',
-								'disabled' => 'true',
-							)
-						); ?>
-						<!-- End form row -->
-
-						<!-- Start form row -->
-						<?php tf_booking_widget_field(
-							array(
-								'type' => 'text',
-								'svg_icon' => 'calendar_today',
-								'name' => 'check-out-date',
-								'placeholder' => 'Check-out date',
-								'required' => 'true',
-								'disabled' => 'true',
-								'label' => 'Check-out date',
-							)
-						); ?>
-						<!-- End form row -->
-					</div>
-
-					<!-- Start form row -->
-					<?php tf_booking_widget_field(
-						array(
-							'type' => 'select',
-							'svg_icon' => 'person',
-							'name' => 'adults',
-							'id' => 'adults',
-							'options' => array(
-								'1' => '1 adult',
-								'2' => '2 adults',
-								'3' => '3 adults',
-								'4' => '4 adults',
-								'5' => '5 adults',
-								'6' => '6 adults',
-							)
+			<div class="tf_col-6">
+				<?php tf_booking_widget_field(
+					array(
+						'type' => 'select',
+						'svg_icon' => 'people_outline',
+						'name' => 'children',
+						'id' => 'children',
+						'options' => array(
+							'0' => '0 child',
+							'1' => '1 child',
+							'2' => '2 childrens',
+							'3' => '3 childrens',
+							'4' => '4 childrens',
+							'5' => '5 childrens',
 						)
-					); ?>
-					<!-- End form row -->
+					)
+				); ?>
 
-					<!-- Start form row -->
-					<div class="tf_row thin">
-						<div class="tf_col-6">
-							<?php tf_booking_widget_field(
-								array(
-									'type' => 'select',
-									'svg_icon' => 'checkin',
-									'name' => 'room',
-									'id' => 'room',
-									'options' => array(
-										'1' => '1 room',
-										'2' => '2 room',
-										'3' => '3 room',
-										'4' => '4 room',
-										'5' => '5 room',
-									)
-								)
-							); ?>
-						</div>
+			</div>
+		</div>
+		<!-- End form row -->
 
-						<div class="tf_col-6">
-							<?php tf_booking_widget_field(
-								array(
-									'type' => 'select',
-									'svg_icon' => 'people_outline',
-									'name' => 'children',
-									'id' => 'children',
-									'options' => array(
-										'0' => '0 children',
-										'1' => '1 children',
-										'2' => '2 childrens',
-										'3' => '3 childrens',
-										'4' => '4 childrens',
-										'5' => '5 childrens',
-									)
-								)
-							); ?>
+		<!-- Start form row -->
+		<div class="tf_form-row">
+			<button class="tf_button tf-submit" type="submit"><?php esc_html_e( 'Search', 'tourfic' ); ?></button>
+		</div>
+		<!-- End form row -->
 
-						</div>
-					</div>
-					<!-- End form row -->
-
-					<!-- Start form row -->
-					<div class="tf_form-row">
-						<button class="tf_button tf-submit" type="submit"><?php esc_html_e( 'Search', 'tourfic' ); ?></button>
-					</div>
-					<!-- End form row -->
-
-				</form>
-				<!-- End Booking widget -->
+	</form>
+	<!-- End Booking widget -->
 	<?php
 }
