@@ -330,7 +330,8 @@
 }
 
 .price-per-night {
-  font-size: 10px;
+  font-size: 9px;
+  white-space: nowrap;
 }
 
 .room-selection-wrap {
