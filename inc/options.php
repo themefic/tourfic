@@ -155,7 +155,13 @@
                 'type'     => 'select',
                 'data'     => 'pages',
                 'title'    => __( 'Select Search Result Page', 'tourfic' ),
-                'desc'     => __( '<code>[tf_search_result]</code> shortcode must be in page content', 'tourfic' ),
+                'desc'     => __( 'Page template: <code>Torufic - Search Result</code> must be selected', 'tourfic' ),
+            ),
+            array(
+                'id'       => 'post_type_slug',
+                'type'     => 'text',
+                'title'    => __( 'Select post type slug', 'tourfic' ),
+                'desc'     => __( 'Default is: <code>torufic</code>', 'tourfic' ),
             ),
         )
     ) );

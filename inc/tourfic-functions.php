@@ -610,3 +610,28 @@ function tourfic_fullwidth_container_end( $fullwidth ){
         <!-- Close Fullwidth Wrap -->
     <?php endif;
 }
+
+/**
+ * Change Post Type Slug
+ */
+function tf_change_tourfic_post_type_slug( $slug ){
+	global $tourfic_opt;
+
+	if ( isset( $tourfic_opt['post_type_slug'] ) ) {
+		$slug = esc_attr( $tourfic_opt['post_type_slug'] );
+	}
+
+	return $slug;
+}
+add_filter( 'tourfic_post_type_slug', 'tf_change_tourfic_post_type_slug', 10, 1 );
+
+/**
+ * Flush after redux save
+ */
+function tf_flush_permalink( $value ){
+	flush_rewrite_rules();
+}
+add_action('redux/options/tourfic_opt/saved', 'tf_flush_permalink' );
+add_action('redux/options/tourfic_opt/reset', 'tf_flush_permalink' );
+add_action('redux/options/tourfic_opt/settings/change', 'tf_flush_permalink' );
+add_action('redux/options/tourfic_opt/section/reset', 'tf_flush_permalink' );

@@ -8,7 +8,7 @@
 function tf_setup_tourfic_post_types() {
 
 	$archives = defined( 'TOURFIC_DISABLE_ARCHIVE' ) && TOURFIC_DISABLE_ARCHIVE ? false : true;
-	$slug     = defined( 'TOURFIC_SLUG' ) ? TOURFIC_SLUG : 'tourfic';
+	$slug     = defined( 'TOURFIC_SLUG' ) ? TOURFIC_SLUG : apply_filters( 'tourfic_post_type_slug', 'tourfic' );
 	$rewrite  = defined( 'TOURFIC_DISABLE_REWRITE' ) && TOURFIC_DISABLE_REWRITE ? false : array('slug' => $slug, 'with_front' => false);
 
 	$tourfic_labels =  apply_filters( 'tf_tourfic_labels', array(
