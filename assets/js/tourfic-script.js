@@ -79,7 +79,7 @@
         $('[data-toggle="true"]').click(function(e){
             e.preventDefault();
             var target = $(this).attr('href');
-            $(target).slideToggle();
+            $(target).slideToggle('fast');
         });
 
 
