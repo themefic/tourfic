@@ -13,6 +13,7 @@ get_header('tourfic'); ?>
 $tf_room = get_field('tf_room') ? get_field('tf_room') : array();
 $information = get_field('information') ? get_field('information') : null;
 $additional_information = get_field('additional_information') ? get_field('additional_information') : null;
+$share_text = get_the_title();
 $share_link = esc_url( home_url("/?p=").get_the_ID() );
 
 ?>
@@ -36,7 +37,7 @@ $share_link = esc_url( home_url("/?p=").get_the_ID() );
 									    </a>
 									</li>
 									<li>
-									    <a href="http://twitter.com/home/?status=<?php _e( $share_link ); ?>" class="tf-dropdown__item" target="_blank">
+									    <a href="http://twitter.com/share?text=<?php _e( $share_text ); ?>&url=<?php _e( $share_link ); ?>" class="tf-dropdown__item" target="_blank">
 									        <span class="tf-dropdown__item-content"><?php echo tf_get_svg('twitter'); ?> <?php esc_html_e( 'Share on Twitter', 'tourfic' ); ?></span>
 									    </a>
 									</li>
