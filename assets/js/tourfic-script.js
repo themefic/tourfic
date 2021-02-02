@@ -13,6 +13,7 @@
             dots: false,
             asNavFor: '.tf_slider-nav'
         });
+
         $('.single-slider-wrapper .tf_slider-nav').slick({
             slidesToShow: 4,
             slidesToScroll: 1,
@@ -22,9 +23,11 @@
             centerMode: true,
             focusOnSelect: true
         });
+
         sbp.on("click", function () {
             $(this).closest(".single-slider-wrapper").find('.tf_slider-for').slick('slickPrev');
         });
+
         sbn.on("click", function () {
             $(this).closest(".single-slider-wrapper").find('.tf_slider-for').slick('slickNext');
         });
@@ -154,12 +157,10 @@
             }
         });
 
-
         // Adult, Child, Room Selection toggle
         $(document).on('click', '.tf_selectperson-wrap .tf_input-inner', function(){
             $('.tf_acrselection-wrap').slideToggle('fast');
         });
-
 
     });
 
@@ -229,11 +230,6 @@
                         }
 
                     }
-
-
-
-
-
                 },
                 error: function(data){
                     console.log(data);

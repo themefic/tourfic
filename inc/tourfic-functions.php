@@ -249,13 +249,12 @@ function tf_posts_navigation(){
 	echo "</div>";
 }
 
-
 /**
  * Set Cookie Data
  */
 function tf_setcookie( $cookie = null, $value = null ){
 
-    $expiry = strtotime('+15 day');
+    $expiry = strtotime('+1 day');
 
 	if ( $cookie && $value ) {
 	    setcookie( $cookie, $value, $expiry, COOKIEPATH, COOKIE_DOMAIN );
@@ -283,14 +282,14 @@ function tf_getcookie( $cookie = null ){
 function tourfic_setcookie_sitewide(){
 
 	if ( is_admin() ) {
-		return;
+		//return;
 	}
 
     $user_id = get_current_user_id();
 
-    if( isset( $_POST['destination'] ) ) {
+    if( isset( $_GET['check-in-date'] ) ) {
 
-    	foreach ( $_POST as $key => $value ) {
+    	foreach ( $_GET as $key => $value ) {
     		tf_setcookie( $key, $value );
     	}
 
@@ -335,7 +334,7 @@ function tf_room_booking_submit_button( $label = null ){
 
 	foreach ( $booking_fields as $key ) {
 
-		$value = isset( $_POST[$key] ) ? $_POST[$key] : tf_getcookie( $key );
+		$value = isset( $_GET[$key] ) ? $_GET[$key] : tf_getcookie( $key );
 
 		echo "<input type='hidden' placeholder='{$key}' name='{$key}' value='{$value}'>";
 	}
@@ -379,28 +378,6 @@ function tf_booking_set_search_result( $url ){
 add_filter( 'tf_booking_search_action', 'tf_booking_set_search_result' );
 
 
-/**
- * Pre get posts [tourfic]
- */
-add_action('pre_get_posts','tourfic_search_pre_get_posts_filter', 999);
-function tourfic_search_pre_get_posts_filter( $query ) {
-
-	if ( !isset( $_POST['destination'] ) ) {
-		return $query;
-	}
-
-	if ( $query->is_main_query() && ! is_admin() ) {
-		if ( $query->is_post_type_archive( 'tourfic' ) ) {
-
-			//$query->set( 'orderby', 'meta_value title' );
-			//$query->set( 'order', 'ASC' );
-			$query->set( 's', $_POST['destination'] );
-
-		}
-	}
-
-  	return $query;
-}
 
 // price with html format
 function tf_price_html( $price = null, $sale_price = null ) {
