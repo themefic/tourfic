@@ -635,3 +635,21 @@ add_action('redux/options/tourfic_opt/saved', 'tf_flush_permalink' );
 add_action('redux/options/tourfic_opt/reset', 'tf_flush_permalink' );
 add_action('redux/options/tourfic_opt/settings/change', 'tf_flush_permalink' );
 add_action('redux/options/tourfic_opt/section/reset', 'tf_flush_permalink' );
+
+
+/**
+ *	Custom CSS function
+ */
+function tf_custom_css(){
+	global $tourfic_opt;
+
+	$output = '';
+
+	//Custom css
+	if ( isset( $tourfic_opt['custom-css'] ) ) {
+		$output .=  $tourfic_opt['custom-css'];
+	}
+
+	wp_add_inline_style( 'tourfic-styles', $output );
+}
+add_action( 'wp_enqueue_scripts', 'tf_custom_css', 200 );

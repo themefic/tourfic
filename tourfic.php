@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name: Tourfic - Tour / Travel / Trip Booking for WooCommerce
- * Plugin URI: https://psdtowpservice.com/tourfic
+ * Plugin URI: https://themefic.com/tourfic
  * Github Plugin URI: http://github.com/themefic/tourfic
  * Description:
- * Author: BootPeople
+ * Author: Themefic
  * Text Domain: tourfic
  * Domain Path: /lang/
- * Author URI: https://psdtowpservice.com
+ * Author URI: https://themefic.com
  * Tags:
- * Version: 1.0.36
+ * Version: 1.0.37
  */
 
 // don't load directly
@@ -107,7 +107,7 @@ class Tourfic_WordPress_Plugin{
 	public function load_text_domain() {
 		$this->includes();
 		//Internationalization
-		load_plugin_textdomain( 'tourfic', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+		load_plugin_textdomain( 'tourfic', false, TF_PLUGIN_URL . '/lang/' );
 
 
 		//Redux Framework calling

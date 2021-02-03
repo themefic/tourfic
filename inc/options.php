@@ -161,7 +161,7 @@
                 'id'       => 'post_type_slug',
                 'type'     => 'text',
                 'title'    => __( 'Select post type slug', 'tourfic' ),
-                'desc'     => __( 'Default is: <code>torufic</code>', 'tourfic' ),
+                'desc'     => __( 'Default is: <code>torufic</code> - <strong>Save 2 times if you change this field for permalink flush</strong>', 'tourfic' ),
             ),
         )
     ) );
@@ -172,7 +172,7 @@
         'icon'   => 'el el-cogs',
         'fields' => array(
             array(
-                'id'       => 'tourfic-custom-css',
+                'id'       => 'custom-css',
                 'type'     => 'ace_editor',
                 'title'    => __( 'Custom CSS', 'tourfic' ),
                 'mode'   => 'css',
