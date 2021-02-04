@@ -127,36 +127,6 @@ function get_tf_sidebar(){
 		); ?>
 		<!-- End form row -->
 
-		<div class="tf_booking-dates">
-			<!-- Start form row -->
-			<?php tf_booking_widget_field(
-				array(
-					'type' => 'text',
-					'svg_icon' => 'calendar_today',
-					'name' => 'check-in-date',
-					'placeholder' => 'Check-in date',
-					'label' => 'Check-in date',
-					'required' => 'true',
-					'disabled' => 'true',
-				)
-			); ?>
-			<!-- End form row -->
-
-			<!-- Start form row -->
-			<?php tf_booking_widget_field(
-				array(
-					'type' => 'text',
-					'svg_icon' => 'calendar_today',
-					'name' => 'check-out-date',
-					'placeholder' => 'Check-out date',
-					'required' => 'true',
-					'disabled' => 'true',
-					'label' => 'Check-out date',
-				)
-			); ?>
-			<!-- End form row -->
-		</div>
-
 		<!-- Start form row -->
 		<?php tf_booking_widget_field(
 			array(
@@ -177,46 +147,86 @@ function get_tf_sidebar(){
 		<!-- End form row -->
 
 		<!-- Start form row -->
-		<div class="tf_row thin">
-			<div class="tf_col-6">
+
+		<?php tf_booking_widget_field(
+			array(
+				'type' => 'select',
+				'svg_icon' => 'checkin',
+				'name' => 'room',
+				'id' => 'room',
+				'options' => array(
+					'1' => '1 room',
+					'2' => '2 rooms',
+					'3' => '3 rooms',
+					'4' => '4 rooms',
+					'5' => '5 rooms',
+				)
+			)
+		); ?>
+
+		<?php tf_booking_widget_field(
+			array(
+				'type' => 'select',
+				'svg_icon' => 'people_outline',
+				'name' => 'children',
+				'id' => 'children',
+				'options' => array(
+					'0' => '0 child',
+					'1' => '1 child',
+					'2' => '2 childrens',
+					'3' => '3 childrens',
+					'4' => '4 childrens',
+					'5' => '5 childrens',
+				)
+			)
+		); ?>
+
+
+		<div class="tf_booking-dates">
+			<!-- Start form row -->
+			<?php tf_booking_widget_field(
+				array(
+					'type' => 'text',
+					'svg_icon' => 'calendar_today',
+					'name' => 'check-in-out-date',
+					'placeholder' => 'Check-in/Check-out date',
+					'label' => 'Check-in/Check-out date',
+					'required' => 'true',
+					'disabled' => 'true',
+				)
+			); ?>
+			<!-- End form row -->
+
+			<div class="screen-reader-text">
+				<!-- Start form row -->
 				<?php tf_booking_widget_field(
 					array(
-						'type' => 'select',
-						'svg_icon' => 'checkin',
-						'name' => 'room',
-						'id' => 'room',
-						'options' => array(
-							'1' => '1 room',
-							'2' => '2 rooms',
-							'3' => '3 rooms',
-							'4' => '4 rooms',
-							'5' => '5 rooms',
-						)
+						'type' => 'text',
+						'svg_icon' => 'calendar_today',
+						'name' => 'check-in-date',
+						'placeholder' => 'Check-in date',
+						'label' => 'Check-in date',
+						'required' => 'true',
+						'disabled' => 'true',
+					)
+				); ?>
+				<!-- End form row -->
+
+				<!-- Start form row -->
+				<?php tf_booking_widget_field(
+					array(
+						'type' => 'text',
+						'svg_icon' => 'calendar_today',
+						'name' => 'check-out-date',
+						'placeholder' => 'Check-out date',
+						'required' => 'true',
+						'disabled' => 'true',
+						'label' => 'Check-out date',
 					)
 				); ?>
 			</div>
-
-			<div class="tf_col-6">
-				<?php tf_booking_widget_field(
-					array(
-						'type' => 'select',
-						'svg_icon' => 'people_outline',
-						'name' => 'children',
-						'id' => 'children',
-						'options' => array(
-							'0' => '0 child',
-							'1' => '1 child',
-							'2' => '2 childrens',
-							'3' => '3 childrens',
-							'4' => '4 childrens',
-							'5' => '5 childrens',
-						)
-					)
-				); ?>
-
-			</div>
+			<!-- End form row -->
 		</div>
-		<!-- End form row -->
 
 		<!-- Start form row -->
 		<div class="tf_form-row">

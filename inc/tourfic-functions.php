@@ -617,7 +617,7 @@ function tourfic_fullwidth_container_end( $fullwidth ){
 function tf_change_tourfic_post_type_slug( $slug ){
 	global $tourfic_opt;
 
-	if ( isset( $tourfic_opt['post_type_slug'] ) ) {
+	if ( isset( $tourfic_opt['post_type_slug'] ) && $tourfic_opt['post_type_slug'] != "" ) {
 		$slug = esc_attr( $tourfic_opt['post_type_slug'] );
 	}
 

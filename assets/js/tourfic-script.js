@@ -91,7 +91,12 @@
         var dateFormat = 'DD-MM-YYYY';
 
         // Trigger Check-in Date
-        $('.tf_selectdate-wrap, .tf_booking-dates').daterangepicker({
+        $('.tf_selectdate-wrap, #check-in-out-date').daterangepicker({
+            "locale": {
+                "format": dateFormat,
+                "separator": " - ",
+                "firstDay": 1
+            },
             minDate : dateToday,
             autoApply: true,
         }, function(start, end, label) {

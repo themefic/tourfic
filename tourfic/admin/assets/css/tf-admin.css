@@ -1,0 +1,235 @@
+/**
+ * Admin Page CSS
+ */
+
+.tf-clearfix {
+    clear: both;
+    display: table;
+    width: 100%;
+    min-height: 1px;
+}
+
+.tf-clearfix:after,
+.tf-clearfix:before,
+.tf-container-fluid:after,
+.tf-container-fluid:before,
+.tf-container:after,
+.tf-container:before,
+.tf-row:after,
+.tf-row:before {
+    content: " ";
+    display: table;
+}
+
+.tf-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.tf-col-6 {
+    max-width: 50%;
+    padding-right: 30px;
+}
+
+.wfull{
+    width: 100%;
+}
+
+
+#tourfic_options_metabox input[type=date], #tourfic_options_metabox input[type=datetime-local], #tourfic_options_metabox input[type=datetime], #tourfic_options_metabox input[type=email], #tourfic_options_metabox input[type=month], #tourfic_options_metabox input[type=number], #tourfic_options_metabox input[type=password], #tourfic_options_metabox input[type=search], #tourfic_options_metabox input[type=tel], #tourfic_options_metabox input[type=text], #tourfic_options_metabox input[type=time], #tourfic_options_metabox input[type=url], #tourfic_options_metabox input[type=week], #tourfic_options_metabox textarea {
+    border: solid 1px #ddd;
+    border-radius: 2px;
+    height: 40px;
+    line-height: 38px;
+    padding-left: 10px;
+    box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02);
+    min-width: 320px;
+}
+
+#tourfic_options_metabox textarea{
+    height: auto;
+    line-height: 1.5;
+}
+
+#tourfic_options_metabox label{
+    font-weight: 600;
+    color: #666;
+}
+
+#tourfic_options_metabox .inside {
+    margin: 0 !important;
+    padding: 0;
+    clear: both;
+}
+
+.tf-tab-container-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.tf-box-head {
+    width: 20%;
+}
+
+.tf-box-content {
+    width: 80%;
+}
+
+.tf-tab-nav {
+    margin: 0;
+    border-right: 1px solid #ddd;
+    height: 100%;
+}
+
+.tf-tab-nav li {
+    margin: 0;
+}
+
+.tf-tab-nav a {
+    display: block;
+    line-height: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    color: #6a6f77;
+    text-decoration: none;
+    background: #f7f7f7;
+    padding: 13px 20px;
+    border-bottom: 1px solid #e3e3e3;
+    outline: 0;
+    box-shadow: none;
+    transition: all .2s ease;
+}
+
+.tf-tab-nav li.active a {
+    background: #008aff;
+    background: linear-gradient(95deg,#36a2ff 0,#008aff 50%,#0072ff 100%);
+    color: #fff;
+    margin: 0 -6px;
+    border-radius: 5px;
+    box-shadow: 0 2px 12px -5px #36a2ff;
+    border-bottom-color: transparent;
+    position: relative;
+}
+
+.tf-tab-container {
+    position: relative;
+    height: 100%;
+    padding: 30px 40px;
+}
+
+.tf-tab-content {
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    transform: translateX(15px);
+    transition: transform .1s ease;
+    height: 0;
+}
+
+.tf-tab-content.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+    height: auto;
+}
+
+.tf-field-wrap {
+    margin-bottom: 25px;
+}
+
+.tf-tab-container-wrap h4 {
+    text-transform: capitalize;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 6px;
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Room Options */
+.tf-add-single-room-wrap{
+    margin-bottom: 15px;
+}
+
+.tf-add-single-room-head {
+    padding: 15px 10px;
+    background: #f7f7f7;
+    position: relative;
+}
+
+.tf-add-single-room-head a{
+    text-decoration: none;
+}
+
+.room-expend {
+    text-decoration: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.room-action-btns {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    height: 100%;
+}
+
+.room-action-btns a{
+    display: inline-block;
+    opacity: 0.6;
+}
+
+.room-action-btns a{
+    opacity: 1;
+}
+
+.room-remove,
+.room-remove:hover {
+    color: #e24e4e;
+}
+
+.tf-field-wrap.label-left {
+    display: flex;
+    align-items: center;
+}
+
+.tf-field-wrap.label-left .tf-label {
+    width: 15%;
+    min-width: 150px;
+}
+
+
+.tf-add-single-room-body {
+    padding: 20px 20px 0;
+    border: 1px solid #f7f7f7;
+    display: none;
+}
+
+/* Gallery Images */
+.tf_gallery-img {
+    width: 24%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+
+.tf_gallery-img img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+.tf_gallery-images {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
