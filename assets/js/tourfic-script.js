@@ -261,10 +261,16 @@
             if(main_xhr && main_xhr.readyState != 4){
                 main_xhr.abort();
             }
+
+
+
             main_xhr = $.ajax({
                 url: url,
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
                 asynch: true,
-                beforeSend: function() {
+                beforeSend: function(  ) {
+
                     $( document ).find( '.tf_posts_navigation' ).addClass( 'loading' );
                     flag = true;
                 },
@@ -282,6 +288,8 @@
 
                 }
             });
+
+            //console.log(main_xhr);
         };
 
         // Feed Ajax Trigger
@@ -290,7 +298,7 @@
 
             var targetUrl = ( e.target.href ) ? e.target.href : $(this).context.href;
             amPushAjax( targetUrl );
-            //window.history.pushState({url: "" + targetUrl + ""}, "", targetUrl);
+            window.history.pushState({url: "" + targetUrl + ""}, "", targetUrl);
         });
         // End Feed Ajax Trigger
 
