@@ -15,6 +15,7 @@ $information = get_field('information') ? get_field('information') : null;
 $additional_information = get_field('additional_information') ? get_field('additional_information') : null;
 $share_text = get_the_title();
 $share_link = esc_url( home_url("/?p=").get_the_ID() );
+$location = get_field('formatted_location') ? get_field('formatted_location') : null;
 
 ?>
 <div class="tourfic-wrap" data-fullwidth="true">
@@ -53,6 +54,9 @@ $share_link = esc_url( home_url("/?p=").get_the_ID() );
 									</li>
 								</ul>
 							</div>
+						</div>
+						<div class="show-on-map">
+							<a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank" class="tf_button btn-outline button"><?php esc_html_e( 'Show on map', 'tourfic' ); ?></a>
 						</div>
 						<div class="reserve-button">
 							<a href="#rooms" class="tf_button button"><?php esc_html_e( 'Reserve', 'tourfic' ); ?></a>

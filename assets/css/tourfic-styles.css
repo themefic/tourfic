@@ -82,6 +82,12 @@
   text-decoration: none;
 }
 
+.tf_button.btn-outline {
+  background: #fff;
+  color: #333;
+  border-color: #333;
+}
+
 /*=====  End of Buttons  ======*/
 .tf_title-area {
   display: flex;
@@ -112,6 +118,10 @@
 .tf_map-link svg {
   margin-right: 4px;
   fill: #666;
+}
+
+.show-on-map {
+  padding-right: 8px;
 }
 
 /* Slider */
