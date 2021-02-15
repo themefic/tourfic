@@ -158,6 +158,17 @@
                 'desc'     => __( 'Page template: <code>Torufic - Search Result</code> must be selected', 'tourfic' ),
             ),
             array(
+                'id'       => 'single_tour_style',
+                'type'     => 'select',
+                'title'    => __( 'Select Single Page Template', 'tourfic' ),
+                'options'  => array(
+                    'single-tourfic.php' => 'Style 1',
+                    'single-tourfic-2.php' => 'Style 2',
+                ),
+                'default'  => 'single-tourfic.php',
+
+            ),
+            array(
                 'id'       => 'post_type_slug',
                 'type'     => 'text',
                 'title'    => __( 'Select post type slug', 'tourfic' ),

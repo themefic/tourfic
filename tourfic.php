@@ -186,13 +186,16 @@ class Tourfic_WordPress_Plugin{
 	// Single Template
 	public function tourfic_single_page_template( $single_template ) {
 		global $post;
+		global $tourfic_opt;
+		$st = isset( $tourfic_opt['single_tour_style'] ) ? $tourfic_opt['single_tour_style'] : 'single-tourfic.php';
+
 		if ( 'tourfic' === $post->post_type ) {
 		    $theme_files = array('single-tourfic.php', 'templates/single-tourfic.php');
 		    $exists_in_theme = locate_template($theme_files, false);
 		    if ( $exists_in_theme != '' ) {
 		      	return $exists_in_theme;
 		    } else {
-		      	return dirname( __FILE__ ) . '/templates/single-tourfic.php';
+		      	return dirname( __FILE__ ) . "/templates/{$st}";
 		    }
 		}
 		return $single_template;

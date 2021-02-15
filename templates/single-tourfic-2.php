@@ -18,7 +18,7 @@ $share_link = esc_url( home_url("/?p=").get_the_ID() );
 $location = get_field('formatted_location') ? get_field('formatted_location') : null;
 
 ?>
-<div class="tourfic-wrap default-style" data-fullwidth="true">
+<div class="tourfic-wrap style-2" data-fullwidth="true">
 	<?php do_action( 'tf_before_container' ); ?>
 	<div class="tf_container">
 		<div class="tf_row">
