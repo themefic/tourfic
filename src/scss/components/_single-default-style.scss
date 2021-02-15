@@ -1,0 +1,30 @@
+.tourfic-wrap {
+	&.default-style{
+		.tf_slider-nav.fl-wrap {
+		    margin-top: 3px;
+			img {
+		   		padding: 3px;
+		   		cursor: pointer;
+		   	}
+		}
+	}
+}
+
+.highlights-title {
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.tf_contents{
+	&.highlights {
+		border-bottom: 1px solid #e2e2e2;
+    	padding-bottom: 20px;
+		ul{
+			list-style: circle;
+    		padding-left: 40px;
+    		li{
+    			margin-bottom: 7px;
+    		}
+		}
+	}
+}

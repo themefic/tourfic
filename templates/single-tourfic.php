@@ -16,6 +16,7 @@ $additional_information = get_field('additional_information') ? get_field('addit
 $share_text = get_the_title();
 $share_link = esc_url( home_url("/?p=").get_the_ID() );
 $location = get_field('formatted_location') ? get_field('formatted_location') : null;
+$features = array();
 
 ?>
 <div class="tourfic-wrap default-style" data-fullwidth="true">
@@ -83,11 +84,30 @@ $location = get_field('formatted_location') ? get_field('formatted_location') : 
 				</div>
 				<!-- End gallery-->
 
+				<?php if( $additional_information ): ?>
+				<!-- Start highlights content -->
+				<div class="tf_contents highlights">
+					<div class="highlights-title">
+						<h4><?php esc_html_e( 'Highlights', 'tourfic' ); ?></h4>
+					</div>
+					<?php _e( $additional_information ); ?>
+				</div>
+				<!-- End highlights content -->
+				<?php endif; ?>
+
 				<!-- Start content -->
 				<div class="tf_contents">
 					<?php the_content(); ?>
 				</div>
 				<!-- End content -->
+
+				<?php if( $features ) : ?>
+				<!-- Start features -->
+				<div class="tf_features">
+
+				</div>
+				<!-- End features -->
+				<?php endif; ?>
 
 
 				<?php if( $tf_room ) : ?>
