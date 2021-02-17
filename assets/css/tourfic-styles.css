@@ -970,6 +970,41 @@ span.review_num {
   cursor: pointer;
 }
 
+.tourfic-wrap.default-style .tf-room {
+  width: 100%;
+  padding: 0;
+}
+
+.tourfic-wrap.default-style button[type="submit"] {
+  padding-left: 30px;
+  padding-right: 30px;
+  white-space: nowrap;
+}
+
+.tourfic-wrap.default-style .tf-room-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tourfic-wrap.default-style .room-features {
+  padding-top: 8px;
+}
+
+.tourfic-wrap.default-style .tf_desc ul {
+  list-style: disc;
+  padding-left: 16px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.tourfic-wrap.default-style .bed-facilities i {
+  margin-right: 4px;
+}
+
+.tourfic-wrap.default-style .tf-price-column {
+  text-align: center;
+}
+
 .highlights-title,
 .listing-title {
   margin-bottom: 14px;
@@ -988,6 +1023,12 @@ span.review_num {
 
 .tf_contents.highlights ul li {
   margin-bottom: 7px;
+}
+
+.room-feature-list li {
+  display: inline;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 /*Archive page*/

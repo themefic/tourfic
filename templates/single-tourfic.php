@@ -119,7 +119,7 @@ $features = array();
 					<div class="listing-title">
 						<h4><?php esc_html_e( 'Availability', 'tourfic' ); ?></h4>
 					</div>
-					<div class="tf_room-row">
+					<div class="tf_room-table">
 						<table class="availability-table">
 							<thead>
 							    <tr>
@@ -143,17 +143,45 @@ $features = array();
 										<div class="bed-facilities"><?php echo $short_desc; ?></div>
 
 										<div class="room-features">
-											<h5><?php esc_html_e( 'Room Features', 'tourfic' ); ?></h5>
+											<div class="tf-room-title"><?php esc_html_e( 'Room Features', 'tourfic' ); ?></div>
 											<ul class="room-feature-list">
-												<li></li>
+												<li><i class="fa fa-wifi"></i> Free WiFi</li>
+												<li><i class="fa fa-bus"></i> Airport shuttle</li>
+												<li><i class="fa fa-cutlery"></i> Restaurant</li>
+												<li><i class="fa fa-coffee"></i> Very Good Breakfast</li>
 											</ul>
 										</div>
 									</div>
 							      </td>
-
-							      <td>$100</td>
-							      <td>$100</td>
-							      <td>$100</td>
+							      <td>
+							      	<div class="tf_pax">
+							      		<i class="fa fa-user"></i>
+							      		<i class="fa fa-user"></i>
+							      	</div>
+							      </td>
+							      <td>
+							      	<div class="tf-price-column">
+										<?php echo tf_price_html($price, $sale_price); ?>
+									</div>
+							      </td>
+							      <td>
+							      	<form class="tf-room" id="tf_room-id-<?php echo esc_attr( $key ); ?>">
+								      	<div class="room-selection-wrap">
+											<select name="room-selected" id="room-selected">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+											</select>
+										</div>
+										<div class="room-submit-wrap">
+											<input type="hidden" name="tour_id" value="<?php echo get_the_ID(); ?>">
+											<input type="hidden" name="room_key" value="<?php echo esc_attr( $key ); ?>">
+											<?php tf_room_booking_submit_button( 'I\'ll reserve' ); ?>
+										</div>
+										<div class="tf_desc"><?php echo $desc; ?></div>
+									</form>
+							      </td>
 							    </tr>
 							<?php endforeach; ?>
 							</tbody>

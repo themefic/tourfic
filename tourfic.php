@@ -65,6 +65,11 @@ class Tourfic_WordPress_Plugin{
 	public function includes(){
 
 		/**
+		 *	Font awesome
+		 */
+		require_once( dirname( __FILE__ ) . '/admin/font-awesome.php' );
+
+		/**
 		 *	Custom Meta Fields
 		 */
 		require_once( dirname( __FILE__ ) . '/admin/tf-admin.php' );
