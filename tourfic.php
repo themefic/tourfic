@@ -134,6 +134,9 @@ class Tourfic_WordPress_Plugin{
 
 		$TOURFIC_VERSION = current_time('timestamp');
 
+		wp_register_style( 'font-awesome', plugin_dir_url( __FILE__ ) . 'assets/font-awesome-4.7.0/css/font-awesome.min.css' );
+    	wp_enqueue_style( 'font-awesome' );
+
 		wp_enqueue_style('tourfic-styles', plugin_dir_url( __FILE__ ) . 'assets/css/tourfic-styles.min.css', null, $TOURFIC_VERSION );
 
 	    wp_enqueue_script( 'slick', plugin_dir_url( __FILE__ ) . 'assets/slick/slick.min.js', array('jquery'), $TOURFIC_VERSION );

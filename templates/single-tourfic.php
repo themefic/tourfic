@@ -97,6 +97,9 @@ $features = array();
 
 				<!-- Start content -->
 				<div class="tf_contents">
+					<div class="listing-title">
+						<h4><?php esc_html_e( 'Listing Description', 'tourfic' ); ?></h4>
+					</div>
 					<?php the_content(); ?>
 				</div>
 				<!-- End content -->
@@ -113,56 +116,49 @@ $features = array();
 				<?php if( $tf_room ) : ?>
 				<!-- Start Room Type -->
 				<div class="tf_room-type" id="rooms">
-					<div class="tf_room-type-head"><?php esc_html_e( 'All Available Rooms', 'tourfic' ); ?></div>
+					<div class="listing-title">
+						<h4><?php esc_html_e( 'Availability', 'tourfic' ); ?></h4>
+					</div>
 					<div class="tf_room-row">
+						<table class="availability-table">
+							<thead>
+							    <tr>
+							      <th><?php esc_html_e( 'Room Type', 'tourfic' ); ?></th>
+							      <th><?php esc_html_e( 'Pax', 'tourfic' ); ?></th>
+							      <th><?php esc_html_e( 'Total Price', 'tourfic' ); ?></th>
+							      <th><?php esc_html_e( 'Select Rooms', 'tourfic' ); ?></th>
+							    </tr>
+							</thead>
+							<tbody>
+							<!-- Start Single Room -->
+							<?php foreach ( $tf_room as $key => $room_type ) : ?>
+								<?php
+								// Array to variable
+								extract( $room_type );
+								?>
+								<tr>
+							      <td>
+							      	<div class="tf-room-type">
+										<div class="tf-room-title"><?php echo esc_html( $name ); ?></div>
+										<div class="bed-facilities"><?php echo $short_desc; ?></div>
 
-						<!-- Start Single Room -->
-						<?php foreach ( $tf_room as $key => $room_type ) : ?>
-							<?php
-							// Array to variable
-							extract( $room_type );
-							?>
-							<form class="tf-room" id="tf_room-id-<?php echo esc_attr( $key ); ?>">
-								<div class="tf-room-header">
-									<div class="tf-room-title"><?php echo esc_html( $name ); ?></div>
-									<div class="last-booked"><?php echo esc_html__( 'Last booked 6 hrs ago' ); ?></div>
-								</div>
-								<div class="tf-room-content-wrap">
-									<div class="tf-room-content-inner">
-										<div class="tf-room-inner-column first">
-											<div class="bed-facilities"><?php echo $short_desc; ?></div>
-											<?php echo tf_sale_tag($price, $sale_price); ?>
-											<div class="img-price-row">
-												<div class="tf-room-image">
-													<a href="#" class="room-image-trigger"><?php tf_svg('images'); ?></a>
-												</div>
-												<div class="tf-price-column">
-													<?php echo tf_price_html($price, $sale_price); ?>
-												</div>
-											</div>
-										</div>
-										<div class="tf-room-inner-column tf-short-desc">
-											<?php echo $desc; ?>
+										<div class="room-features">
+											<h5><?php esc_html_e( 'Room Features', 'tourfic' ); ?></h5>
+											<ul class="room-feature-list">
+												<li></li>
+											</ul>
 										</div>
 									</div>
-									<div class="room-selection-wrap">
-										<select name="room-selected" id="room-selected">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-										</select>
-									</div>
-									<div class="room-submit-wrap">
-										<input type="hidden" name="tour_id" value="<?php echo get_the_ID(); ?>">
-										<input type="hidden" name="room_key" value="<?php echo esc_attr( $key ); ?>">
-										<?php tf_room_booking_submit_button( 'I\'ll reserve' ); ?>
-									</div>
-								</div>
+							      </td>
 
-							</form>
-							<!-- End Single Room -->
-						<?php endforeach; ?>
+							      <td>$100</td>
+							      <td>$100</td>
+							      <td>$100</td>
+							    </tr>
+							<?php endforeach; ?>
+							</tbody>
+						</table>
+
 						<?php //ppr( $add_room_type ); ?>
 					</div>
 				</div>

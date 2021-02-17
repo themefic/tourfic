@@ -970,7 +970,8 @@ span.review_num {
   cursor: pointer;
 }
 
-.highlights-title {
+.highlights-title,
+.listing-title {
   margin-bottom: 14px;
   text-transform: uppercase;
 }
