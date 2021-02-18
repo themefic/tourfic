@@ -118,6 +118,13 @@ class Tourfic_Metabox_Class {
  		// Push to post meta
         update_post_meta( $post_id, 'tf_room', (array) $tf_room );
 
+        // Set faq
+        $tf_faqs = isset( $_POST['tf_faqs'] ) ? (array) $_POST['tf_faqs'] : array();
+        // Sanitize
+        //$tf_faqs = array_map( 'esc_attr', $tf_faqs );
+        // Push to post meta
+        update_post_meta( $post_id, 'tf_faqs', (array) $tf_faqs );
+
     }
 
 
@@ -132,7 +139,8 @@ class Tourfic_Metabox_Class {
         wp_nonce_field( 'tourfic_custom_box_security', 'tourfic_custom_box_nonce' );
 
         // Room Data
-        $tf_room = get_post_meta( $post->ID, 'tf_room', true );
+        $tf_room = ( get_post_meta( $post->ID, 'tf_room', true ) ) ? get_post_meta( $post->ID, 'tf_room', true ) : array();
+        $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $post->ID, 'tf_faqs', true ) : array();
 
         // Get Post meta
         $formatted_location = get_post_meta( $post->ID, 'formatted_location', true );
@@ -146,18 +154,19 @@ class Tourfic_Metabox_Class {
 		<div class="tf-tab-container-wrap">
 			<div class="tf-box-head">
 				<ul class="tf-tab-nav">
-                    <li><a href="#highlights-tab"><?php echo esc_html__( 'Highlights', 'tourfic' ); ?></a></li>
-					<li class="active"><a href="#rooms"><?php echo esc_html__( 'Rooms', 'tourfic' ); ?></a></li>
+                    <li class="active"><a href="#highlights-tab"><?php echo esc_html__( 'Highlights', 'tourfic' ); ?></a></li>
+					<li><a href="#rooms"><?php echo esc_html__( 'Rooms', 'tourfic' ); ?></a></li>
 					<li><a href="#gallery"><?php echo esc_html__( 'Gallery', 'tourfic' ); ?></a></li>
 					<li><a href="#location"><?php echo esc_html__( 'Location', 'tourfic' ); ?></a></li>
 					<li><a href="#tf_information"><?php echo esc_html__( 'Property Description', 'tourfic' ); ?></a></li>
+                    <li><a href="#faqs-tab"><?php echo esc_html__( 'FAQs', 'tourfic' ); ?></a></li>
 				</ul>
 			</div>
 
 	   		<div class="tf-box-content">
 				<div class="tf-tab-container">
 
-					<div id="rooms" class="tf-tab-content active">
+					<div id="rooms" class="tf-tab-content">
 
 						<h4><?php esc_html_e( 'Room Options', 'tourfic' ); ?></h4>
 
@@ -218,7 +227,7 @@ class Tourfic_Metabox_Class {
 
 					</div>
 
-					<div id="highlights-tab" class="tf-tab-content">
+					<div id="highlights-tab" class="tf-tab-content active">
                         <h4><?php esc_html_e( 'Highlights', 'tourfic' ); ?></h4>
                         <div class="tf-field-wrap">
 
@@ -250,6 +259,28 @@ class Tourfic_Metabox_Class {
                                 <label for="information"><?php esc_html_e( 'Add Property Description', 'tourfic' ); ?></label>
                             </div>
                             <textarea name="information" class="wfull" rows="5" id="information"><?php _e( $information ); ?></textarea>
+                        </div>
+
+                    </div>
+
+                    <div id="faqs-tab" class="tf-tab-content">
+
+                        <h4><?php esc_html_e( 'Frequently Asked Questions', 'tourfic' ); ?></h4>
+
+                        <div class="tf-field-wrap">
+                            <div class="tf_faqs-fields">
+                                <?php if ( $tf_faqs ) {
+                                    foreach ( $tf_faqs as $key => $faq ) {
+                                        echo tf_add_single_faq( array(
+                                            'key' => $key,
+                                            'faq' => $faq,
+                                        ) );
+                                    }
+                                } ?>
+                            </div>
+                            <div class="tf_add-faq-buttons">
+                                <button type="button" class="tf_add-faq button"><?php esc_html_e( 'Add FAQ', 'tourfic' ); ?></button>
+                            </div>
                         </div>
 
                     </div>

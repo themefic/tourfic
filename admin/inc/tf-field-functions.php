@@ -102,3 +102,80 @@ function tf_add_single_room_wrap( $args ){
 	return $output;
 
 }
+
+add_action( 'wp_ajax_tf_add_new_faq', 'tf_add_faq_data_action' );
+function tf_add_faq_data_action(){
+
+	$key = sanitize_text_field( $_POST['key'] );
+
+	ob_start();
+
+	echo tf_add_single_faq( array(
+		'key' => $key,
+	) );
+
+	$output = ob_get_clean();
+
+	echo $output;
+
+	die();
+}
+
+// Single room data
+function tf_add_single_faq( $args ){
+    $defaults = array (
+        'key' => '',
+        'faq' => '',
+    );
+
+    // Parse incoming $args into an array and merge it with $defaults
+    $args = wp_parse_args( $args, $defaults );
+
+    // Let's extract the array
+    extract( $args['faq'] );
+
+    // Array key
+    $key =  isset( $args['key'] ) ? $args['key'] : "";
+
+    $room_title = ( $args['faq']['name'] ) ? $args['faq']['name'] : __( '# Room Title', 'tourfic' );
+
+	ob_start();
+	?>
+	<div class="tf-add-single-faq-wrap">
+		<div class="tf-add-single-room-head">
+			<div class="tf-room-title"><?php echo esc_html( $room_title ); ?></div>
+
+			<span class="room-action-btns">
+				<a href="#" class="room-remove"><span class="dashicons dashicons-no-alt"></span></a>
+			</span>
+
+			<a href="#" class="room-expend"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
+		</div>
+
+		<div class="tf-add-single-room-body">
+			<div class="tf-room-field-holder">
+
+				<div class="tf-field-wrap label-left">
+					<div class="tf-label">
+						<label for="tf_room-name-<?php _e( $key ); ?>"><?php esc_html_e( 'Room Name', 'tourfic' ); ?></label>
+					</div>
+				     <input type="text" name="tf_room[<?php _e( $key ); ?>][name]" class="tf_room-name" id="tf_room-name-<?php _e( $key ); ?>" value="<?php echo esc_attr( $name ); ?>">
+				</div>
+
+				<div class="tf-field-wrap label-left">
+					<div class="tf-label">
+						<label for="tf_room-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
+					</div>
+				    <textarea name="tf_room[<?php _e( $key ); ?>][desc]" class="tf_room-desc" rows="5" id="tf_room-desc-<?php _e( $key ); ?>"><?php _e( $desc ); ?></textarea>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<?php
+	$output = ob_get_clean();
+
+	return $output;
+
+}

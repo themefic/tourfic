@@ -56,6 +56,37 @@ jQuery(function($){
             });
         });
 
+        // Add FAQ Ajax
+        $(document).on('click', '.tf_add-faq', function(){
+            var $this = $(this);
+
+            var keyLen = jQuery('.tf-add-single-faq-wrap').length;
+
+            var data = {
+                action: 'tf_add_new_faq',
+                key: keyLen,
+            }
+
+            $.ajax({
+              url: ajaxurl,
+              type: 'post',
+              data: data,
+              beforeSend : function ( xhr ) {
+                $this.prop('disabled', true);
+              },
+              success: function( res ) {
+                $this.prop('disabled', false);
+
+                // Data push
+                $('.tf_faqs-fields').append(res);
+              },
+              error: function( result ) {
+                $this.prop('disabled', false);
+                console.error( result );
+              }
+            });
+        });
+
 
         // Add Room Ajax
         $(document).on('click', '.room-remove', function(){
