@@ -18,6 +18,8 @@ $share_link = esc_url( home_url("/?p=").get_the_ID() );
 $location = get_field('formatted_location') ? get_field('formatted_location') : null;
 $features = array();
 
+$terms_and_conditions = get_post_meta( $post->ID, 'terms_and_conditions', true );
+
 ?>
 <div class="tourfic-wrap default-style" data-fullwidth="true">
 	<?php do_action( 'tf_before_container' ); ?>
@@ -222,6 +224,15 @@ $features = array();
 
 				</div>
 				<!-- End Tab Content -->
+
+				<!-- Start TOC Content -->
+				<div class="tf_toc-wrap">
+					<div class="tf_toc-inner">
+						<?php _e( $terms_and_conditions ); ?>
+					</div>
+				</div>
+				<!-- End TOC Content -->
+
 
 			</div>
 			<!-- End Content -->

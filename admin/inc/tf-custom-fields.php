@@ -111,6 +111,10 @@ class Tourfic_Metabox_Class {
             update_post_meta( $post_id, 'additional_information', $_POST['additional_information'] );
         }
 
+        if ( isset( $_POST['terms_and_conditions'] ) ) {
+            update_post_meta( $post_id, 'terms_and_conditions', $_POST['terms_and_conditions'] );
+        }
+
 		// Set room
 		$tf_room = isset( $_POST['tf_room'] ) ? (array) $_POST['tf_room'] : array();
 		// Sanitize
@@ -147,6 +151,7 @@ class Tourfic_Metabox_Class {
         $tf_gallery_ids = get_post_meta( $post->ID, 'tf_gallery_ids', true );
         $information = get_post_meta( $post->ID, 'information', true );
         $additional_information = get_post_meta( $post->ID, 'additional_information', true );
+        $terms_and_conditions = get_post_meta( $post->ID, 'terms_and_conditions', true );
 
         // Display the form, using the current value.
         ?>
@@ -160,6 +165,7 @@ class Tourfic_Metabox_Class {
 					<li><a href="#location"><?php echo esc_html__( 'Location', 'tourfic' ); ?></a></li>
 					<li><a href="#tf_information"><?php echo esc_html__( 'Property Description', 'tourfic' ); ?></a></li>
                     <li><a href="#faqs-tab"><?php echo esc_html__( 'FAQs', 'tourfic' ); ?></a></li>
+                    <li><a href="#tos-tab"><?php echo esc_html__( 'Terms & Conditions', 'tourfic' ); ?></a></li>
 				</ul>
 			</div>
 
@@ -281,6 +287,29 @@ class Tourfic_Metabox_Class {
                             <div class="tf_add-faq-buttons">
                                 <button type="button" class="tf_add-faq button"><?php esc_html_e( 'Add FAQ', 'tourfic' ); ?></button>
                             </div>
+                        </div>
+
+                    </div>
+
+                    <div id="tos-tab" class="tf-tab-content">
+                        <h4><?php esc_html_e( 'Add Terms & Conditions', 'tourfic' ); ?></h4>
+                        <div class="tf-field-wrap">
+
+                            <?php
+                                $content   = $terms_and_conditions;
+                                $editor_id = 'terms_and_conditions';
+
+                                $settings = array(
+                                    'quicktags' => array('buttons' => 'em,strong,link',),
+                                    'quicktags' => true,
+                                    'tinymce' => 1,
+                                    'textarea_rows' => 20,
+                                    //'media_buttons' => 0,
+                                );
+
+                                wp_editor( $content, $editor_id, $settings );
+
+                            ?>
                         </div>
 
                     </div>
