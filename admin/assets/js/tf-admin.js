@@ -89,21 +89,21 @@ jQuery(function($){
 
 
         // Add Room Ajax
-        $(document).on('click', '.room-remove', function(){
-            $(this).closest('.tf-add-single-room-wrap').remove();
+        $(document).on('click', '.tf_remove_postdiv', function(){
+            $(this).closest('.tf_postbox').remove();
             return false;
         });
 
         // Room Field toggle
-        $(document).on('click', '.room-expend', function(){
-            $(this).closest('.tf-add-single-room-wrap').toggleClass('active').find('.tf-add-single-room-body').slideToggle('fast');
+        $(document).on('click', '.tf_expend_postdiv', function(){
+            $(this).closest('.tf_postbox').toggleClass('active').find('.tf_postbox-inside').slideToggle('fast');
             return false;
         });
 
         // Room title push on head
-        $(document).on('keyup change', '.tf_room-name', function(){
+        $(document).on('keyup change', '.tf_postbox-title-get', function(){
             var thisVal = ( $(this).val() ) ? $(this).val() : "# Room Title";
-            $(this).closest('.tf-add-single-room-wrap').find('.tf-room-title').text( thisVal );
+            $(this).closest('.tf_postbox').find('.tf_postbox-title').text( thisVal );
         });
 
 

@@ -233,3 +233,59 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+/*FAQ*/
+.tf_postbox {
+    position: relative;
+    min-width: 255px;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 0;
+    line-height: 1;
+}
+
+
+
+.tf_postbox_head {
+    padding: 15px 10px;
+    background: #f7f7f7;
+    position: relative;
+}
+
+.faq-action-btns {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    height: 100%;
+}
+
+.faq-expend {
+    text-decoration: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.faq-remove,
+.faq-remove:hover {
+    color: #e24e4e;
+}
+
+.tf-add-single-faq-body {
+    padding: 20px 20px 0;
+    border: 1px solid #f7f7f7;
+    display: none;
+}
+
+.tf_remove_postdiv{
+    text-decoration: none;
+}
+
+.tf_faq-desc,
+.tf_faq-name {
+    width: 100% !important;
+    resize: both !important;
+}

@@ -38,25 +38,25 @@ function tf_add_single_room_wrap( $args ){
 
 	ob_start();
 	?>
-	<div class="tf-add-single-room-wrap">
+	<div class="tf_postbox tf-add-single-room-wrap">
 		<div class="tf-add-single-room-head">
-			<div class="tf-room-title"><?php echo esc_html( $room_title ); ?></div>
+			<div class="tf_postbox-title tf-room-title"><?php echo esc_html( $room_title ); ?></div>
 
 			<span class="room-action-btns">
-				<a href="#" class="room-remove"><span class="dashicons dashicons-no-alt"></span></a>
+				<a href="#" class="room-remove tf_remove_postdiv"><span class="dashicons dashicons-no-alt"></span></a>
 			</span>
 
-			<a href="#" class="room-expend"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
+			<a href="#" class="room-expend tf_expend_postdiv"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 		</div>
 
-		<div class="tf-add-single-room-body">
+		<div class="tf_postbox-inside tf-add-single-room-body">
 			<div class="tf-room-field-holder">
 
 				<div class="tf-field-wrap label-left">
 					<div class="tf-label">
 						<label for="tf_room-name-<?php _e( $key ); ?>"><?php esc_html_e( 'Room Name', 'tourfic' ); ?></label>
 					</div>
-				     <input type="text" name="tf_room[<?php _e( $key ); ?>][name]" class="tf_room-name" id="tf_room-name-<?php _e( $key ); ?>" value="<?php echo esc_attr( $name ); ?>">
+				     <input type="text" name="tf_room[<?php _e( $key ); ?>][name]" class="tf_postbox-title-get tf_room-name" id="tf_room-name-<?php _e( $key ); ?>" value="<?php echo esc_attr( $name ); ?>">
 				</div>
 
 				<div class="tf-field-wrap label-left">
@@ -137,36 +137,36 @@ function tf_add_single_faq( $args ){
     // Array key
     $key =  isset( $args['key'] ) ? $args['key'] : "";
 
-    $room_title = ( $args['faq']['name'] ) ? $args['faq']['name'] : __( '# Room Title', 'tourfic' );
+    $room_title = ( $args['faq']['name'] ) ? $args['faq']['name'] : __( '# FAQ Title', 'tourfic' );
 
 	ob_start();
 	?>
-	<div class="tf-add-single-faq-wrap">
-		<div class="tf-add-single-room-head">
-			<div class="tf-room-title"><?php echo esc_html( $room_title ); ?></div>
+	<div class="tf_postbox tf-add-single-faq-wrap">
+		<div class="tf_postbox_head tf-add-single-faq-head">
+			<div class="tf_postbox-title tf-faq-title"><?php echo esc_html( $room_title ); ?></div>
 
-			<span class="room-action-btns">
-				<a href="#" class="room-remove"><span class="dashicons dashicons-no-alt"></span></a>
+			<span class="faq-action-btns">
+				<a href="#" class="faq-remove tf_remove_postdiv"><span class="dashicons dashicons-no-alt"></span></a>
 			</span>
 
-			<a href="#" class="room-expend"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
+			<a href="#" class="faq-expend tf_expend_postdiv"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 		</div>
 
-		<div class="tf-add-single-room-body">
-			<div class="tf-room-field-holder">
+		<div class="tf_postbox-inside tf-add-single-faq-body">
+			<div class="tf-faq-field-holder">
 
 				<div class="tf-field-wrap label-left">
 					<div class="tf-label">
-						<label for="tf_room-name-<?php _e( $key ); ?>"><?php esc_html_e( 'Room Name', 'tourfic' ); ?></label>
+						<label for="tf_faq-name-<?php _e( $key ); ?>"><?php esc_html_e( 'Room Name', 'tourfic' ); ?></label>
 					</div>
-				     <input type="text" name="tf_room[<?php _e( $key ); ?>][name]" class="tf_room-name" id="tf_room-name-<?php _e( $key ); ?>" value="<?php echo esc_attr( $name ); ?>">
+				     <input type="text" name="tf_faqs[<?php _e( $key ); ?>][name]" class="tf_postbox-title-get tf_faq-name" id="tf_faq-name-<?php _e( $key ); ?>" value="<?php echo esc_attr( $name ); ?>">
 				</div>
 
 				<div class="tf-field-wrap label-left">
 					<div class="tf-label">
-						<label for="tf_room-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
+						<label for="tf_faq-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
 					</div>
-				    <textarea name="tf_room[<?php _e( $key ); ?>][desc]" class="tf_room-desc" rows="5" id="tf_room-desc-<?php _e( $key ); ?>"><?php _e( $desc ); ?></textarea>
+				    <textarea name="tf_faqs[<?php _e( $key ); ?>][desc]" class="tf_faq-desc" rows="5" id="tf_faq-desc-<?php _e( $key ); ?>"><?php _e( $desc ); ?></textarea>
 				</div>
 
 			</div>
