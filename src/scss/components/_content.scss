@@ -80,3 +80,40 @@
     border-radius: 4px;
     padding: 40px;
 }
+
+.tf_comment-metas .comment-meta {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.tf_comment-metas .comment-meta label {
+    min-width: 230px;
+}
+
+.tf_comment-metas {
+    margin-bottom: 31px;
+}
+
+.author-email {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.author-email>p {
+    min-width: 50%;
+    max-width: 50%;
+}
+
+.author-email input {
+    width: 100%;
+}
+
+p.comment-form-author {
+    padding-right: 7px;
+}
+
+p.comment-form-email {
+    padding-left: 7px;
+}

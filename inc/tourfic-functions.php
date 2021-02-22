@@ -47,14 +47,84 @@ function get_tf_review_form( ){
 
 	$comment_cancel = 'Cancel Reply';
 
+	$comment_meta = '<div class="tf_comment-metas">';
+
+	$comment_meta .= '<div class="comment-meta">
+		<label>Ratings</label>
+		<select name="tf_comment_meta[review]">
+			<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+			<option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+			<option value="3">&#9733; &#9733; &#9733;</option>
+			<option value="2">&#9733; &#9733;</option>
+			<option value="1">&#9733;</option>
+		</select>
+	</div>';
+
+	$comment_meta .= '<div class="comment-meta">
+		<label>Sleep</label>
+		<select name="tf_comment_meta[sleep]">
+			<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+			<option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+			<option value="3">&#9733; &#9733; &#9733;</option>
+			<option value="2">&#9733; &#9733;</option>
+			<option value="1">&#9733;</option>
+		</select>
+	</div>';
+
+	$comment_meta .= '<div class="comment-meta">
+		<label>Location</label>
+		<select name="tf_comment_meta[location]">
+			<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+			<option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+			<option value="3">&#9733; &#9733; &#9733;</option>
+			<option value="2">&#9733; &#9733;</option>
+			<option value="1">&#9733;</option>
+		</select>
+	</div>';
+
+	$comment_meta .= '<div class="comment-meta">
+		<label>Services</label>
+		<select name="tf_comment_meta[services]">
+			<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+			<option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+			<option value="3">&#9733; &#9733; &#9733;</option>
+			<option value="2">&#9733; &#9733;</option>
+			<option value="1">&#9733;</option>
+		</select>
+	</div>';
+
+	$comment_meta .= '<div class="comment-meta">
+		<label>Cleanliness</label>
+		<select name="tf_comment_meta[cleanliness]">
+			<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+			<option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+			<option value="3">&#9733; &#9733; &#9733;</option>
+			<option value="2">&#9733; &#9733;</option>
+			<option value="1">&#9733;</option>
+		</select>
+	</div>';
+
+	$comment_meta .= '<div class="comment-meta">
+		<label>Room(s)</label>
+		<select name="tf_comment_meta[rooms]">
+			<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+			<option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+			<option value="3">&#9733; &#9733; &#9733;</option>
+			<option value="2">&#9733; &#9733;</option>
+			<option value="1">&#9733;</option>
+		</select>
+	</div>';
+
+	$comment_meta .= '</div>';
+
 	//Array
 	$comments_args = array(
 	    //Define Fields
 	    'fields' => array(
 	        //Author field
-	        'author' => '<p class="comment-form-author"><input type="text" id="author" name="author" aria-required="true" placeholder="' . $comment_author .'"></input></p>',
+	        'author' => '<div class="author-email"><p class="comment-form-author"><input type="text" id="author" name="author" aria-required="true" placeholder="' . $comment_author .'"></input></p>',
 	        //Email Field
-	        'email' => '<p class="comment-form-email"><input type="email" id="email" name="email" placeholder="' . $comment_email .'"></input></p>',
+	        'email' => '<p class="comment-form-email"><input type="email" id="email" name="email" placeholder="' . $comment_email .'"></input></p></div>',
 	        //URL Field
 	        //'url' => '<p class="comment-form-url"><input type="text" id="url" name="url" placeholder="' . $comment_url .'"></input></p>',
 	        //Cookies
@@ -73,7 +143,7 @@ function get_tf_review_form( ){
 	    //Cancel Reply Text
 	    'cancel_reply_link' => $comment_cancel,
 	    // Redefine your own textarea (the comment body).
-	    'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="' . $comment_body .'"></textarea></p>',
+	    'comment_field' => $comment_meta.'<p class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="' . $comment_body .'"></textarea></p>',
 	    //Message Before Comment
 	    'comment_notes_before' => $comment_before,
 	    // Remove "Text or HTML to be displayed after the set of comment fields".
@@ -87,6 +157,15 @@ function get_tf_review_form( ){
 	comment_form( $comments_args );
 
 }
+
+/**
+ * Save Comment Meta
+ */
+function tf_save_comment_meta_data( $comment_id ) {
+    update_comment_meta( $comment_id, 'tf_comment_meta', $_POST[ 'tf_comment_meta' ] );
+}
+add_action( 'comment_post', 'tf_save_comment_meta_data' );
+
 
 /**
  * Sample template tag function for outputting a cmb2 file_list
