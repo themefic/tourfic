@@ -82,6 +82,10 @@
             $(target).slideToggle('fast');
         });
 
+        $('.faq-head').click(function(e){
+            $(this).parent().toggleClass('active').find('.faq-content').slideToggle('fast');
+        });
+
 
         // Date picker
         var dateToday = new Date();

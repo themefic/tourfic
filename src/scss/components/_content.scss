@@ -2,6 +2,13 @@
     margin-top: 40px;
 }
 
+.tf_toc-wrap {
+    td{
+    	white-space: break-spaces;
+    }
+
+}
+
 .tf_gallery-wrap {
 
 	.slick-slide img {
@@ -9,4 +16,57 @@
 	    height: 100%;
 	    object-fit: cover;
 	}
+}
+
+// Faq
+.tf-single-faq {
+    border-bottom: 1px solid #ddd;
+}
+
+.faq-content {
+    display: none;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.faq-head {
+    padding: 17px 0;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+}
+
+.faq-head i {
+    font-size: 18px;
+}
+
+.faq-head>i {
+    margin-right: 8px;
+}
+
+.faq-indicator {
+    position: absolute;
+    right: 0;
+}
+
+.faq-indicator i {
+    font-size: 20px;
+}
+
+.faq-indicator .fa-angle-up {
+    display: none;
+}
+
+.tf-single-faq.active .faq-indicator .fa-angle-up {
+    display: block;
+}
+
+.tf-single-faq.active .faq-indicator .fa-angle-down {
+    display: none;
+}
+
+.tf_contents.reviews .comment-respond {
+    padding: 0;
+    background: transparent;
 }

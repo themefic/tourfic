@@ -163,7 +163,6 @@ class Tourfic_Metabox_Class {
 					<li><a href="#rooms"><?php echo esc_html__( 'Rooms', 'tourfic' ); ?></a></li>
 					<li><a href="#gallery"><?php echo esc_html__( 'Gallery', 'tourfic' ); ?></a></li>
 					<li><a href="#location"><?php echo esc_html__( 'Location', 'tourfic' ); ?></a></li>
-					<li><a href="#tf_information"><?php echo esc_html__( 'Property Description', 'tourfic' ); ?></a></li>
                     <li><a href="#faqs-tab"><?php echo esc_html__( 'FAQs', 'tourfic' ); ?></a></li>
                     <li><a href="#tos-tab"><?php echo esc_html__( 'Terms & Conditions', 'tourfic' ); ?></a></li>
 				</ul>
@@ -255,19 +254,6 @@ class Tourfic_Metabox_Class {
                         </div>
 
 					</div>
-
-                    <div id="tf_information" class="tf-tab-content">
-
-                        <h4><?php esc_html_e( 'Information', 'tourfic' ); ?></h4>
-
-                        <div class="tf-field-wrap">
-                            <div class="tf-label">
-                                <label for="information"><?php esc_html_e( 'Add Property Description', 'tourfic' ); ?></label>
-                            </div>
-                            <textarea name="information" class="wfull" rows="5" id="information"><?php _e( $information ); ?></textarea>
-                        </div>
-
-                    </div>
 
                     <div id="faqs-tab" class="tf-tab-content">
 

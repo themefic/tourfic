@@ -157,7 +157,7 @@ function tf_add_single_faq( $args ){
 
 				<div class="tf-field-wrap label-left">
 					<div class="tf-label">
-						<label for="tf_faq-name-<?php _e( $key ); ?>"><?php esc_html_e( 'Room Name', 'tourfic' ); ?></label>
+						<label for="tf_faq-name-<?php _e( $key ); ?>"><?php esc_html_e( 'FAQ Title', 'tourfic' ); ?></label>
 					</div>
 				     <input type="text" name="tf_faqs[<?php _e( $key ); ?>][name]" class="tf_postbox-title-get tf_faq-name" id="tf_faq-name-<?php _e( $key ); ?>" value="<?php echo esc_attr( $name ); ?>">
 				</div>

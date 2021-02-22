@@ -19,6 +19,7 @@ $location = get_field('formatted_location') ? get_field('formatted_location') : 
 $features = array();
 
 $terms_and_conditions = get_post_meta( $post->ID, 'terms_and_conditions', true );
+$tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $post->ID, 'tf_faqs', true ) : array();
 
 ?>
 <div class="tourfic-wrap default-style" data-fullwidth="true">
@@ -195,35 +196,49 @@ $terms_and_conditions = get_post_meta( $post->ID, 'terms_and_conditions', true )
 				<!-- End Room Type -->
 				<?php endif; ?>
 
-				<!-- Start Tab Content -->
-				<div class="tf_tab-wrap">
-
-					<div class="tf_tab-nav">
-						<a href="#description" class="tf_tab-nav-link active"><?php esc_html_e( 'Description', 'tourfic' ); ?></a>
-						<a href="#additional-information" class="tf_tab-nav-link"><?php esc_html_e( 'Additional Information', 'tourfic' ); ?></a>
-						<a href="#reviews" class="tf_tab-nav-link"><?php esc_html_e( 'Reviews', 'tourfic' ); ?></a>
-					</div>
-
-					<div class="tf-tab-container">
-						<div class="tf_tab-content active" id="description">
-							<?php _e($information); ?>
+				<?php if( $tf_faqs ): ?>
+					<!-- Start highlights content -->
+					<div class="tf_contents faqs">
+						<div class="highlights-title">
+							<h4><?php esc_html_e( 'FAQs', 'tourfic' ); ?></h4>
 						</div>
-						<div class="tf_tab-content" id="additional-information">
-							<?php _e($additional_information); ?>
-						</div>
-						<div class="tf_tab-content" id="reviews">
-							<?php
-							// If comments are open or we have at least one comment, load up the comment template.
-							if ( comments_open() || get_comments_number() ) :
-								comments_template();
-							endif;
-							?>
 
+						<div class="tf-faqs">
+						<?php foreach ( $tf_faqs as $key => $faq ): ?>
+							<div class="tf-single-faq">
+								<div class="faq-head">
+									<i class="fa fa-question-circle-o" aria-hidden="true">
+									</i> <?php esc_html_e( $faq['name'] ); ?>
+									<span class="faq-indicator">
+										<i class="fa fa-angle-up" aria-hidden="true"></i>
+										<i class="fa fa-angle-down" aria-hidden="true"></i>
+									</span>
+								</div>
+								<div class="faq-content"><?php _e( $faq['desc'] ); ?></div>
+							</div>
+						<?php endforeach; ?>
 						</div>
 					</div>
+					<!-- End highlights content -->
+				<?php endif; ?>
 
+				<!-- Start Review Content -->
+				<div class="tf_contents reviews">
+					<div class="highlights-title">
+						<h4><?php esc_html_e( 'Reviews', 'tourfic' ); ?></h4>
+					</div>
+
+					<?php
+					if ( comments_open() || get_comments_number() ) :
+						comments_template();
+					endif;
+					?>
 				</div>
-				<!-- End Tab Content -->
+
+
+
+				<!-- End Review Content -->
+
 
 				<!-- Start TOC Content -->
 				<div class="tf_toc-wrap">
