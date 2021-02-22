@@ -5,6 +5,7 @@
 .tourfic-wrap {
   font-size: 14px;
   padding-top: 30px;
+  background-color: #fff;
 }
 
 .tourfic-wrap ul {
@@ -294,6 +295,16 @@
 .tf_contents.reviews .comment-respond {
   padding: 0;
   background: transparent;
+}
+
+.tf_toc-wrap {
+  margin-top: 30px;
+}
+
+.tf-comments-count-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 40px;
 }
 
 .tf_tab-wrap {

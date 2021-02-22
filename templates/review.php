@@ -28,26 +28,28 @@ if ( post_password_required() ) {
 <div id="comments" class="tf_comments-area">
 
 	<?php if ( have_comments() ) : ?>
-		<div class="comments-count-wrapper">
+		<div class="tf-comments-count-wrapper">
+
 			<h3 class="comments-title">
 				<?php
 				$comments_title = apply_filters(
 					'astra_comment_form_title',
 					sprintf( // WPCS: XSS OK.
 						/* translators: 1: number of comments */
-						esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'astra' ) ),
+						esc_html( _nx( 'Based on %1$s review', 'Based on %1$s reviews', get_comments_number(), 'comments title', 'tourfic' ) ),
 						number_format_i18n( get_comments_number() ),
-						get_the_title()
 					)
 				);
 
 				echo esc_html( $comments_title );
 				?>
 			</h3>
+
+
 		</div>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-		<nav id="comment-nav-above" class="navigation comment-navigation" aria-label="<?php esc_attr_e( 'Comments Navigation', 'astra' ); ?>">
+		<nav id="comment-nav-above" class="navigation comment-navigation" aria-label="<?php esc_attr_e( 'Comments Navigation', 'tourfic' ); ?>">
 			<h3 class="screen-reader-text"><?php echo esc_html( astra_default_strings( 'string-comment-navigation-next', false ) ); ?></h3>
 			<div class="nav-links">
 
@@ -72,7 +74,7 @@ if ( post_password_required() ) {
 		</ol><!-- .ast-comment-list -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-		<nav id="comment-nav-below" class="navigation comment-navigation" aria-label="<?php esc_attr_e( 'Comments Navigation', 'astra' ); ?>">
+		<nav id="comment-nav-below" class="navigation comment-navigation" aria-label="<?php esc_attr_e( 'Comments Navigation', 'tourfic' ); ?>">
 			<h3 class="screen-reader-text"><?php echo esc_html( astra_default_strings( 'string-comment-navigation-next', false ) ); ?></h3>
 			<div class="nav-links">
 
