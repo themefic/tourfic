@@ -781,3 +781,21 @@ function tf_custom_css(){
 	wp_add_inline_style( 'tourfic-styles', $output );
 }
 add_action( 'wp_enqueue_scripts', 'tf_custom_css', 200 );
+
+/**
+ * Get AVG
+ */
+function tf_avg_ratings( $a = array() ){
+	$a = array_filter($a);
+	$average = array_sum($a)/count($a);
+	return sprintf("%.1f", $average);
+}
+
+/**
+ * Get Percent
+ */
+function tf_avg_rating_percent( $val = 0, $total = 5 ){
+
+	$percent = ($val*100)/$total;
+	return sprintf("%.2f", $percent);
+}

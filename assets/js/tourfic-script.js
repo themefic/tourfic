@@ -1,3 +1,16 @@
+;(function($, win) {
+  $.fn.inViewport = function(cb) {
+     return this.each(function(i,el){
+       function visPx(){
+         var H = $(this).height(),
+             r = el.getBoundingClientRect(), t=r.top, b=r.bottom;
+         return cb.call(el, Math.max(0, t>0? H-t : (b<H?b:H)));
+       } visPx();
+       $(win).on("resize scroll", visPx);
+     });
+  };
+}(jQuery, window));
+
 (function($){
     'use strict';
 
@@ -174,6 +187,23 @@
     });
 
     $(window).load(function(){
+
+        // Trigger Animation
+        jQuery('[data-width]').each(function(){
+
+            var $this = jQuery(this);
+
+            var width = $this.attr('data-width');
+
+            $this.inViewport(function(px) {
+                if( px > 0 ) {
+                    $this.css('width', +width+'%');
+                } else {
+                    $this.css('width', '0%');
+                }
+            });
+
+        });
 
     });
 
