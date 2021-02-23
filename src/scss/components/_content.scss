@@ -89,6 +89,7 @@
 
 .tf_comment-metas .comment-meta label {
     min-width: 230px;
+    margin: 0;
 }
 
 .tf_comment-metas {
@@ -116,4 +117,21 @@ p.comment-form-author {
 
 p.comment-form-email {
     padding-left: 7px;
+}
+
+.tf_comment-metas .comment-meta .tf_comment_meta-key {
+    font-weight: normal;
+}
+
+.tf-comment-list {
+    padding: 0;
+    margin: 0;
+}
+
+.tf-comment-list .comment {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 15px 0;
+    overflow: hidden;
+    clear: both;
 }

@@ -33,7 +33,7 @@ if ( !function_exists('get_field') ) {
 function get_tf_review_form( ){
 	//Declare Vars
 	$comment_send = __( 'Submit', 'tourfic' );
-	$comment_reply = __( 'Leave a Review', 'tourfic' );
+	$comment_reply = __( 'Write a Review', 'tourfic' );
 	$comment_reply_to = __( 'Reply', 'tourfic' );
 
 	$comment_author = 'Name';
@@ -166,6 +166,49 @@ function tf_save_comment_meta_data( $comment_id ) {
 }
 add_action( 'comment_post', 'tf_save_comment_meta_data' );
 
+/**
+ * Generate Star
+ */
+function tf_star_generate( $count ){
+	$stars = '';
+	// Fill Star
+	for ( $i=0; $i < $count; $i++) {
+		$stars .= '&#9733;';
+	}
+	// Outline Star
+	for ( $j=$i; $j < 5; $j++) {
+		$stars .= '&#9734;';
+	}
+	return $stars;
+}
+
+/**
+ * Show Comment meta
+ */
+add_filter( 'get_comment_author_link', 'attach_city_to_author' );
+function attach_city_to_author( $author ) {
+
+    $tf_comment_meta = get_comment_meta( get_comment_ID(), 'tf_comment_meta', true );
+
+    ob_start(); ?>
+
+    <?php if( $tf_comment_meta ) : ?>
+    	<div class="tf_comment-metas">
+    	<?php foreach ($tf_comment_meta as $key => $value) : ?>
+			<div class="comment-meta">
+				<label class="tf_comment_meta-key"><?php _e( $key ); ?></label>
+				<div class="tf_comment_meta-ratings"><?php _e( tf_star_generate($value) ); ?></div>
+			</div>
+    	<?php endforeach; ?>
+    	</div>
+    <?php endif; ?>
+    <?php
+    $output = ob_get_clean();
+
+    if ( $tf_comment_meta )
+        $author .= $output;
+    return $author;
+}
 
 /**
  * Sample template tag function for outputting a cmb2 file_list

@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 			<h3 class="comments-title">
 				<?php
 				$comments_title = apply_filters(
-					'astra_comment_form_title',
+					'tf_comment_form_title',
 					sprintf( // WPCS: XSS OK.
 						/* translators: 1: number of comments */
 						esc_html( _nx( 'Based on %1$s review', 'Based on %1$s reviews', get_comments_number(), 'comments title', 'tourfic' ) ),
@@ -60,7 +60,7 @@ if ( post_password_required() ) {
 		</nav><!-- #comment-nav-above -->
 		<?php endif; ?>
 
-		<ol class="ast-comment-list">
+		<ol class="tf-comment-list">
 			<?php
 			wp_list_comments(
 				array(
