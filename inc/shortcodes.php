@@ -425,6 +425,22 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
 }
 add_shortcode('tf_search_result', 'tourfic_search_result_shortcode');
 
-
+// TF Icon List Shortcode
+add_shortcode('tf_list','tf_icon_list_shortcode');
+function tf_icon_list_shortcode( $atts, $content = null ) {
+    // Params extraction
+    extract(
+        shortcode_atts(
+            array(
+                'icon'   => '',
+                'text'   => '',
+            ),
+            $atts
+        )
+    );
+    ob_start();?>
+    <li><i class="fa  <?php esc_attr_e($icon); ?> "></i> <?php _e($text); ?></li>
+    <?php return ob_get_clean();
+}
 
 

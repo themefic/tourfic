@@ -68,9 +68,11 @@ function tf_add_single_room_wrap( $args ){
 
 				<div class="tf-field-wrap label-left">
 					<div class="tf-label">
-						<label for="tf_room-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Description', 'tourfic' ); ?></label>
+						<label for="tf_room-desc-<?php _e( $key ); ?>"><?php esc_html_e( 'Room Features', 'tourfic' ); ?></label>
 					</div>
-				    <textarea name="tf_room[<?php _e( $key ); ?>][desc]" class="tf_room-desc" rows="5" id="tf_room-desc-<?php _e( $key ); ?>"><?php _e( $desc ); ?></textarea>
+					<div class="field-desc">
+					    <textarea name="tf_room[<?php _e( $key ); ?>][desc]" class="tf_room-desc" rows="5" id="tf_room-desc-<?php _e( $key ); ?>"><?php _e( $desc ); ?></textarea>
+				    	<p>You can find icon class <a href="https://fontawesome.com/v4.7.0/icons/" target="_blank">Here</a>. Example Shortcode: <code><?php esc_attr_e( '[tf_list icon="fa-wifi" text="Free Wifi"]' ); ?></code></p></div>
 				</div>
 
 				<div class="tf-row">

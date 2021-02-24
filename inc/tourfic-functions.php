@@ -799,3 +799,28 @@ function tf_avg_rating_percent( $val = 0, $total = 5 ){
 	$percent = ($val*100)/$total;
 	return sprintf("%.2f", $percent);
 }
+
+/**
+ * Add Tourfic sidebar.
+ */
+function tf_sidebar_widgets_init() {
+    register_sidebar( array(
+        'name'          => __( 'TOURFIC: Before Booking Form', 'tourfic' ),
+        'id'            => 'tf_before_booking_sidebar',
+        'description'   => __( 'Widgets in this area will be shown on tourfic single page before booking form', 'tourfic' ),
+        'before_widget' => '<div id="%1$s" class="tf_widget widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="tf_widgettitle">',
+        'after_title'   => '</h4>',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'TOURFIC: After Booking Form', 'tourfic' ),
+        'id'            => 'tf_after_booking_sidebar',
+        'description'   => __( 'Widgets in this area will be shown on tourfic single page after booking form', 'tourfic' ),
+        'before_widget' => '<div id="%1$s" class="tf_widget widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="tf_widgettitle">',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action( 'widgets_init', 'tf_sidebar_widgets_init', 100 );

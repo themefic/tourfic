@@ -192,6 +192,13 @@
             });
         });
 
+        // Smooth scroll to id
+        $(".reserve-button a").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#rooms").offset().top-32
+            }, 1000);
+        });
+
     });
 
     $(window).load(function(){

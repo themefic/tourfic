@@ -225,6 +225,37 @@
   display: none;
 }
 
+.single-slider-wrapper {
+  position: relative;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  background-color: #000;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.swiper-button-prev i,
+.swiper-button-next i {
+  font-size: 28px;
+}
+
+.swiper-button-prev {
+  left: 20px;
+}
+
+.swiper-button-next {
+  right: 20px;
+}
+
 .tf_gallery-wrap {
   position: relative;
   overflow: hidden;

@@ -126,10 +126,10 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 						<table class="availability-table">
 							<thead>
 							    <tr>
-							      <th><?php esc_html_e( 'Room Type', 'tourfic' ); ?></th>
-							      <th><?php esc_html_e( 'Pax', 'tourfic' ); ?></th>
-							      <th><?php esc_html_e( 'Total Price', 'tourfic' ); ?></th>
-							      <th><?php esc_html_e( 'Select Rooms', 'tourfic' ); ?></th>
+							      <th class="room-type-td"><?php esc_html_e( 'Room Type', 'tourfic' ); ?></th>
+							      <th class="pax-td"><?php esc_html_e( 'Pax', 'tourfic' ); ?></th>
+							      <th class="total-price-td"><?php esc_html_e( 'Total Price', 'tourfic' ); ?></th>
+							      <th class="select-rooms-td"><?php esc_html_e( 'Select Rooms', 'tourfic' ); ?></th>
 							    </tr>
 							</thead>
 							<tbody>
@@ -140,7 +140,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 								extract( $room_type );
 								?>
 								<tr>
-							      <td>
+							      <td class="room-type-td">
 							      	<div class="tf-room-type">
 										<div class="tf-room-title"><?php echo esc_html( $name ); ?></div>
 										<div class="bed-facilities"><?php echo $short_desc; ?></div>
@@ -148,26 +148,23 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 										<div class="room-features">
 											<div class="tf-room-title"><?php esc_html_e( 'Room Features', 'tourfic' ); ?></div>
 											<ul class="room-feature-list">
-												<li><i class="fa fa-wifi"></i> Free WiFi</li>
-												<li><i class="fa fa-bus"></i> Airport shuttle</li>
-												<li><i class="fa fa-cutlery"></i> Restaurant</li>
-												<li><i class="fa fa-coffee"></i> Very Good Breakfast</li>
+												<?php echo do_shortcode( $desc ); ?>
 											</ul>
 										</div>
 									</div>
 							      </td>
-							      <td>
+							      <td class="pax-td">
 							      	<div class="tf_pax">
 							      		<i class="fa fa-user"></i>
 							      		<i class="fa fa-user"></i>
 							      	</div>
 							      </td>
-							      <td>
+							      <td class="total-price-td">
 							      	<div class="tf-price-column">
 										<?php echo tf_price_html($price, $sale_price); ?>
 									</div>
 							      </td>
-							      <td>
+							      <td class="select-rooms-td">
 							      	<form class="tf-room" id="tf_room-id-<?php echo esc_attr( $key ); ?>">
 								      	<div class="room-selection-wrap">
 											<select name="room-selected" id="room-selected">
@@ -182,7 +179,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 											<input type="hidden" name="room_key" value="<?php echo esc_attr( $key ); ?>">
 											<?php tf_room_booking_submit_button( 'I\'ll reserve' ); ?>
 										</div>
-										<div class="tf_desc"><?php echo $desc; ?></div>
+										<div class="tf_desc"></div>
 									</form>
 							      </td>
 							    </tr>

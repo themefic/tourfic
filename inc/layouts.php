@@ -110,6 +110,11 @@ function tf_map_link(){
 // Sidebar
 function get_tf_sidebar(){
 	?>
+	<?php if ( is_active_sidebar( 'tf_before_booking_sidebar' ) ) { ?>
+	    <div id="tf_before_booking_sidebar">
+	        <?php dynamic_sidebar('tf_before_booking_sidebar'); ?>
+	    </div>
+	<?php } ?>
 	<!-- Start Booking widget -->
 	<form class="tf_booking-widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
 		<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
@@ -236,5 +241,10 @@ function get_tf_sidebar(){
 
 	</form>
 	<!-- End Booking widget -->
+	<?php if ( is_active_sidebar( 'tf_after_booking_sidebar' ) ) { ?>
+	    <div id="tf_after_booking_sidebar">
+	        <?php dynamic_sidebar('tf_after_booking_sidebar'); ?>
+	    </div>
+	<?php } ?>
 	<?php
 }
