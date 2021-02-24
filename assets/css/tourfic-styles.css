@@ -44,7 +44,7 @@
 }
 
 .tf_content {
-  width: 60%;
+  width: 70%;
 }
 
 .tf_sidebar {
@@ -454,6 +454,30 @@ p.comment-form-email {
   background-color: #e7711b;
   height: 100%;
   transition: width 1s ease-in-out;
+}
+
+#reply-title {
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#reply-title .faq-indicator {
+  position: relative;
+}
+
+.comment-respond {
+  background-color: #f6f6f6 !important;
+  padding: 20px !important;
+  border: 1px solid #ddd !important;
+}
+
+.comment-respond #commentform {
+  display: none;
 }
 
 .tf_tab-wrap {

@@ -232,3 +232,24 @@ p.comment-form-email {
     height: 100%;
     transition: width 1s ease-in-out;
 }
+
+#reply-title {
+    position: relative;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+}
+
+#reply-title .faq-indicator {
+    position: relative;
+}
+
+.comment-respond {
+    background-color: #f6f6f6!important;
+    padding: 20px !important;
+    border: 1px solid #ddd !important;
+
+    #commentform{
+    	display: none;
+    }
+}

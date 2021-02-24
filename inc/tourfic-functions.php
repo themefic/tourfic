@@ -139,7 +139,7 @@ function get_tf_review_form( ){
 	    // Reply html start
 	    'title_reply_before' => '<div id="reply-title" class="comment-reply-title">',
 	    // Reply html end
-	    'title_reply_after' => '</div>',
+	    'title_reply_after' => '<span class="faq-indicator"> <i class="fa fa-angle-up" aria-hidden="true"></i> <i class="fa fa-angle-down" aria-hidden="true"></i> </span></div>',
 	    //Cancel Reply Text
 	    'cancel_reply_link' => $comment_cancel,
 	    // Redefine your own textarea (the comment body).

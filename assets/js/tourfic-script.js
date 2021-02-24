@@ -184,6 +184,14 @@
             $('.tf_acrselection-wrap').slideToggle('fast');
         });
 
+        // Comment Reply Toggle
+        $(document).on('click', '#reply-title', function(){
+            var $this = $(this);
+            $('#commentform').slideToggle('fast', 'swing', function(){
+                $this.parent().toggleClass('active');
+            });
+        });
+
     });
 
     $(window).load(function(){
