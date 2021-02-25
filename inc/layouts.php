@@ -246,7 +246,7 @@ function get_tf_sidebar(){
 	<div class="tf-map-tour-wrap">
 		<?php $location = get_field('formatted_location') ? get_field('formatted_location') : null; ?>
 		<div class="map-bg"></div>
-		<div class="ni-buttons">
+		<div class="map-buttons">
 			<a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank" class="button tf_button"><?php esc_html_e( 'Show on map', 'tourfic' ); ?></a>
 		</div>
 	</div>

@@ -25,8 +25,12 @@
     height: 170px;
 }
 
-.tf-map-tour-wrap .ni-buttons {
+.tf-map-tour-wrap .map-buttons {
     position: absolute;
     width: 100%;
     bottom: 30px;
+
+    a{
+    	width: 100%;
+    }
 }
