@@ -242,6 +242,16 @@ function get_tf_sidebar(){
 	</form>
 	<!-- End Booking widget -->
 
+	<!-- Start map tour widget -->
+	<div class="tf-map-tour-wrap">
+		<?php $location = get_field('formatted_location') ? get_field('formatted_location') : null; ?>
+		<div class="map-bg"></div>
+		<div class="ni-buttons">
+			<a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank" class="button tf_button"><?php esc_html_e( 'Show on map', 'tourfic' ); ?></a>
+		</div>
+	</div>
+	<!-- End map tour widget -->
+
 	<!-- Start similar tour widget -->
 	<div class="tf-similar-tour-wrap">
 		<div class="not-impressive"><?php esc_html_e( 'Not impressive?', 'tourfic' ); ?></div>
@@ -251,7 +261,7 @@ function get_tf_sidebar(){
 	</div>
 	<!-- End similar tour widget -->
 
-	<!-- Start similar tour widget -->
+	<!-- Start ask ques tour widget -->
 	<div class="tf-gotq-tour-wrap">
 		<div class="gotq-top">
 			<h4><?php esc_html_e( 'Got a question?', 'tourfic' ); ?></h4>
@@ -261,7 +271,7 @@ function get_tf_sidebar(){
 			<a href="#" id="tf-ask-question-trigger" class="button tf_button btn-outline"><?php esc_html_e( 'Ask a question', 'tourfic' ); ?></a>
 		</div>
 	</div>
-	<!-- End similar tour widget -->
+	<!-- End ask ques tour widget -->
 
 	<?php if ( is_active_sidebar( 'tf_after_booking_sidebar' ) ) { ?>
 	    <div id="tf_after_booking_sidebar">

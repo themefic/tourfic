@@ -828,7 +828,7 @@ add_action( 'widgets_init', 'tf_sidebar_widgets_init', 100 );
 // Ask Question
 function tf_ask_question(){
 	?>
-	<div id="tf-ask-question">
+	<div id="tf-ask-question" style="display: none;">
 		<div class="tf-aq-overlay"></div>
 		<div class="tf-aq-outer">
 			<span class="close-aq">&times;</span>
@@ -836,13 +836,13 @@ function tf_ask_question(){
 				<h4><?php esc_html_e( 'Submit your question', 'tourfic' ); ?></h4>
 				<form id="ask-question" action="" method="post">
 					<div class="tf-aq-field">
-						<input type="text" name="your-name" placeholder="<?php esc_attr_e( 'Your Name', 'tourfic' ); ?>">
+						<input type="text" name="your-name" placeholder="<?php esc_attr_e( 'Your Name', 'tourfic' ); ?>" required />
 					</div>
 					<div class="tf-aq-field">
-						<input type="email" name="your-email" placeholder="<?php esc_attr_e( 'Your email', 'tourfic' ); ?>">
+						<input type="email" name="your-email" placeholder="<?php esc_attr_e( 'Your email', 'tourfic' ); ?>" required />
 					</div>
 					<div class="tf-aq-field">
-						<textarea placeholder="<?php esc_attr_e( 'Your Question', 'tourfic' ); ?>" name="your-question"></textarea>
+						<textarea placeholder="<?php esc_attr_e( 'Your Question', 'tourfic' ); ?>" name="your-question" required></textarea>
 					</div>
 					<div class="tf-aq-field">
 						<button type="reset" class="screen-reader-text"><?php esc_html_e( 'Reset', 'tourfic' ); ?></button>

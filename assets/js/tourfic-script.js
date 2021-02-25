@@ -202,7 +202,7 @@
         // Ask question
         $(document).on('click', '#tf-ask-question-trigger', function(e){
             e.preventDefault();
-            $('#tf-ask-question').fadeIn();
+            $('#tf-ask-question').fadeIn().find('.response').html("");
         });
 
         // Close Ask question
@@ -245,7 +245,9 @@
                     var response = JSON.parse(data);
 
                     if( response.status == 'sent' ) {
-                        $this.find('.response').html("Your question has been sent!");
+                        $this.find('.response').html( response.msg );
+
+                        $this.find('[type="reset"]').trigger( 'click' );
                     } else {
                         $this.find('.response').html( response.msg );
                     }
