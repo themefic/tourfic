@@ -70,3 +70,35 @@
     margin-right: 10px;
     vertical-align: middle;
 }
+
+.tf-similar-tour-wrap {
+    overflow: hidden;
+    padding: 10px;
+    border: 1px solid #ebf3fe;
+    margin-top: 30px;
+    background-color: #fbfcff;
+}
+
+.not-impressive {
+    line-height: 1;
+    margin-bottom: 13px;
+}
+
+.ni-buttons .button {
+	border-color: #004d95;
+    color: #004d95;
+    min-width: 100%;
+
+    &:hover{
+    	background: #004d95;
+    	color: #fff;
+    }
+}
+
+.tf-gotq-tour-wrap {
+    margin: 28px 0;
+}
+
+.gotq-top {
+    margin-bottom: 12px;
+}

@@ -115,6 +115,10 @@ class Tourfic_Metabox_Class {
             update_post_meta( $post_id, 'terms_and_conditions', $_POST['terms_and_conditions'] );
         }
 
+        if ( isset( $_POST['send_email_to'] ) ) {
+            update_post_meta( $post_id, 'send_email_to', $_POST['send_email_to'] );
+        }
+
 		// Set room
 		$tf_room = isset( $_POST['tf_room'] ) ? (array) $_POST['tf_room'] : array();
 		// Sanitize
@@ -152,6 +156,7 @@ class Tourfic_Metabox_Class {
         $information = get_post_meta( $post->ID, 'information', true );
         $additional_information = get_post_meta( $post->ID, 'additional_information', true );
         $terms_and_conditions = get_post_meta( $post->ID, 'terms_and_conditions', true );
+        $send_email_to = get_post_meta( $post->ID, 'send_email_to', true ) ? get_post_meta( $post->ID, 'send_email_to', true ) : "{{admin_email}}";
 
         // Display the form, using the current value.
         ?>
@@ -273,6 +278,17 @@ class Tourfic_Metabox_Class {
                             <div class="tf_add-faq-buttons">
                                 <button type="button" class="tf_add-faq button"><?php esc_html_e( 'Add FAQ', 'tourfic' ); ?></button>
                             </div>
+                        </div>
+
+                        <h4><?php esc_html_e( 'Ask Questions', 'tourfic' ); ?></h4>
+
+                        <div class="tf-field-wrap">
+                            <div class="tf-label">
+                                <label for="send_email_to"><?php esc_html_e( 'Send email to', 'tourfic' ); ?></label>
+                            </div>
+
+                            <input type="text" class="wfull" placeholder="<?php esc_attr_e( 'abc@xyz.com', 'tourfic' ); ?>" id="send_email_to" name="send_email_to" value="<?php echo esc_attr( $send_email_to ); ?>" size="25" />
+                            <p>Available tags: <code title="<?php esc_html_e( 'Site admin email.', 'tourfic' ); ?>">{{admin_email}}</code>, <code title="<?php esc_html_e( 'Author email of this post.', 'tourfic' ); ?>">{{author_email}}</code></p>
                         </div>
 
                     </div>

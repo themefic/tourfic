@@ -824,3 +824,88 @@ function tf_sidebar_widgets_init() {
     ) );
 }
 add_action( 'widgets_init', 'tf_sidebar_widgets_init', 100 );
+
+// Ask Question
+function tf_ask_question(){
+	?>
+	<div id="tf-ask-question">
+		<div class="tf-aq-overlay"></div>
+		<div class="tf-aq-outer">
+			<span class="close-aq">&times;</span>
+			<div class="tf-aq-inner">
+				<h4><?php esc_html_e( 'Submit your question', 'tourfic' ); ?></h4>
+				<form id="ask-question" action="" method="post">
+					<div class="tf-aq-field">
+						<input type="text" name="your-name" placeholder="<?php esc_attr_e( 'Your Name', 'tourfic' ); ?>">
+					</div>
+					<div class="tf-aq-field">
+						<input type="email" name="your-email" placeholder="<?php esc_attr_e( 'Your email', 'tourfic' ); ?>">
+					</div>
+					<div class="tf-aq-field">
+						<textarea placeholder="<?php esc_attr_e( 'Your Question', 'tourfic' ); ?>" name="your-question"></textarea>
+					</div>
+					<div class="tf-aq-field">
+						<button type="reset" class="screen-reader-text"><?php esc_html_e( 'Reset', 'tourfic' ); ?></button>
+						<button type="submit" form="ask-question" class="button tf_button"><?php esc_html_e( 'Submit', 'tourfic' ); ?></button>
+						<input type="hidden" name="post_id" value="<?php esc_attr_e( get_the_ID() ); ?>">
+						<?php wp_nonce_field( 'ask_question_nonce' ); ?>
+						<div class="response"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<?php
+}
+add_action( 'wp_footer', 'tf_ask_question' );
+
+// Ask question ajax
+function tf_ask_question_ajax(){
+	$response = array();
+
+	if ( !check_ajax_referer( 'ask_question_nonce' ) ){
+		$response['status'] = 'error';
+		$response['msg'] = __('Security error! Reload the page and try again.', 'tourfic');
+		echo json_encode( $response );
+		wp_die();
+	}
+
+	$name = isset( $_POST['your-name'] ) ? sanitize_text_field( $_POST['your-name'] ) : null;
+	$email = isset( $_POST['your-email'] ) ? sanitize_email( $_POST['your-email'] ) : null;
+	$question = isset( $_POST['your-question'] ) ? sanitize_text_field( $_POST['your-question'] ) : null;
+
+	$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : null;
+	$post_title = get_the_title( $post_id );
+
+	$author_id = get_post_field('post_author', $post_id);
+
+	$send_email_to = get_post_meta( $post_id, 'send_email_to', true ) ? get_post_meta( $post_id, 'send_email_to', true ) : null;
+
+	$email_replace = array(
+	    "{{admin_email}}" => sanitize_email( get_option( 'admin_email' ) ),
+	    "{{author_email}}" => sanitize_email( get_the_author_meta( 'user_email' , $author_id ) ),
+	);
+
+    $send_email_to = strtr($send_email_to, $email_replace);
+
+
+	$subject     = sprintf( esc_html__( 'Someone asked question on: %s', 'tourfic' ), $post_title );
+	$message     = "{$question}";
+	$headers[]   = 'Reply-To: '.$name.' <'.$email.'>';
+	$attachments = array();
+
+
+	if( wp_mail( $send_email_to, $subject, $message, $headers, $attachments ) ){
+		$response['status'] = 'sent';
+		$response['msg'] = __('Your question has been sent!', 'tourfic');
+	} else {
+		$response['status'] = 'error';
+		$response['msg'] = __('Message sent failed!', 'tourfic');
+	}
+
+	echo json_encode( $response );
+
+	die();
+}
+add_action( 'wp_ajax_tf_ask_question', 'tf_ask_question_ajax' );
+add_action( 'wp_ajax_nopriv_tf_ask_question', 'tf_ask_question_ajax' );

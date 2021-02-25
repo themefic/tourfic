@@ -241,6 +241,28 @@ function get_tf_sidebar(){
 
 	</form>
 	<!-- End Booking widget -->
+
+	<!-- Start similar tour widget -->
+	<div class="tf-similar-tour-wrap">
+		<div class="not-impressive"><?php esc_html_e( 'Not impressive?', 'tourfic' ); ?></div>
+		<div class="ni-buttons">
+			<a href="#" class="button tf_button btn-outline"><?php esc_html_e( 'Show more hotels', 'tourfic' ); ?></a>
+		</div>
+	</div>
+	<!-- End similar tour widget -->
+
+	<!-- Start similar tour widget -->
+	<div class="tf-gotq-tour-wrap">
+		<div class="gotq-top">
+			<h4><?php esc_html_e( 'Got a question?', 'tourfic' ); ?></h4>
+			<p><?php esc_html_e( 'Find more info in the FAQ section.', 'tourfic' ); ?></p>
+		</div>
+		<div class="ni-buttons">
+			<a href="#" id="tf-ask-question-trigger" class="button tf_button btn-outline"><?php esc_html_e( 'Ask a question', 'tourfic' ); ?></a>
+		</div>
+	</div>
+	<!-- End similar tour widget -->
+
 	<?php if ( is_active_sidebar( 'tf_after_booking_sidebar' ) ) { ?>
 	    <div id="tf_after_booking_sidebar">
 	        <?php dynamic_sidebar('tf_after_booking_sidebar'); ?>

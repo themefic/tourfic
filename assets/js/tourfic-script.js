@@ -199,6 +199,66 @@
             }, 1000);
         });
 
+        // Ask question
+        $(document).on('click', '#tf-ask-question-trigger', function(e){
+            e.preventDefault();
+            $('#tf-ask-question').fadeIn();
+        });
+
+        // Close Ask question
+        $(document).on('click', 'span.close-aq', function(){
+            $('#tf-ask-question').fadeOut();
+        });
+
+        // Ask question Submit
+        $(document).on('submit', 'form#ask-question', function(e){
+            e.preventDefault();
+
+            var $this = $(this);
+
+            var formData = new FormData(this);
+            formData.append('action', 'tf_ask_question');
+
+            $.ajax({
+                type: 'post',
+                url: tf_params.ajax_url,
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function(data){
+                    $this.block({
+                        message: null,
+                        overlayCSS: {
+                            background: "#fff",
+                            opacity: .5
+                        }
+                    });
+
+                    $this.find('.response').html("Sending your question...");
+                },
+                complete: function(data){
+                    $this.unblock();
+                },
+                success: function(data){
+                    $this.unblock();
+
+                    var response = JSON.parse(data);
+
+                    if( response.status == 'sent' ) {
+                        $this.find('.response').html("Your question has been sent!");
+                    } else {
+                        $this.find('.response').html( response.msg );
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+
+                },
+
+            });
+
+        });
+
     });
 
     $(window).load(function(){
