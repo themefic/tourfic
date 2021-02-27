@@ -94,6 +94,13 @@ function tf_add_single_room_wrap( $args ){
 					</div>
 				</div>
 
+				<div class="tf-field-wrap label-left">
+					<div class="tf-label">
+						<label for="tf_room-pax-<?php _e( $key ); ?>"><?php esc_html_e( 'Pax',  'tourfic' ); ?></label>
+					</div>
+					<input type="number" step="any" min="0" name="tf_room[<?php _e( $key ); ?>][pax]" class="tf_room-pax" id="tf_room-sale-price-<?php _e( $key ); ?>" value="<?php echo esc_attr( $pax ); ?>">
+				</div>
+
 			</div>
 		</div>
 	</div>
