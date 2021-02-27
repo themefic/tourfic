@@ -135,6 +135,13 @@
   height: 170px;
 }
 
+.tf-map-tour-wrap .map-bg img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .tf-map-tour-wrap .map-buttons {
   position: absolute;
   width: 100%;
