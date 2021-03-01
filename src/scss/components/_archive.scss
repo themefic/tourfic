@@ -1,5 +1,10 @@
-
 /*Archive page*/
+.archive_ajax_result {
+    .price-per-night {
+        line-height: 1;
+    }
+}
+
 .single-tour-inner {
   display: block;
   width: 100%;
@@ -257,28 +262,19 @@
 
 .roomrow_flex {
     width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     padding: 4px;
-    margin: -4px;
     border-radius: 2px;
     line-height: 18px;
     font-size: 13px;
+    justify-content: space-between;
 }
 
 .roomName_flex {
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
     flex-grow: 1;
-    padding-right: 32px;
     width: auto;
-    max-width: none;
+    max-width: 50%;
 }
-
-
 
 .roomPrice.roomPrice_flex.sr_discount {
     text-align: right;
@@ -310,4 +306,28 @@
 
 #am_posts_navigation {
     display: none;
+}
+
+.tf-archive-shortdesc {
+    white-space: break-spaces;
+    line-height: 1.9;
+}
+
+.tf-archive-desc {
+    .tourfic-wrap &{
+        margin-bottom: 12px;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 7px;
+    }
+}
+
+.tf-archive-roomname {
+    display: flex;
+    margin-bottom: 12px;
+    span.dash {
+        margin: 0 10px;
+    }
 }

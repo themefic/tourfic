@@ -786,6 +786,10 @@ add_action( 'wp_enqueue_scripts', 'tf_custom_css', 200 );
  * Get AVG
  */
 function tf_avg_ratings( $a = array() ){
+	if ( !$a ) {
+		return '5.0';
+	}
+
 	$a = array_filter($a);
 	$average = array_sum($a)/count($a);
 	return sprintf("%.1f", $average);

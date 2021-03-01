@@ -26,11 +26,14 @@ function tourfic_archive_single() {
 				</div>
 				<!-- Title area End -->
 
-				<?php if( $tf_room ) : ?>
+				<?php if( $tf_room ) : $i = 0; ?>
 				<!-- Room details start -->
 				<div class="sr_rooms_table_block">
 					<?php foreach ( $tf_room as $key => $room_type ) : ?>
 						<?php
+						if(++$i > 1){
+							break;
+						}
 						// Array to variable
 						extract( $room_type );
 						?>
@@ -41,15 +44,16 @@ function tourfic_archive_single() {
 									<div class="roomName_flex">
 										<div class="roomNameInner">
 											<div class="room_link">
-												<div class="tf-archive-roomname"><strong><?php echo esc_html( $name ); ?></strong> - <span><?php tf_pax( $pax ); ?></span></div>
-												<div><?php echo do_shortcode( $desc ); ?></div>
+												<div class="tf-archive-roomname"><strong><?php echo esc_html( $name ); ?></strong> <span class="dash">-</span> <span><?php tf_pax( $pax ); ?></span></div>
+												<ul class="tf-archive-desc"><?php echo do_shortcode( $desc ); ?></ul>
+												<div class="bui-price-display__value prco-inline-block-maker-helper" aria-hidden="true"><?php echo tf_price_html($price, $sale_price); ?></div>
 											</div>
 										</div>
 									</div>
 
 									<div class="roomPrice roomPrice_flex sr_discount">
 										<div class="prco-ltr-right-align-helper">
-											<div class="bui-price-display__value prco-inline-block-maker-helper" aria-hidden="true"><?php echo tf_price_html($price, $sale_price); ?></div>
+											<div class="tf-archive-shortdesc"><?php echo do_shortcode( $short_desc ); ?></div>
 										</div>
 									</div>
 
@@ -61,7 +65,7 @@ function tourfic_archive_single() {
 				<!-- Room details end -->
 
 				<div class="availability-btn-area">
-					<a href="<?php the_permalink(); ?>" class="button tf_button"><?php esc_html_e( 'See availability', 'tourfic' ); ?></a>
+					<a href="<?php the_permalink(); ?>" class="button tf_button"><?php esc_html_e( 'Book Now', 'tourfic' ); ?></a>
 				</div>
 				<?php endif; ?>
 
@@ -79,6 +83,8 @@ function tf_item_review_block(){
 	$comments = get_comments( array( 'post_id' => get_the_ID() ) );
 
 	$tf_overall_rate = array();
+	$tf_overall_rate['review'] = null;
+
 	$tf_extr_html = '';
 
 	foreach ( $comments as $comment ) {
@@ -98,6 +104,7 @@ function tf_item_review_block(){
 	    	$tf_overall_rate['rooms'][] = "5";
 	    }
 	}
+
 	?>
 	<div class="tf_item_review_block">
 		<div class="reviewFloater reviewFloaterBadge__container">

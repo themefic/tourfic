@@ -1425,6 +1425,10 @@ span.close-aq {
 }
 
 /*Archive page*/
+.archive_ajax_result .price-per-night {
+  line-height: 1;
+}
+
 .single-tour-inner {
   display: block;
   width: 100%;
@@ -1610,17 +1614,16 @@ span.close-aq {
   width: 100%;
   display: flex;
   padding: 4px;
-  margin: -4px;
   border-radius: 2px;
   line-height: 18px;
   font-size: 13px;
+  justify-content: space-between;
 }
 
 .roomName_flex {
   flex-grow: 1;
-  padding-right: 32px;
   width: auto;
-  max-width: none;
+  max-width: 50%;
 }
 
 .roomPrice.roomPrice_flex.sr_discount {
@@ -1653,4 +1656,27 @@ span.close-aq {
 
 #am_posts_navigation {
   display: none;
+}
+
+.tf-archive-shortdesc {
+  white-space: break-spaces;
+  line-height: 1.9;
+}
+
+.tourfic-wrap .tf-archive-desc {
+  margin-bottom: 12px;
+}
+
+.tf-archive-desc li {
+  display: inline-block;
+  margin-right: 7px;
+}
+
+.tf-archive-roomname {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.tf-archive-roomname span.dash {
+  margin: 0 10px;
 }
