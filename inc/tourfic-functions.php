@@ -909,3 +909,16 @@ function tf_ask_question_ajax(){
 }
 add_action( 'wp_ajax_tf_ask_question', 'tf_ask_question_ajax' );
 add_action( 'wp_ajax_nopriv_tf_ask_question', 'tf_ask_question_ajax' );
+
+/**
+ * Generate PAX
+ */
+function tf_pax( $pax ) {
+	if ( $pax ) : ?>
+	  	<div class="tf_pax">
+	  		<?php for ($i=0; $i < $pax; $i++) {
+	  			echo '<i class="fa fa-user"></i>';
+	  		} ?>
+	  	</div>
+	<?php endif;
+}

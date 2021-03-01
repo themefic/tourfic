@@ -42,7 +42,7 @@ function tourfic_archive_single() {
 										<div class="roomNameInner">
 											<div class="room_link">
 												<div><strong><?php echo esc_html( $name ); ?></strong></div>
-												<div><?php echo $short_desc; ?></div>
+												<div><?php echo $desc; ?></div>
 											</div>
 										</div>
 									</div>

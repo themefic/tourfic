@@ -41,8 +41,8 @@ function tourfic_archive_single() {
 									<div class="roomName_flex">
 										<div class="roomNameInner">
 											<div class="room_link">
-												<div><strong><?php echo esc_html( $name ); ?></strong></div>
-												<div><?php echo $short_desc; ?></div>
+												<div class="tf-archive-roomname"><strong><?php echo esc_html( $name ); ?></strong> - <span><?php tf_pax( $pax ); ?></span></div>
+												<div><?php echo do_shortcode( $desc ); ?></div>
 											</div>
 										</div>
 									</div>
@@ -75,17 +75,52 @@ function tourfic_archive_single() {
 
 // Review block
 function tf_item_review_block(){
-	return;
+
+	$comments = get_comments( array( 'post_id' => get_the_ID() ) );
+
+	$tf_overall_rate = array();
+	$tf_extr_html = '';
+
+	foreach ( $comments as $comment ) {
+
+	    $tf_comment_meta = get_comment_meta( $comment->comment_ID, 'tf_comment_meta', true );
+
+	    if( $tf_comment_meta ) {
+	    	foreach ($tf_comment_meta as $key => $value) {
+	    		$tf_overall_rate[$key][] = $value ? $value : "5";
+	    	}
+	    } else {
+	    	$tf_overall_rate['review'][] = "5";
+	    	$tf_overall_rate['sleep'][] = "5";
+	    	$tf_overall_rate['location'][] = "5";
+	    	$tf_overall_rate['services'][] = "5";
+	    	$tf_overall_rate['cleanliness'][] = "5";
+	    	$tf_overall_rate['rooms'][] = "5";
+	    }
+	}
 	?>
 	<div class="tf_item_review_block">
 		<div class="reviewFloater reviewFloaterBadge__container">
 		    <div class="sr-review-score">
 		        <a class="sr-review-score__link" href="/" target="_blank">
 		            <div class="bui-review-score c-score bui-review-score--end">
-		                <div class="bui-review-score__badge" aria-label="Scored 9.2 "> 9.2 </div>
+		                <div class="bui-review-score__badge"> <?php _e( tf_avg_ratings($tf_overall_rate['review']) ); ?> </div>
 		                <div class="bui-review-score__content">
-		                    <div class="bui-review-score__title"> Superb </div>
-		                    <div class="bui-review-score__text"> 44 reviews </div>
+		                    <div class="bui-review-score__title"> <?php esc_html_e( 'Review score', 'tourfic' ); ?> </div>
+		                    <div class="bui-review-score__text">
+							<?php
+							$comments_title = apply_filters(
+								'tf_comment_form_title',
+								sprintf( // WPCS: XSS OK.
+									/* translators: 1: number of comments */
+									esc_html( _nx( '%1$s review', '%1$s reviews', get_comments_number(), 'comments title', 'tourfic' ) ),
+									number_format_i18n( get_comments_number() ),
+								)
+							);
+
+							echo esc_html( $comments_title );
+							?>
+		                    </div>
 		                </div>
 		            </div>
 		        </a>

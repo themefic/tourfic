@@ -22,7 +22,7 @@ function tf_add_room_data_action(){
 function tf_add_single_room_wrap( $args ){
     $defaults = array (
         'key' => '',
-        'room' => '',
+        'room' => array(),
     );
 
     // Parse incoming $args into an array and merge it with $defaults
@@ -35,6 +35,7 @@ function tf_add_single_room_wrap( $args ){
     $key =  isset( $args['key'] ) ? $args['key'] : "";
 
     $room_title = ( $args['room']['name'] ) ? $args['room']['name'] : __( '# Room Title', 'tourfic' );
+    $pax = isset( $args['room']['pax'] ) ? $args['room']['pax'] : '2';
 
 	ob_start();
 	?>

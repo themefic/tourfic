@@ -154,13 +154,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 									</div>
 							      </td>
 							      <td class="pax-td">
-							      	<?php if ( $pax ) : ?>
-								      	<div class="tf_pax">
-								      		<?php for ($i=0; $i < $pax; $i++) { 
-								      			echo '<i class="fa fa-user"></i>';
-								      		} ?>								      		
-								      	</div>
-								    <?php endif; ?>
+							      	<?php tf_pax( $pax ); ?>
 							      </td>
 							      <td class="total-price-td">
 							      	<div class="tf-price-column">
