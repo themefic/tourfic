@@ -102,7 +102,7 @@ function tf_item_review_block(){
 	<div class="tf_item_review_block">
 		<div class="reviewFloater reviewFloaterBadge__container">
 		    <div class="sr-review-score">
-		        <a class="sr-review-score__link" href="/" target="_blank">
+		        <a class="sr-review-score__link" href="<?php the_permalink(); ?>" target="_blank">
 		            <div class="bui-review-score c-score bui-review-score--end">
 		                <div class="bui-review-score__badge"> <?php _e( tf_avg_ratings($tf_overall_rate['review']) ); ?> </div>
 		                <div class="bui-review-score__content">
