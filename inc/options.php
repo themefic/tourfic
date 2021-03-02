@@ -163,7 +163,7 @@
                 'title'    => __( 'Select Single Page Template', 'tourfic' ),
                 'options'  => array(
                     'single-tourfic.php' => 'Style 1',
-                    'single-tourfic-2.php' => 'Style 2',
+                    //'single-tourfic-2.php' => 'Style 2',
                 ),
                 'default'  => 'single-tourfic.php',
 

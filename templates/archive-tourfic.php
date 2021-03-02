@@ -18,7 +18,7 @@ get_header('tourfic'); ?>
 			<!-- Start Content -->
 			<div class="tf_content">
 
-				<div class="archive_ajax_result">
+				<div class="archive_ajax_result tours-grid">
 					<?php if ( have_posts() ) : ?>
 						<?php while ( have_posts() ) : the_post(); ?>
 							<?php tourfic_archive_single(); ?>

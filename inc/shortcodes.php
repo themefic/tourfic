@@ -404,7 +404,7 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
     <!-- Start Content -->
     <div class="tf_search_result">
 
-        <div class="archive_ajax_result">
+        <div class="archive_ajax_result tours-grid">
             <?php if ( $loop->have_posts() ) : ?>
                 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                     <?php tourfic_archive_single(); ?>

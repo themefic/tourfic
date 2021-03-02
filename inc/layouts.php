@@ -143,7 +143,8 @@ function tf_map_link(){
 	?>
 	<!-- Start map link -->
 	<div class="tf_map-link">
-		<?php echo tf_get_svg('checkin'); ?> <?php echo esc_html( $location ); ?>
+		<?php echo tf_get_svg('checkin'); ?> <a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank"><?php echo esc_html( $location ); ?></a>
+
 	</div>
 	<!-- End map link -->
 	<?php

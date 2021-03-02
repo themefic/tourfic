@@ -1680,3 +1680,60 @@ span.close-aq {
 .tf-archive-roomname span.dash {
   margin: 0 10px;
 }
+
+.archive_ajax_result.tours-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px;
+}
+
+.archive_ajax_result.tours-grid .single-tour-wrap {
+  width: 50%;
+  padding: 0 5px;
+  margin-bottom: 10px;
+  flex: 0 0 50%;
+}
+
+.archive_ajax_result.tours-grid .single-tour-inner {
+  margin: 0;
+  height: 100%;
+  padding: 12px;
+}
+
+.archive_ajax_result.tours-grid .tourfic-single-left {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.archive_ajax_result.tours-grid .tourfic-single-right {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.archive_ajax_result.tours-grid .tf_item_review_block {
+  max-width: 40%;
+}
+
+.archive_ajax_result.tours-grid .tf_item_main_block {
+  max-width: 60%;
+}
+
+.archive_ajax_result.tours-grid .bui-review-score__title {
+  font-size: 14px;
+}
+
+.archive_ajax_result.tours-grid .tf_map-link {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.archive_ajax_result.tours-grid .tf_map-link svg {
+  min-width: 20px;
+}
+
+.archive_ajax_result.tours-grid .tf_map-link a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
