@@ -332,6 +332,11 @@
     }
 }
 
+.single-tour-wrap,
+.single-tour-wrap * {
+    transition: all .3s ease-out;
+}
+
 // Grid
 .archive_ajax_result{
     &.tours-grid{
@@ -388,6 +393,53 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+        }
+
+        .roomrow_flex {
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .roomName_flex {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .roomPrice.roomPrice_flex.sr_discount {
+            display: none;
+        }
+    }
+}
+
+// List grid
+.tf-action-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+
+    svg{
+        path{
+
+        }
+    }
+}
+
+.tf-list-grid {
+    display: flex;
+    align-items: center;
+
+    a{
+        display: inline-flex;
+        margin-left: 10px;
+        opacity: .4;
+
+        &:hover,
+        &.active{
+            opacity: 1;
         }
     }
 }

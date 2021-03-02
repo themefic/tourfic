@@ -403,8 +403,13 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
 
     <!-- Start Content -->
     <div class="tf_search_result">
-
-        <div class="archive_ajax_result tours-grid">
+        <div class="tf-action-top">
+            <div class="tf-list-grid">
+                <a href="#list-view" data-id="list-view" class="change-view" title="List View"><?php echo tf_get_svg('list_view'); ?></a>
+                <a href="#grid-view" data-id="grid-view" class="change-view" title="Grid View"><?php echo tf_get_svg('grid_view'); ?></a>
+            </div>
+        </div>
+        <div class="archive_ajax_result">
             <?php if ( $loop->have_posts() ) : ?>
                 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                     <?php tourfic_archive_single(); ?>

@@ -140,10 +140,14 @@ function tf_item_review_block(){
 // Map Link
 function tf_map_link(){
 	$location = get_field('formatted_location') ? get_field('formatted_location') : null;
+
+	if ( !$location ) {
+		return;
+	}
 	?>
 	<!-- Start map link -->
 	<div class="tf_map-link">
-		<?php echo tf_get_svg('checkin'); ?> <a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank"><?php echo esc_html( $location ); ?></a>
+		<?php echo tf_get_svg('checkin'); ?> <a title="<?php echo esc_attr( $location ); ?>" href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank"><?php echo esc_html( $location ); ?></a>
 
 	</div>
 	<!-- End map link -->

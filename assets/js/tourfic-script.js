@@ -261,6 +261,22 @@
 
         });
 
+        // Change view
+        $(document).on('click', '.change-view', function(e){
+            e.preventDefault();
+            $('.change-view').removeClass('active');
+            $(this).addClass('active');
+
+            var dataid = $(this).data('id');
+            if ( dataid == 'grid-view' ) {
+                $('.archive_ajax_result').addClass('tours-grid');
+            } else {
+                $('.archive_ajax_result').removeClass('tours-grid');
+            }
+
+
+        });
+
     });
 
     $(window).load(function(){

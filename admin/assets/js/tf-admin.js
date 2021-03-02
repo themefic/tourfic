@@ -156,7 +156,6 @@ jQuery(function($){
             // Now display the actual file_frame
             file_frame.open();
 
-
         });
 
 	});

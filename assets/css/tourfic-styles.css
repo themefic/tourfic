@@ -1681,6 +1681,11 @@ span.close-aq {
   margin: 0 10px;
 }
 
+.single-tour-wrap,
+.single-tour-wrap * {
+  transition: all .3s ease-out;
+}
+
 .archive_ajax_result.tours-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1736,4 +1741,43 @@ span.close-aq {
 .archive_ajax_result.tours-grid .tf_map-link a {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.archive_ajax_result.tours-grid .roomrow_flex {
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.archive_ajax_result.tours-grid .roomName_flex {
+  width: 100%;
+  max-width: 100%;
+}
+
+.archive_ajax_result.tours-grid .roomPrice.roomPrice_flex.sr_discount {
+  display: none;
+}
+
+.tf-action-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+
+.tf-list-grid {
+  display: flex;
+  align-items: center;
+}
+
+.tf-list-grid a {
+  display: inline-flex;
+  margin-left: 10px;
+  opacity: .4;
+}
+
+.tf-list-grid a:hover, .tf-list-grid a.active {
+  opacity: 1;
 }
