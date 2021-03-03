@@ -171,7 +171,57 @@ function tourfic_register_taxes_destination() {
         'rest_base' => 'destination',
         'rest_controller_class' => 'WP_REST_Terms_Controller',
         'show_in_quick_edit' => true,
-            ];
+    ];
     register_taxonomy( 'destination', [ 'tourfic' ], apply_filters( 'tf_destination_tax_args', $destination_args ) );
+
+
+	/**
+	 * Taxonomy: Filters.
+	 */
+	$labels = [
+		"name" => __( "Filters", 'tourfic' ),
+		"singular_name" => __( "Filter", 'tourfic' ),
+		"menu_name" => __( "Filters", 'tourfic' ),
+		"all_items" => __( "All Filters", 'tourfic' ),
+		"edit_item" => __( "Edit Filter", 'tourfic' ),
+		"view_item" => __( "View Filter", 'tourfic' ),
+		"update_item" => __( "Update Filter name", 'tourfic' ),
+		"add_new_item" => __( "Add new Filter", 'tourfic' ),
+		"new_item_name" => __( "New Filter name", 'tourfic' ),
+		"parent_item" => __( "Parent Filter", 'tourfic' ),
+		"parent_item_colon" => __( "Parent Filter:", 'tourfic' ),
+		"search_items" => __( "Search Filters", 'tourfic' ),
+		"popular_items" => __( "Popular Filters", 'tourfic' ),
+		"separate_items_with_commas" => __( "Separate Filters with commas", 'tourfic' ),
+		"add_or_remove_items" => __( "Add or remove Filters", 'tourfic' ),
+		"choose_from_most_used" => __( "Choose from the most used Filters", 'tourfic' ),
+		"not_found" => __( "No Filters found", 'tourfic' ),
+		"no_terms" => __( "No Filters", 'tourfic' ),
+		"items_list_navigation" => __( "Filters list navigation", 'tourfic' ),
+		"items_list" => __( "Filters list", 'tourfic' ),
+		"back_to_items" => __( "Back to Filters", 'tourfic' ),
+	];
+
+	$args = [
+		"label" => __( "Filters", 'tourfic' ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => false,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"show_in_quick_edit" => false,
+    	"meta_box_cb" => false,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'tf_filters', 'with_front' => true, ],
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"rest_base" => "tf_filters",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => false,
+	];
+	register_taxonomy( 'tf_filters', [ 'tourfic' ], apply_filters( 'tf_filters_tax_args', $args ) );
+
 }
 add_action( 'init', 'tourfic_register_taxes_destination' );

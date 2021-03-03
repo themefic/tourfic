@@ -133,6 +133,20 @@ class Tourfic_Metabox_Class {
         // Push to post meta
         update_post_meta( $post_id, 'tf_faqs', (array) $tf_faqs );
 
+        // Set filters
+        if ( isset( $_POST['tf_filters'] ) ) {
+            update_post_meta( $post_id, 'tf_filters', $_POST['tf_filters'] );
+
+            // An array of IDs of categories we want this post to have.
+            $cat_ids = $_POST['tf_filters'];
+
+            $cat_ids = array_map( 'intval', $cat_ids );
+            $cat_ids = array_unique( $cat_ids );
+
+            $taxonomy = 'tf_filters';
+            wp_set_object_terms( $post_id, $cat_ids, $taxonomy );
+        }
+
     }
 
 
@@ -276,10 +290,10 @@ class Tourfic_Metabox_Class {
                             $selected_terms = wp_list_pluck($tf_filters_obj_list, 'term_id');
 
                             if ( ! empty( $tf_filters ) && ! is_wp_error( $tf_filters ) ){
-                                echo '<ul id="myUL">';
+                                echo '<ul class="filter-list" id="myUL">';
                                 foreach ( $tf_filters as $term ) { ?>
                                     <li>
-                                        <input class="screen-reader-text" type="checkbox" name="tf_filters" id="tf_filter-<?php esc_attr_e( $term->term_id ); ?>" value="<?php esc_attr_e( $term->term_id ); ?>" <?php if ( in_array( $term->term_id, $selected_terms ) ) echo 'checked="checked"'; ?>>
+                                        <input class="screen-reader-text" type="checkbox" name="tf_filters[]" id="tf_filter-<?php esc_attr_e( $term->term_id ); ?>" value="<?php esc_attr_e( $term->term_id ); ?>" <?php if ( in_array( $term->term_id, $selected_terms ) ) echo 'checked="checked"'; ?>>
 
                                         <label for="tf_filter-<?php esc_attr_e( $term->term_id ); ?>" title="<?php esc_attr_e( 'Toggle selection', 'tourfic' ); ?>">
                                             <?php esc_html_e( $term->name ); ?>

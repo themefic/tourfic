@@ -189,3 +189,4 @@ function tf_add_single_faq( $args ){
 	return $output;
 
 }
+
