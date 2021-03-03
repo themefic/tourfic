@@ -142,6 +142,7 @@ class Tourfic_Metabox_Class {
      * @param WP_Post $post The post object.
      */
     public function render_meta_box_content( $post ) {
+        wp_enqueue_style( 'font-awesome' );
 
         // Add an nonce field so we can check for it later.
         wp_nonce_field( 'tourfic_custom_box_security', 'tourfic_custom_box_nonce' );
@@ -258,6 +259,39 @@ class Tourfic_Metabox_Class {
                             ?>
                         </div>
 
+                        <h4><?php esc_html_e( 'Popular Features', 'tourfic' ); ?><br>
+                            <small><?php esc_html_e( 'Select Popular Features for Filters', 'tourfic' ); ?></small>
+                        </h4>
+
+                        <div class="tf-field-wrap">
+
+                            <input type="search" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                            <?php
+                            $tf_filters = get_terms( 'tf_filters', array(
+                                //'orderby'    => 'count',
+                                'hide_empty' => 0,
+                            ) );
+
+                            $tf_filters_obj_list = get_the_terms( $post->ID, 'tf_filters' );
+                            $selected_terms = wp_list_pluck($tf_filters_obj_list, 'term_id');
+
+                            if ( ! empty( $tf_filters ) && ! is_wp_error( $tf_filters ) ){
+                                echo '<ul id="myUL">';
+                                foreach ( $tf_filters as $term ) { ?>
+                                    <li>
+                                        <input class="screen-reader-text" type="checkbox" name="tf_filters" id="tf_filter-<?php esc_attr_e( $term->term_id ); ?>" value="<?php esc_attr_e( $term->term_id ); ?>" <?php if ( in_array( $term->term_id, $selected_terms ) ) echo 'checked="checked"'; ?>>
+
+                                        <label for="tf_filter-<?php esc_attr_e( $term->term_id ); ?>" title="<?php esc_attr_e( 'Toggle selection', 'tourfic' ); ?>">
+                                            <?php esc_html_e( $term->name ); ?>
+                                            <i class="fa fa-plus"></i>
+                                        </label>
+                                    </li>
+                                <?php }
+                                echo '</ul>';
+                            }
+                            ?>
+                        </div>
+
 					</div>
 
                     <div id="faqs-tab" class="tf-tab-content">
@@ -319,7 +353,30 @@ class Tourfic_Metabox_Class {
 				</div>
 			</div>
 		</div>
+        <script>
+        function myFunction() {
+          // Declare variables
+          var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById('myInput');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myUL");
+          li = ul.getElementsByTagName('li');
 
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("label")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+        jQuery('input[type=search]').on('search', function () {
+            myFunction();
+        });
+        </script>
         <?php
     }
 }

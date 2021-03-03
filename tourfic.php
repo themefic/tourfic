@@ -45,6 +45,7 @@ class Tourfic_WordPress_Plugin{
 		add_action('plugins_loaded', [ $this, 'load_text_domain' ], 10, 2);
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ], 100 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_datepicker' ] );
 
 		add_filter( 'single_template', [ $this, 'tourfic_single_page_template' ] );
@@ -154,6 +155,16 @@ class Tourfic_WordPress_Plugin{
 		        'ajax_url' => admin_url( 'admin-ajax.php' )
 		    )
 	    );
+	}
+
+	/**
+	 *	Enqueue  scripts
+	 */
+	public function admin_scripts(){
+
+		wp_register_style( 'font-awesome', plugin_dir_url( __FILE__ ) . 'assets/font-awesome-4.7.0/css/font-awesome.min.css' );
+
+
 	}
 
 	/**
