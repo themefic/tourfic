@@ -155,13 +155,9 @@ function tf_map_link(){
 }
 
 // Sidebar
-function get_tf_sidebar(){
+function get_tf_sidebar( $placement = 'single' ){
 	?>
-	<?php if ( is_active_sidebar( 'tf_before_booking_sidebar' ) ) { ?>
-	    <div id="tf_before_booking_sidebar">
-	        <?php dynamic_sidebar('tf_before_booking_sidebar'); ?>
-	    </div>
-	<?php } ?>
+
 	<!-- Start Booking widget -->
 	<form class="tf_booking-widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
 		<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
@@ -319,11 +315,18 @@ function get_tf_sidebar(){
 		</div>
 	</div>
 	<!-- End ask ques tour widget -->
-
-	<?php if ( is_active_sidebar( 'tf_after_booking_sidebar' ) ) { ?>
-	    <div id="tf_after_booking_sidebar">
-	        <?php dynamic_sidebar('tf_after_booking_sidebar'); ?>
-	    </div>
-	<?php } ?>
+	<?php if ( $placement == 'archive' ) : ?>
+		<?php if ( is_active_sidebar( 'tf_single_booking_sidebar' ) ) { ?>
+		    <div id="tf__booking_sidebar">
+		        <?php dynamic_sidebar('tf_single_booking_sidebar'); ?>
+		    </div>
+		<?php } ?>
+	<?php else: ?>
+		<?php if ( is_active_sidebar( 'tf_archive_booking_sidebar' ) ) { ?>
+		    <div id="tf__booking_sidebar">
+		        <?php dynamic_sidebar('tf_archive_booking_sidebar'); ?>
+		    </div>
+		<?php } ?>
+	<?php endif; ?>
 	<?php
 }

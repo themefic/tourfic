@@ -36,7 +36,7 @@ get_header('tourfic'); ?>
 
 			<!-- Start Sidebar -->
 			<div class="tf_sidebar">
-				<?php get_tf_sidebar(); ?>
+				<?php get_tf_sidebar( 'tf_archive_booking_sidebar' ); ?>
 			</div>
 			<!-- End Sidebar -->
 		</div>
