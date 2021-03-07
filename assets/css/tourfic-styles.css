@@ -1781,3 +1781,34 @@ span.close-aq {
 .tf-list-grid a:hover, .tf-list-grid a.active {
   opacity: 1;
 }
+
+.tf-popular_filter {
+  margin-top: 10px !important;
+}
+
+.tf-popular_filter li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tf-popular_filter li label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tf-popular_filter li input {
+  height: 16px;
+  width: 16px;
+  margin-right: 7px;
+}
+
+.tf-popular_filter li span {
+  opacity: .8;
+  font-size: 90%;
+}

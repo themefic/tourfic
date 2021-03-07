@@ -443,3 +443,31 @@
         }
     }
 }
+
+.tf-popular_filter {
+    margin-top: 10px !important;
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        label {
+            user-select: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        input {
+            height: 16px;
+            width: 16px;
+            margin-right: 7px;
+        }
+
+        span {
+            opacity: .8;
+            font-size: 90%;
+        }
+    }
+}
