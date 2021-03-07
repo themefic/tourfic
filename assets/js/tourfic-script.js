@@ -274,6 +274,75 @@
                 $('.archive_ajax_result').removeClass('tours-grid');
             }
 
+        });
+
+        // Change view
+        var filter_xhr;
+        $(document).on('change', '[name*=tf_filters], #destination', function(){
+            var dest = $('#destination').val();
+            var adults = $('#adults').val();
+            var room = $('#room').val();
+            var children = $('#children').val();
+            var checkin = $('#check-in-date').val();
+            var checkout = $('#check-out-date').val();
+
+            var filters = [];
+
+            $('[name*=tf_filters]').each(function(){
+                if ( $(this).is(':checked') ) {
+                    filters.push( $(this).val() );
+                }
+            });
+            var filters = filters.join();
+
+            var formData = new FormData();
+            formData.append('action', 'tf_trigger_filter');
+            formData.append('dest', dest);
+            formData.append('adults', adults);
+            formData.append('room', room);
+            formData.append('children', children);
+            formData.append('checkin', checkin);
+            formData.append('checkout', checkout);
+            formData.append('filters', filters);
+
+            // abort previous request
+            if(filter_xhr && filter_xhr.readyState != 4){
+                filter_xhr.abort();
+            }
+
+            filter_xhr = $.ajax({
+                type: 'post',
+                url: tf_params.ajax_url,
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function(data){
+                    $('.archive_ajax_result').block({
+                        message: null,
+                        overlayCSS: {
+                            background: "#fff",
+                            opacity: .5
+                        }
+                    });
+
+                },
+                complete: function(data){
+                    $('.archive_ajax_result').unblock();
+                },
+                success: function(data){
+                    $('.archive_ajax_result').unblock();
+
+                    $('.archive_ajax_result').html( data );
+                },
+                error: function(data){
+                    console.log(data);
+                },
+
+            });
+
+            console.log('/---------');
+            console.log(dest, adults, room, children, checkin, checkout, filters);
+            console.log('---------/');
 
         });
 

@@ -159,7 +159,7 @@ function get_tf_sidebar( $placement = 'single' ){
 	?>
 
 	<!-- Start Booking widget -->
-	<form class="tf_booking-widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+	<form class="tf_booking-widget widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
 		<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
 
 		<!-- Start form row -->
@@ -285,6 +285,20 @@ function get_tf_sidebar( $placement = 'single' ){
 	</form>
 	<!-- End Booking widget -->
 
+	<?php if ( $placement == 'archive' ) : ?>
+		<?php if ( is_active_sidebar( 'tf_single_booking_sidebar' ) ) { ?>
+		    <div id="tf__booking_sidebar">
+		        <?php dynamic_sidebar('tf_single_booking_sidebar'); ?>
+		    </div>
+		<?php } ?>
+	<?php else: ?>
+		<?php if ( is_active_sidebar( 'tf_archive_booking_sidebar' ) ) { ?>
+		    <div id="tf__booking_sidebar">
+		        <?php dynamic_sidebar('tf_archive_booking_sidebar'); ?>
+		    </div>
+		<?php } ?>
+	<?php endif; ?>
+
 	<!-- Start map tour widget -->
 	<div class="tf-map-tour-wrap">
 		<?php $location = get_field('formatted_location') ? get_field('formatted_location') : null; ?>
@@ -315,18 +329,5 @@ function get_tf_sidebar( $placement = 'single' ){
 		</div>
 	</div>
 	<!-- End ask ques tour widget -->
-	<?php if ( $placement == 'archive' ) : ?>
-		<?php if ( is_active_sidebar( 'tf_single_booking_sidebar' ) ) { ?>
-		    <div id="tf__booking_sidebar">
-		        <?php dynamic_sidebar('tf_single_booking_sidebar'); ?>
-		    </div>
-		<?php } ?>
-	<?php else: ?>
-		<?php if ( is_active_sidebar( 'tf_archive_booking_sidebar' ) ) { ?>
-		    <div id="tf__booking_sidebar">
-		        <?php dynamic_sidebar('tf_archive_booking_sidebar'); ?>
-		    </div>
-		<?php } ?>
-	<?php endif; ?>
 	<?php
 }

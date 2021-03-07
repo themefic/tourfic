@@ -1089,4 +1089,4 @@ class TfTourFilter extends WP_Widget {
         return $instance;
     }
 
-} // class Foo_Widget
+}

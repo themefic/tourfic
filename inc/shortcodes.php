@@ -430,6 +430,71 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
 }
 add_shortcode('tf_search_result', 'tourfic_search_result_shortcode');
 
+
+/**
+ * Filter Ajax
+ */
+function tf_trigger_filter_ajax(){
+
+    $search = isset( $_POST['dest'] ) ? sanitize_text_field( $_POST['dest'] ) : '';
+
+    // Propertise args
+    $args = array(
+        'post_type' => 'tourfic',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+    );
+
+    // 1st search on Destination taxonomy
+    $destinations = get_terms( array(
+        'taxonomy' => 'destination',
+        'orderby' => 'name',
+        'order' => 'ASC',
+        'hide_empty' => 0, //can be 1, '1' too
+        'hierarchical' => 0, //can be 1, '1' too
+        'search' => $search,
+        //'name__like' => '',
+    ) );
+
+    if ( $destinations ) {
+        // Define Featured Category IDs first
+        $destinations_ids = array();
+
+        // Creating loop to insert IDs to array.
+        foreach( $destinations as $cat ) {
+            $destinations_ids[] = $cat->term_id;
+        }
+
+        $args['tax_query'] = array(
+            'relation' => 'OR',
+            array(
+                'taxonomy' => 'destination',
+                'terms'    => $destinations_ids,
+            )
+        );
+    } else {
+        $args['s'] = $search;
+    }
+
+    $loop = new WP_Query( $args );
+
+    ?>
+
+
+    <?php if ( $loop->have_posts() ) : ?>
+        <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+            <?php tourfic_archive_single(); ?>
+        <?php endwhile; ?>
+    <?php else : ?>
+        <?php get_template_part( 'template-parts/content', 'none' ); ?>
+    <?php endif; ?>
+    <?php wp_reset_postdata();
+
+    die();
+}
+add_action( 'wp_ajax_nopriv_tf_trigger_filter', 'tf_trigger_filter_ajax' );
+add_action( 'wp_ajax_tf_trigger_filter', 'tf_trigger_filter_ajax' );
+
 // TF Icon List Shortcode
 add_shortcode('tf_list','tf_icon_list_shortcode');
 function tf_icon_list_shortcode( $atts, $content = null ) {
