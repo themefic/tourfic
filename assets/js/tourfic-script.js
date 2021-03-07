@@ -278,7 +278,7 @@
 
         // Change view
         var filter_xhr;
-        $(document).on('change', '[name*=tf_filters], #destination', function(){
+        $(document).on('change', '[name*=tf_filters], #destination, #adults, #room, #children, #check-in-date, #check-out-date, #check-in-out-date', function(){
             var dest = $('#destination').val();
             var adults = $('#adults').val();
             var room = $('#room').val();
