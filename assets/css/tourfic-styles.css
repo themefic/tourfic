@@ -1628,6 +1628,7 @@ span.close-aq {
 
 .roomPrice.roomPrice_flex.sr_discount {
   text-align: right;
+  max-width: 50%;
 }
 
 .bui-price-display__value {
