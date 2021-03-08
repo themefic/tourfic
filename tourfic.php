@@ -176,6 +176,28 @@ class Tourfic_WordPress_Plugin{
 
 			wp_enqueue_script( 'select2' );
 			wp_enqueue_style( 'select2' );
+
+			$output = "
+			(function($) {
+	    		'use strict';
+	    		jQuery(document).ready(function() { ";
+
+	    			$output .= "$(document).on('tf_select2 widget-added widget-updated', function() {
+
+	    				jQuery('.tf-select2').each(function(){
+	    					if( !$(this).hasClass('select2-hidden-accessible') ){
+	    						$(this).select2({ width: '100%' });
+	    					}
+	    				});
+
+				    });";
+
+			$output .= "
+				});
+			})(jQuery);" ;
+
+			wp_add_inline_script( 'select2', $output );
+
 		}
 
 		wp_register_style( 'font-awesome', plugin_dir_url( __FILE__ ) . 'assets/font-awesome-4.7.0/css/font-awesome.min.css' );

@@ -539,5 +539,3 @@ function tf_icon_list_shortcode( $atts, $content = null ) {
     <li><i class="fa  <?php esc_attr_e($icon); ?> "></i> <?php _e($text); ?></li>
     <?php return ob_get_clean();
 }
-
-
