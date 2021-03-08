@@ -11,7 +11,7 @@ class TfTourFilter extends WP_Widget {
 
         parent::__construct(
             'tf_tour_filter', // Base ID
-            'Tourfic: Filters', // Name
+            'Tourfic - Filters', // Name
             array( 'description' => __( 'Filter Tourfic tour on archive.', 'tourfic' ), ) // Args
         );
     }
@@ -141,7 +141,7 @@ class TfTourFilter extends WP_Widget {
 
 
 /**
- * Adds Filter widget.
+ * Similar Tours
  */
 class Tf_Similar_Tours extends WP_Widget {
 
@@ -152,7 +152,7 @@ class Tf_Similar_Tours extends WP_Widget {
 
         parent::__construct(
             'tf_similar_tours', // Base ID
-            'Tourfic: Similar Tours', // Name
+            'Tourfic - Similar Tours', // Name
             array( 'description' => __( 'Show more tours button on single tour page.', 'tourfic' ), ) // Args
         );
     }
@@ -169,6 +169,10 @@ class Tf_Similar_Tours extends WP_Widget {
         extract( $args );
         $title = apply_filters( 'widget_title', $instance['title'] );
         $btn_label = isset( $instance[ 'btn_label' ] ) ? $instance[ 'btn_label' ] : __( 'Show more hotels', 'tourfic' );
+
+        if ( !is_singular( 'tourfic' ) ) {
+        	return;
+        }
 
         echo $before_widget;
 
@@ -227,6 +231,94 @@ class Tf_Similar_Tours extends WP_Widget {
         $instance = array();
         $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
         $instance['btn_label'] = ( !empty( $new_instance['btn_label'] ) ) ? strip_tags( $new_instance['btn_label'] ) : '';
+
+        return $instance;
+    }
+
+}
+
+
+/**
+ * Show On Map
+ */
+class Tf_Show_On_Map extends WP_Widget {
+
+    /**
+     * Register widget with WordPress.
+     */
+    public function __construct() {
+
+        parent::__construct(
+            'tf_show_on_map', // Base ID
+            'Tourfic - Show On Map', // Name
+            array( 'description' => __( 'Show On Map tours button on single tour page.', 'tourfic' ), ) // Args
+        );
+    }
+
+    /**
+     * Front-end display of widget.
+     *
+     * @see WP_Widget::widget()
+     *
+     * @param array $args     Widget arguments.
+     * @param array $instance Saved values from database.
+     */
+    public function widget( $args, $instance ) {
+        extract( $args );
+        $title = apply_filters( 'widget_title', $instance['title'] );
+
+        if ( !is_singular( 'tourfic' ) ) {
+        	return;
+        }
+
+        echo $before_widget;
+
+        ?>
+		<!-- Start map tour widget -->
+		<div class="tf-map-tour-wrap">
+			<?php $location = get_field('formatted_location') ? get_field('formatted_location') : null; ?>
+			<div class="map-bg"><img src="<?php echo TF_PLUGIN_URL; ?>/assets/map.png"></div>
+			<div class="map-buttons">
+				<a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank" class="button tf_button"><?php esc_html_e( $title ); ?></a>
+			</div>
+		</div>
+		<!-- End map tour widget -->
+        <?php
+
+        echo $after_widget;
+    }
+
+    /**
+     * Back-end widget form.
+     *
+     * @see WP_Widget::form()
+     *
+     * @param array $instance Previously saved values from database.
+     */
+    public function form( $instance ) {
+
+        $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Show on map', 'tourfic' );
+        ?>
+        <p class="tf-widget-field">
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Button Label', 'tourfic' ); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+    <?php
+    }
+
+    /**
+     * Sanitize widget form values as they are saved.
+     *
+     * @see WP_Widget::update()
+     *
+     * @param array $new_instance Values just sent to be saved.
+     * @param array $old_instance Previously saved values from database.
+     *
+     * @return array Updated safe values to be saved.
+     */
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
         return $instance;
     }

@@ -830,6 +830,7 @@ function tf_sidebar_widgets_init() {
     // Register Custom Widgets
     $custom_widgets = array(
     	'TfTourFilter',
+    	'Tf_Show_On_Map',
     	'Tf_Similar_Tours'
     );
     foreach ($custom_widgets as $key => $widget) {
