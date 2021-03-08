@@ -831,6 +831,7 @@ function tf_sidebar_widgets_init() {
     $custom_widgets = array(
     	'TfTourFilter',
     	'Tf_Show_On_Map',
+    	'Tf_Ask_Question',
     	'Tf_Similar_Tours'
     );
     foreach ($custom_widgets as $key => $widget) {

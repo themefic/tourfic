@@ -299,18 +299,5 @@ function get_tf_sidebar( $placement = 'single' ){
 		<?php } ?>
 	<?php endif; ?>
 
-
-
-	<!-- Start ask ques tour widget -->
-	<div class="tf-gotq-tour-wrap">
-		<div class="gotq-top">
-			<h4><?php esc_html_e( 'Got a question?', 'tourfic' ); ?></h4>
-			<p><?php esc_html_e( 'Find more info in the FAQ section.', 'tourfic' ); ?></p>
-		</div>
-		<div class="ni-buttons">
-			<a href="#" id="tf-ask-question-trigger" class="button tf_button btn-outline"><?php esc_html_e( 'Ask a question', 'tourfic' ); ?></a>
-		</div>
-	</div>
-	<!-- End ask ques tour widget -->
 	<?php
 }
