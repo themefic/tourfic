@@ -30,7 +30,6 @@ class TourficWooCommerceHandle{
 		$response = array();
 		$tf_room_data = array();
 
-
 		$tour_id = isset( $_POST['tour_id'] ) ? intval( sanitize_text_field( $_POST['tour_id'] ) ) : null;
 		$room_key = isset( $_POST['room_key'] ) ? intval( sanitize_text_field( $_POST['room_key'] ) ) : null;
 		$room_selected = isset( $_POST['room-selected'] ) ? intval( sanitize_text_field( $_POST['room-selected'] ) ) : 1;
@@ -73,6 +72,7 @@ class TourficWooCommerceHandle{
 		        '_regular_price' => '0',
 		        '_visibility' => 'visible',
 		        '_virtual' => 'yes',
+		        '_sold_individually' => 'yes',
 		    )
 		) );
 
@@ -133,7 +133,7 @@ class TourficWooCommerceHandle{
 
 			$response['product_id'] = $product_id;
 			$response['add_to_cart'] = 'true';
-			//$response['redirect_to'] = wc_get_checkout_url();
+			$response['redirect_to'] = wc_get_checkout_url();
 		} else {
 			$response['status'] = 'error';
 		}
@@ -146,7 +146,7 @@ class TourficWooCommerceHandle{
 		die();
 	}
 
-	//
+	// Set price
 	function set_order_price( $cart ) {
 	    if ( is_admin() && ! defined( 'DOING_AJAX' ) )
 	        return;

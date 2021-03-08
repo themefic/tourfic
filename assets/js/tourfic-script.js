@@ -414,9 +414,11 @@
                     if( response.status == 'error' ) {
                         var errorHtml = "";
 
-                        response.errors.forEach( function( text ){
-                            errorHtml += '<div class="woocommerce-error">'+text+'</div>';
-                        } );
+                        if ( response.errors ) {
+                            response.errors.forEach( function( text ){
+                                errorHtml += '<div class="woocommerce-error">'+text+'</div>';
+                            } );
+                        }
 
                         $('.tf_notice_wrapper').html( errorHtml ).show();
 

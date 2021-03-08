@@ -289,12 +289,14 @@ function get_tf_sidebar( $placement = 'single' ){
 		<?php if ( is_active_sidebar( 'tf_single_booking_sidebar' ) ) { ?>
 		    <div id="tf__booking_sidebar">
 		        <?php dynamic_sidebar('tf_single_booking_sidebar'); ?>
+		        <br>
 		    </div>
 		<?php } ?>
 	<?php else: ?>
 		<?php if ( is_active_sidebar( 'tf_archive_booking_sidebar' ) ) { ?>
 		    <div id="tf__booking_sidebar">
 		        <?php dynamic_sidebar('tf_archive_booking_sidebar'); ?>
+		        <br>
 		    </div>
 		<?php } ?>
 	<?php endif; ?>
