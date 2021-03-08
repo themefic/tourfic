@@ -340,9 +340,9 @@
 
             });
 
-            console.log('/---------');
-            console.log(dest, adults, room, children, checkin, checkout, filters);
-            console.log('---------/');
+            //console.log('/---------');
+            //console.log(dest, adults, room, children, checkin, checkout, filters);
+            //console.log('---------/');
 
         });
 
@@ -514,10 +514,10 @@
                 var tAdj = parseInt(t-(H/2));
 
                 if ( flag === false && (H >= tAdj) ) {
-                    console.log( 'inview' );
+                    //console.log( 'inview' );
                     $this.trigger('click');
                 } else {
-                    console.log( 'outview' );
+                    //console.log( 'outview' );
                 }
             });
         });
