@@ -38,7 +38,7 @@ class TfTourFilter extends WP_Widget {
         }
 
 		$taxonomy = array(
-			'hide_empty' => true,
+			'hide_empty' => $hide_empty,
 		    'taxonomy' => 'tf_filters',
 		    'include' => $terms
 		);
