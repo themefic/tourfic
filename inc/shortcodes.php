@@ -341,6 +341,8 @@ add_shortcode('tf_search', 'tourfic_search_shortcode');
  * Search Result Shortcode Function
  */
 function tourfic_search_result_shortcode( $atts, $content = null ){
+    global $tourfic_opt;
+    $relation = isset( $tourfic_opt['search_relation'] ) ? esc_attr( $tourfic_opt['search_relation'] ) : "AND";
 
     // Unwanted Slashes Remove
     if ( isset( $_GET ) ) {
@@ -387,7 +389,7 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
         }
 
         $args['tax_query'] = array(
-            'relation' => 'OR',
+            'relation' => $relation,
             array(
                 'taxonomy' => 'destination',
                 'terms'    => $destinations_ids,
@@ -435,8 +437,12 @@ add_shortcode('tf_search_result', 'tourfic_search_result_shortcode');
  * Filter Ajax
  */
 function tf_trigger_filter_ajax(){
+    global $tourfic_opt;
+    $relation = isset( $tourfic_opt['search_relation'] ) ? esc_attr( $tourfic_opt['search_relation'] ) : "AND";
+    $filter_relation = isset( $tourfic_opt['filter_relation'] ) ? esc_attr( $tourfic_opt['filter_relation'] ) : "OR";
 
-    $search = isset( $_POST['dest'] ) ? sanitize_text_field( $_POST['dest'] ) : '';
+    $search = ( $_POST['dest'] ) ? sanitize_text_field( $_POST['dest'] ) : null;
+    $filters = ( $_POST['filters'] ) ? explode(',', sanitize_text_field( $_POST['filters'] )) : null;
 
     // Propertise args
     $args = array(
@@ -445,42 +451,63 @@ function tf_trigger_filter_ajax(){
         'posts_per_page' => -1,
     );
 
-    // 1st search on Destination taxonomy
-    $destinations = get_terms( array(
-        'taxonomy' => 'destination',
-        'orderby' => 'name',
-        'order' => 'ASC',
-        'hide_empty' => 0, //can be 1, '1' too
-        'hierarchical' => 0, //can be 1, '1' too
-        'search' => $search,
-        //'name__like' => '',
-    ) );
 
-    if ( $destinations ) {
-        // Define Featured Category IDs first
-        $destinations_ids = array();
+    if ( $search ) {
 
-        // Creating loop to insert IDs to array.
-        foreach( $destinations as $cat ) {
-            $destinations_ids[] = $cat->term_id;
-        }
+        // 1st search on Destination taxonomy
+        $destinations = get_terms( array(
+            'taxonomy' => 'destination',
+            'orderby' => 'name',
+            'order' => 'ASC',
+            'hide_empty' => 0, //can be 1, '1' too
+            'hierarchical' => 0, //can be 1, '1' too
+            'search' => $search,
+            //'name__like' => '',
+        ) );
 
-        $args['tax_query'] = array(
-            'relation' => 'OR',
-            array(
+        if ( $destinations ) {
+            // Define Featured Category IDs first
+            $destinations_ids = array();
+
+            // Creating loop to insert IDs to array.
+            foreach( $destinations as $cat ) {
+                $destinations_ids[] = $cat->term_id;
+            }
+
+            $args['tax_query']['relation'] = $relation;
+            $args['tax_query'][] = array(
                 'taxonomy' => 'destination',
                 'terms'    => $destinations_ids,
-            )
-        );
-    } else {
-        $args['s'] = $search;
+            );
+
+        } else {
+            $args['s'] = $search;
+        }
     }
 
-    $loop = new WP_Query( $args );
+    if ( $filters ) {
+        $args['tax_query']['relation'] = $relation;
 
-    ?>
+        if ( $filter_relation == "OR" ) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'tf_filters',
+                'terms'    => $filters,
+            );
+        } else {
+            $args['tax_query']['tf_filters']['relation'] = 'AND';
 
+            foreach ($filters as $key => $term_id) {
+                $args['tax_query']['tf_filters'][] = array(
+                    'taxonomy' => 'tf_filters',
+                    'terms'    => array($term_id),
+                );
+            }
 
+        }
+
+    }
+
+    $loop = new WP_Query( $args ); ?>
     <?php if ( $loop->have_posts() ) : ?>
         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
             <?php tourfic_archive_single(); ?>

@@ -178,6 +178,36 @@
     ) );
 
     Redux::setSection( $opt_name, array(
+        'title'  => __( 'Search Result', 'tourfic' ),
+        'desc'   => __( 'Search Result Page Options', 'tourfic' ),
+        'icon'   => 'el el-idea',
+        'fields' => array(
+            array(
+                'id'       => 'search_relation',
+                'type'     => 'select',
+                'title'    => __( 'Search Result Relation', 'tourfic' ),
+                'desc'    => __( 'Search result relation with search widget and filters. OR means matched any query, AND means matched all query.', 'tourfic' ),
+                'options'  => array(
+                    'AND' => 'AND',
+                    'OR' => 'OR',
+                ),
+                'default'  => 'AND',
+            ),
+            array(
+                'id'       => 'filter_relation',
+                'type'     => 'select',
+                'title'    => __( 'Filters Relation', 'tourfic' ),
+                'desc'    => __( 'Search result Filters relation with among filters. OR means matched any filter, AND means matched all filter.', 'tourfic' ),
+                'options'  => array(
+                    'AND' => 'AND',
+                    'OR' => 'OR',
+                ),
+                'default'  => 'OR',
+            )
+        )
+    ) );
+
+    Redux::setSection( $opt_name, array(
         'title'  => __( 'Extras', 'tourfic' ),
         'desc'   => __( 'Extras Options for Advance Useages', 'tourfic' ),
         'icon'   => 'el el-cogs',
