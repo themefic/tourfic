@@ -93,7 +93,8 @@ class TfTourFilter extends WP_Widget {
 			        'selected'          => $terms, // e.x 86,110,786
 			        'multiple'          => true,
 			        'class'          	=> 'widefat tf-select2',
-			        'hide_if_empty' 	=> false,
+			        'show_count' 		=> true,
+			        'hide_empty'        => 0
 			    ) );
 			?>
 			<br>
@@ -112,6 +113,10 @@ class TfTourFilter extends WP_Widget {
 				font-weight: 600;
 			}
 		</style>
+		<script>
+			jQuery('#<?php echo $this->get_field_id( 'terms' ); ?>').select2({ width: '100%' });
+			jQuery(document).trigger('tf_select2');
+		</script>
     <?php
     }
 
