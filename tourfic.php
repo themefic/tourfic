@@ -104,6 +104,11 @@ class Tourfic_WordPress_Plugin{
 		 *	WooCommerce booking
 		 */
 		require_once( dirname( __FILE__ ) . '/inc/tf-woocommerce-class.php' );
+
+		/**
+		 *	Widgets
+		 */
+		require_once( dirname( __FILE__ ) . '/inc/widgets.php' );
 	}
 
 	/**

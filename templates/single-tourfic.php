@@ -248,7 +248,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 
 			<!-- Start Sidebar -->
 			<div class="tf_sidebar">
-				<?php get_tf_sidebar(); ?>
+				<?php get_tf_sidebar( 'single' ); ?>
 			</div>
 			<!-- End Sidebar -->
 		</div>

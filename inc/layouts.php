@@ -285,7 +285,7 @@ function get_tf_sidebar( $placement = 'single' ){
 	</form>
 	<!-- End Booking widget -->
 
-	<?php if ( $placement == 'archive' ) : ?>
+	<?php if ( $placement == 'single' ) : ?>
 		<?php if ( is_active_sidebar( 'tf_single_booking_sidebar' ) ) { ?>
 		    <div id="tf__booking_sidebar">
 		        <?php dynamic_sidebar('tf_single_booking_sidebar'); ?>
@@ -309,14 +309,7 @@ function get_tf_sidebar( $placement = 'single' ){
 	</div>
 	<!-- End map tour widget -->
 
-	<!-- Start similar tour widget -->
-	<div class="tf-similar-tour-wrap">
-		<div class="not-impressive"><?php esc_html_e( 'Not impressive?', 'tourfic' ); ?></div>
-		<div class="ni-buttons">
-			<a href="#" class="button tf_button btn-outline"><?php esc_html_e( 'Show more hotels', 'tourfic' ); ?></a>
-		</div>
-	</div>
-	<!-- End similar tour widget -->
+
 
 	<!-- Start ask ques tour widget -->
 	<div class="tf-gotq-tour-wrap">
