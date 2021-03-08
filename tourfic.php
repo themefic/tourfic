@@ -9,7 +9,7 @@
  * Domain Path: /lang/
  * Author URI: https://themefic.com
  * Tags:
- * Version: 1.0.39
+ * Version: 1.0.40
  */
 
 // don't load directly

@@ -1812,3 +1812,7 @@ span.close-aq {
   opacity: .8;
   font-size: 90%;
 }
+
+.tf_pax {
+  white-space: nowrap;
+}
