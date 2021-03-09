@@ -235,7 +235,7 @@ function tourfic_gallery_slider( $file_list_meta_key = array(), $post_id = null 
 	        <div class="tf_slider-for fl-wrap">
 				<?php foreach ( $files as $attachment_id ) {
 					echo '<div class="slick-slide-item">';
-						echo wp_get_attachment_image( $attachment_id, 'tf_gallery' );
+						echo wp_get_attachment_image( $attachment_id, 'tf_gallery_thumb' );
 					echo '</div>';
 				} ?>
 	        </div>

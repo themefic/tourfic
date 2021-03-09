@@ -9,7 +9,7 @@
  * Domain Path: /lang/
  * Author URI: https://themefic.com
  * Tags:
- * Version: 1.0.41
+ * Version: 1.0.42
  */
 
 // don't load directly
@@ -134,7 +134,7 @@ class Tourfic_WordPress_Plugin{
 
 	// Image sizes
 	public function image_sizes() {
-	    add_image_size( 'tf_gallery', 960, 540, true );
+	    add_image_size( 'tf_gallery_thumb', 900, 490, true );
 	}
 
 	/**
