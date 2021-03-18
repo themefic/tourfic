@@ -119,7 +119,7 @@ class TourficWooCommerceHandle{
 				$tf_room_data['tf_data']['price'] = $get_room_type['price'];
 				$tf_room_data['tf_data']['sale_price'] = $get_room_type['sale_price'];
 
-				$price_total = tf_price_raw($get_room_type['price'], $get_room_type['sale_price']);
+				$price_total = tourfic_price_raw($get_room_type['price'], $get_room_type['sale_price']);
 				$price_total = $price_total*$room_selected;
 
 				$tf_room_data['tf_data']['price_total'] = $price_total;

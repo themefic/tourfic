@@ -528,7 +528,7 @@ function tourfic_price_html( $price = null, $sale_price = null ) {
 }
 
 // return only raw price
-function tf_price_raw( $price = null, $sale_price = null ) {
+function tourfic_price_raw( $price = null, $sale_price = null ) {
 	if ( !$price ) {
 		return;
 	}
@@ -541,7 +541,7 @@ function tf_price_raw( $price = null, $sale_price = null ) {
 }
 
 // Sale tag
-function tf_sale_tag( $price = null, $sale_price = null ) {
+function tourfic_sale_tag( $price = null, $sale_price = null ) {
 	if ( !$sale_price ) {
 		return;
 	}
@@ -742,7 +742,7 @@ function tourfic_fullwidth_container_end( $fullwidth ){
 /**
  * Change Post Type Slug
  */
-function tf_change_tourfic_post_type_slug( $slug ){
+function tourfic_change_tourfic_post_type_slug( $slug ){
 	global $tourfic_opt;
 
 	if ( isset( $tourfic_opt['post_type_slug'] ) && $tourfic_opt['post_type_slug'] != "" ) {
@@ -751,24 +751,24 @@ function tf_change_tourfic_post_type_slug( $slug ){
 
 	return $slug;
 }
-add_filter( 'tourfic_post_type_slug', 'tf_change_tourfic_post_type_slug', 10, 1 );
+add_filter( 'tourfic_post_type_slug', 'tourfic_change_tourfic_post_type_slug', 10, 1 );
 
 /**
  * Flush after redux save
  */
-function tf_flush_permalink( $value ){
+function tourfic_flush_permalink( $value ){
 	flush_rewrite_rules();
 }
-add_action('redux/options/tourfic_opt/saved', 'tf_flush_permalink' );
-add_action('redux/options/tourfic_opt/reset', 'tf_flush_permalink' );
-add_action('redux/options/tourfic_opt/settings/change', 'tf_flush_permalink' );
-add_action('redux/options/tourfic_opt/section/reset', 'tf_flush_permalink' );
+add_action('redux/options/tourfic_opt/saved', 'tourfic_flush_permalink' );
+add_action('redux/options/tourfic_opt/reset', 'tourfic_flush_permalink' );
+add_action('redux/options/tourfic_opt/settings/change', 'tourfic_flush_permalink' );
+add_action('redux/options/tourfic_opt/section/reset', 'tourfic_flush_permalink' );
 
 
 /**
  *	Custom CSS function
  */
-function tf_custom_css(){
+function tourfic_custom_css(){
 	global $tourfic_opt;
 
 	$output = '';
@@ -780,7 +780,7 @@ function tf_custom_css(){
 
 	wp_add_inline_style( 'tourfic-styles', $output );
 }
-add_action( 'wp_enqueue_scripts', 'tf_custom_css', 200 );
+add_action( 'wp_enqueue_scripts', 'tourfic_custom_css', 200 );
 
 /**
  * Get AVG
