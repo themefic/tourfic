@@ -149,6 +149,6 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php echo esc_html( astra_default_strings( 'string-comment-closed', false ) ); ?></p>
 	<?php endif; ?>
 
-	<?php get_tf_review_form(); ?>
+	<?php tourfic_get_review_form(); ?>
 
 </div><!-- #comments -->

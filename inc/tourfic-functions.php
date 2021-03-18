@@ -30,7 +30,7 @@ if ( !function_exists('get_field') ) {
 /**
  * Review form
  */
-function get_tf_review_form( ){
+function tourfic_get_review_form( ){
 	//Declare Vars
 	$comment_send = __( 'Submit', 'tourfic' );
 	$comment_reply = __( 'Write a Review', 'tourfic' );
