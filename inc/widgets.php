@@ -190,7 +190,7 @@ class Tourfic_Similar_Tours extends WP_Widget {
 	        }
 			?>
 			<div class="ni-buttons">
-				<a href="<?php echo tf_booking_search_action(); ?>?destination=<?php _e( $terms[0]->name ); ?>" class="button tf_button btn-outline"><?php esc_html_e( $btn_label ); ?></a>
+				<a href="<?php echo tourfic_booking_search_action(); ?>?destination=<?php _e( $terms[0]->name ); ?>" class="button tf_button btn-outline"><?php esc_html_e( $btn_label ); ?></a>
 			</div>
 		</div>
 		<!-- End similar tour widget -->

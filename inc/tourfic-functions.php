@@ -430,7 +430,7 @@ add_action('init', 'tourfic_setcookie_sitewide', 5 );
 /**
  * Get Cookie Data
  */
-function tf_delete_cookie( $cookie = null ){
+function tourfic_delete_cookie( $cookie = null ){
 
     $expiry = strtotime('-1 day');
 
@@ -449,7 +449,7 @@ function tf_delete_cookie( $cookie = null ){
 /**
  * Submit button data
  */
-function tf_room_booking_submit_button( $label = null ){
+function tourfic_room_booking_submit_button( $label = null ){
 
 	$booking_fields = array(
 		'destination',
@@ -473,22 +473,22 @@ function tf_room_booking_submit_button( $label = null ){
 }
 
 // Protected Pass
-function tf_proctected_product_pass(){
+function tourfic_proctected_product_pass(){
 	return "111111";
 }
 
 // Notice wrapper
-function tf_notice_wrapper(){
+function tourfic_notice_wrapper(){
 	?>
 	<div class="tf_container">
 		<div class="tf_notice_wrapper"></div>
 	</div>
 	<?php
 }
-add_action( 'tf_before_container', 'tf_notice_wrapper', 10 );
+add_action( 'tf_before_container', 'tourfic_notice_wrapper', 10 );
 
 // Booking Form Action Link
-function tf_booking_search_action(){
+function tourfic_booking_search_action(){
 	return apply_filters( 'tf_booking_search_action', esc_url( home_url('/search-result/') ) );
 }
 

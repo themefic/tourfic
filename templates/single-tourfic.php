@@ -174,7 +174,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 										<div class="room-submit-wrap">
 											<input type="hidden" name="tour_id" value="<?php echo get_the_ID(); ?>">
 											<input type="hidden" name="room_key" value="<?php echo esc_attr( $key ); ?>">
-											<?php tf_room_booking_submit_button( 'I\'ll reserve' ); ?>
+											<?php tourfic_room_booking_submit_button( 'I\'ll reserve' ); ?>
 										</div>
 										<div class="tf_desc"></div>
 									</form>

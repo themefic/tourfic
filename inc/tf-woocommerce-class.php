@@ -66,7 +66,7 @@ class TourficWooCommerceHandle{
 		    'post_title' => $post_title,
 		    'post_type' => 'product',
 		    'post_status' => 'publish',
-		    'post_password' => tf_proctected_product_pass(),
+		    'post_password' => tourfic_proctected_product_pass(),
 		    'meta_input'   => array(
 		        '_price' => '0',
 		        '_regular_price' => '0',

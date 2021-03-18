@@ -51,7 +51,7 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
             ?>
 
             <div class="single_recomended_item">
-                <a href="<?php echo tf_booking_search_action(); ?>?destination=<?php _e( $term->slug ); ?>">
+                <a href="<?php echo tourfic_booking_search_action(); ?>?destination=<?php _e( $term->slug ); ?>">
                   <div class="single_recomended_content" style="background-image: url(<?php echo wp_get_attachment_url( $image_id ); ?>);">
                     <div class="recomended_place_info_header">
                       <h3><?php _e($term->name); ?></h3>
@@ -207,7 +207,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
     <?php tourfic_fullwidth_container_start( $fullwidth ); ?>
 
     <!-- Start Booking widget -->
-    <form class="tf_booking-widget <?php esc_attr_e( $classes ); ?>" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+    <form class="tf_booking-widget <?php esc_attr_e( $classes ); ?>" method="get" autocomplete="off" action="<?php echo tourfic_booking_search_action(); ?>">
 
         <?php if( $title ): ?>
             <div class="tf_widget-title"><?php esc_html_e( $title ); ?></div>

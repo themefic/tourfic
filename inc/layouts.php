@@ -159,7 +159,7 @@ function get_tf_sidebar( $placement = 'single' ){
 	?>
 
 	<!-- Start Booking widget -->
-	<form class="tf_booking-widget widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+	<form class="tf_booking-widget widget" method="get" autocomplete="off" action="<?php echo tourfic_booking_search_action(); ?>">
 		<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
 
 		<!-- Start form row -->
