@@ -829,10 +829,10 @@ function tf_sidebar_widgets_init() {
 
     // Register Custom Widgets
     $custom_widgets = array(
-    	'TfTourFilter',
-    	'Tf_Show_On_Map',
-    	'Tf_Ask_Question',
-    	'Tf_Similar_Tours'
+    	'Tourfic_TourFilter',
+    	'Tourfic_Show_On_Map',
+    	'Tourfic_Ask_Question',
+    	'Tourfic_Similar_Tours'
     );
     foreach ($custom_widgets as $key => $widget) {
     	register_widget( $widget );

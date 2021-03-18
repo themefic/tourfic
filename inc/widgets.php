@@ -2,7 +2,7 @@
 /**
  * Adds Filter widget.
  */
-class TfTourFilter extends WP_Widget {
+class Tourfic_TourFilter extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -146,7 +146,7 @@ class TfTourFilter extends WP_Widget {
 /**
  * Similar Tours
  */
-class Tf_Similar_Tours extends WP_Widget {
+class Tourfic_Similar_Tours extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -246,7 +246,7 @@ class Tf_Similar_Tours extends WP_Widget {
 /**
  * Show On Map
  */
-class Tf_Show_On_Map extends WP_Widget {
+class Tourfic_Show_On_Map extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -334,7 +334,7 @@ class Tf_Show_On_Map extends WP_Widget {
 /**
  * Ask Question
  */
-class Tf_Ask_Question extends WP_Widget {
+class Tourfic_Ask_Question extends WP_Widget {
 
     /**
      * Register widget with WordPress.
