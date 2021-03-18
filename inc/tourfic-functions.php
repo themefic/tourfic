@@ -785,7 +785,7 @@ add_action( 'wp_enqueue_scripts', 'tourfic_custom_css', 200 );
 /**
  * Get AVG
  */
-function tf_avg_ratings( $a = array() ){
+function tourfic_avg_ratings( $a = array() ){
 	if ( !$a ) {
 		return '5.0';
 	}
@@ -798,7 +798,7 @@ function tf_avg_ratings( $a = array() ){
 /**
  * Get Percent
  */
-function tf_avg_rating_percent( $val = 0, $total = 5 ){
+function tourfic_avg_rating_percent( $val = 0, $total = 5 ){
 
 	$percent = ($val*100)/$total;
 	return sprintf("%.2f", $percent);
@@ -807,7 +807,7 @@ function tf_avg_rating_percent( $val = 0, $total = 5 ){
 /**
  * Add Tourfic sidebar.
  */
-function tf_sidebar_widgets_init() {
+function tourfic_sidebar_widgets_init() {
     register_sidebar( array(
         'name'          => __( 'TOURFIC: Single Tour Sidebar', 'tourfic' ),
         'id'            => 'tf_single_booking_sidebar',
@@ -839,10 +839,10 @@ function tf_sidebar_widgets_init() {
     }
 
 }
-add_action( 'widgets_init', 'tf_sidebar_widgets_init', 100 );
+add_action( 'widgets_init', 'tourfic_sidebar_widgets_init', 100 );
 
 // Ask Question
-function tf_ask_question(){
+function tourfic_ask_question(){
 	?>
 	<div id="tf-ask-question" style="display: none;">
 		<div class="tf-aq-overlay"></div>
@@ -873,10 +873,10 @@ function tf_ask_question(){
 	</div>
 	<?php
 }
-add_action( 'wp_footer', 'tf_ask_question' );
+add_action( 'wp_footer', 'tourfic_ask_question' );
 
 // Ask question ajax
-function tf_ask_question_ajax(){
+function tourfic_ask_question_ajax(){
 	$response = array();
 
 	if ( !check_ajax_referer( 'ask_question_nonce' ) ){
@@ -923,8 +923,8 @@ function tf_ask_question_ajax(){
 
 	die();
 }
-add_action( 'wp_ajax_tf_ask_question', 'tf_ask_question_ajax' );
-add_action( 'wp_ajax_nopriv_tf_ask_question', 'tf_ask_question_ajax' );
+add_action( 'wp_ajax_tf_ask_question', 'tourfic_ask_question_ajax' );
+add_action( 'wp_ajax_nopriv_tf_ask_question', 'tourfic_ask_question_ajax' );
 
 /**
  * Generate PAX

@@ -58,8 +58,8 @@ if ( post_password_required() ) {
     			}
     			$tf_extr_html .= '<div class="comment-meta">';
 					$tf_extr_html .= '<label class="tf_comment_meta-key">'.$key.'</label>';
-					$tf_extr_html .= '<div class="tf_comment_meta-percent"><div class="percent-progress" data-width="'.tf_avg_rating_percent( tf_avg_ratings($value) ).'"></div></div>';
-					$tf_extr_html .= '<div class="tf_comment_meta-ratings">'.tf_avg_ratings($value).'/5</div>';
+					$tf_extr_html .= '<div class="tf_comment_meta-percent"><div class="percent-progress" data-width="'.tourfic_avg_rating_percent( tourfic_avg_ratings($value) ).'"></div></div>';
+					$tf_extr_html .= '<div class="tf_comment_meta-ratings">'.tourfic_avg_ratings($value).'/5</div>';
 				$tf_extr_html .= '</div>';
     		}
     	$tf_extr_html .= '</div>';
@@ -70,10 +70,10 @@ if ( post_password_required() ) {
 		<div class="tf-comments-count-wrapper">
 
 			<div class="tf-overall-ratings">
-				<div class="overall-rate"><?php _e( tf_avg_ratings($tf_overall_rate['review']) ); ?>/5</div>
+				<div class="overall-rate"><?php _e( tourfic_avg_ratings($tf_overall_rate['review']) ); ?>/5</div>
 				<div class="overall-rate-stars">
 					<div class="star-ratings">
-					  	<div class="fill-ratings" style="width: 0;" data-width="<?php _e( tf_avg_rating_percent(tf_avg_ratings($tf_overall_rate['review'])) ); ?>">
+					  	<div class="fill-ratings" style="width: 0;" data-width="<?php _e( tourfic_avg_rating_percent(tourfic_avg_ratings($tf_overall_rate['review'])) ); ?>">
 					  	  	<span>★★★★★</span>
 					  	</div>
 					  	<div class="empty-ratings">
