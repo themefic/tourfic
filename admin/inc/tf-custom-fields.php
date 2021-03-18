@@ -108,40 +108,41 @@ class Tourfic_Metabox_Class {
         }
 
         if ( isset( $_POST['additional_information'] ) ) {
-            update_post_meta( $post_id, 'additional_information', $_POST['additional_information'] );
+            update_post_meta( $post_id, 'additional_information', sanitize_textarea_field( $_POST['additional_information'] ) );
         }
 
         if ( isset( $_POST['terms_and_conditions'] ) ) {
-            update_post_meta( $post_id, 'terms_and_conditions', $_POST['terms_and_conditions'] );
+            update_post_meta( $post_id, 'terms_and_conditions', sanitize_textarea_field( $_POST['terms_and_conditions'] ) );
         }
 
         if ( isset( $_POST['send_email_to'] ) ) {
-            update_post_meta( $post_id, 'send_email_to', $_POST['send_email_to'] );
+            update_post_meta( $post_id, 'send_email_to', sanitize_textarea_field( $_POST['send_email_to'] ) );
         }
 
 		// Set room
 		$tf_room = isset( $_POST['tf_room'] ) ? (array) $_POST['tf_room'] : array();
 		// Sanitize
-		//$tf_room = array_map( 'esc_attr', $tf_room );
+		$tf_room = array_map( 'esc_attr', $tf_room );
  		// Push to post meta
         update_post_meta( $post_id, 'tf_room', (array) $tf_room );
 
         // Set faq
         $tf_faqs = isset( $_POST['tf_faqs'] ) ? (array) $_POST['tf_faqs'] : array();
         // Sanitize
-        //$tf_faqs = array_map( 'esc_attr', $tf_faqs );
+        $tf_faqs = array_map( 'esc_attr', $tf_faqs );
         // Push to post meta
         update_post_meta( $post_id, 'tf_faqs', (array) $tf_faqs );
 
         // Set filters
         if ( isset( $_POST['tf_filters'] ) ) {
-            update_post_meta( $post_id, 'tf_filters', $_POST['tf_filters'] );
 
             // An array of IDs of categories we want this post to have.
             $cat_ids = $_POST['tf_filters'];
 
             $cat_ids = array_map( 'intval', $cat_ids );
             $cat_ids = array_unique( $cat_ids );
+
+            update_post_meta( $post_id, 'tf_filters', $cat_ids );
 
             $taxonomy = 'tf_filters';
             wp_set_object_terms( $post_id, $cat_ids, $taxonomy );
