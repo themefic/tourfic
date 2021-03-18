@@ -169,7 +169,7 @@ add_action( 'comment_post', 'tourfic_save_comment_meta_data' );
 /**
  * Generate Star
  */
-function tf_star_generate( $count ){
+function tourfic_star_generate( $count ){
 	$stars = '';
 	// Fill Star
 	for ( $i=0; $i < $count; $i++) {
@@ -185,8 +185,8 @@ function tf_star_generate( $count ){
 /**
  * Show Comment meta
  */
-add_filter( 'get_comment_author_link', 'attach_city_to_author' );
-function attach_city_to_author( $author ) {
+add_filter( 'get_comment_author_link', 'tourfic_attach_city_to_author' );
+function tourfic_attach_city_to_author( $author ) {
 
     $tf_comment_meta = get_comment_meta( get_comment_ID(), 'tf_comment_meta', true );
 
@@ -197,7 +197,7 @@ function attach_city_to_author( $author ) {
     	<?php foreach ($tf_comment_meta as $key => $value) : ?>
 			<div class="comment-meta">
 				<label class="tf_comment_meta-key"><?php _e( $key ); ?></label>
-				<div class="tf_comment_meta-ratings"><?php _e( tf_star_generate($value) ); ?></div>
+				<div class="tf_comment_meta-ratings"><?php _e( tourfic_star_generate($value) ); ?></div>
 			</div>
     	<?php endforeach; ?>
     	</div>
@@ -257,7 +257,7 @@ function tourfic_gallery_slider( $file_list_meta_key = array(), $post_id = null 
 }
 
 
-function tf_booking_widget_field( $args ){
+function tourfic_booking_widget_field( $args ){
 	$defaults = array (
         'type' => '',
         'svg_icon' => '',

@@ -163,7 +163,7 @@ function get_tf_sidebar( $placement = 'single' ){
 		<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
 
 		<!-- Start form row -->
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'text',
 				'svg_icon' => 'search',
@@ -176,7 +176,7 @@ function get_tf_sidebar( $placement = 'single' ){
 		<!-- End form row -->
 
 		<!-- Start form row -->
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'select',
 				'svg_icon' => 'person',
@@ -196,7 +196,7 @@ function get_tf_sidebar( $placement = 'single' ){
 
 		<!-- Start form row -->
 
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'select',
 				'svg_icon' => 'checkin',
@@ -212,7 +212,7 @@ function get_tf_sidebar( $placement = 'single' ){
 			)
 		); ?>
 
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'select',
 				'svg_icon' => 'people_outline',
@@ -232,7 +232,7 @@ function get_tf_sidebar( $placement = 'single' ){
 
 		<div class="tf_booking-dates">
 			<!-- Start form row -->
-			<?php tf_booking_widget_field(
+			<?php tourfic_booking_widget_field(
 				array(
 					'type' => 'text',
 					'svg_icon' => 'calendar_today',
@@ -247,7 +247,7 @@ function get_tf_sidebar( $placement = 'single' ){
 
 			<div class="screen-reader-text">
 				<!-- Start form row -->
-				<?php tf_booking_widget_field(
+				<?php tourfic_booking_widget_field(
 					array(
 						'type' => 'text',
 						'svg_icon' => 'calendar_today',
@@ -261,7 +261,7 @@ function get_tf_sidebar( $placement = 'single' ){
 				<!-- End form row -->
 
 				<!-- Start form row -->
-				<?php tf_booking_widget_field(
+				<?php tourfic_booking_widget_field(
 					array(
 						'type' => 'text',
 						'svg_icon' => 'calendar_today',

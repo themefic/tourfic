@@ -223,7 +223,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
             <div class="tf_destination-wrap">
                 <div class="tf_input-inner">
                     <!-- Start form row -->
-                    <?php tf_booking_widget_field(
+                    <?php tourfic_booking_widget_field(
                         array(
                             'type' => 'text',
                             'svg_icon' => 'search',
@@ -250,7 +250,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_date-wrap-srt screen-reader-text">
                 <!-- Start form row -->
-                <?php tf_booking_widget_field(
+                <?php tourfic_booking_widget_field(
                     array(
                         'type' => 'text',
                         'svg_icon' => '',
@@ -262,7 +262,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
                     )
                 ); ?>
 
-                <?php tf_booking_widget_field(
+                <?php tourfic_booking_widget_field(
                     array(
                         'type' => 'text',
                         'svg_icon' => '',
