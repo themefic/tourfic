@@ -360,7 +360,7 @@ function tourfic_booking_widget_field( $args ){
 }
 
 // Pagination
-function tf_posts_navigation(){
+function tourfic_posts_navigation(){
 	global $wp_query;
 	$max_num_pages = $wp_query->max_num_pages;
 	$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;

@@ -33,7 +33,7 @@ get_header('tourfic'); ?>
 					<?php endif; ?>
 				</div>
 				<div class="tf_posts_navigation">
-					<?php tf_posts_navigation(); ?>
+					<?php tourfic_posts_navigation(); ?>
 				</div>
 
 			</div>

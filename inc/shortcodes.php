@@ -421,7 +421,7 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
             <?php endif; ?>
         </div>
         <div class="tf_posts_navigation">
-            <?php tf_posts_navigation(); ?>
+            <?php tourfic_posts_navigation(); ?>
         </div>
 
     </div>
