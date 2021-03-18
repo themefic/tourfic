@@ -5,7 +5,7 @@
  * @since 1.0
  * @return void
  */
-function tf_setup_tourfic_post_types() {
+function tourfic_setup_tourfic_post_types() {
 
 	$archives = defined( 'TOURFIC_DISABLE_ARCHIVE' ) && TOURFIC_DISABLE_ARCHIVE ? false : true;
 	$slug     = defined( 'TOURFIC_SLUG' ) ? TOURFIC_SLUG : apply_filters( 'tourfic_post_type_slug', 'tourfic' );
@@ -58,7 +58,7 @@ function tf_setup_tourfic_post_types() {
 	register_post_type( 'tourfic', apply_filters( 'tf_tourfic_post_type_args', $tourfic_args ) );
 
 }
-add_action( 'init', 'tf_setup_tourfic_post_types', 1 );
+add_action( 'init', 'tourfic_setup_tourfic_post_types', 1 );
 
 /**
  * Get Default Labels

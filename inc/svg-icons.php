@@ -70,8 +70,8 @@ if ( ! function_exists('tourfic_get_svg') ) {
 /**
  * SVG Icon display
  */
-if ( ! function_exists('tf_svg') ) {
-	function tf_svg( $icon = null ){
+if ( ! function_exists('tourfic_svg') ) {
+	function tourfic_svg( $icon = null ){
 		echo tourfic_get_svg( $icon );
 	}
 }

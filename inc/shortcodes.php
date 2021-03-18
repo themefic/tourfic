@@ -436,7 +436,7 @@ add_shortcode('tf_search_result', 'tourfic_search_result_shortcode');
 /**
  * Filter Ajax
  */
-function tf_trigger_filter_ajax(){
+function tourfic_trigger_filter_ajax(){
     global $tourfic_opt;
     $relation = isset( $tourfic_opt['search_relation'] ) ? esc_attr( $tourfic_opt['search_relation'] ) : "AND";
     $filter_relation = isset( $tourfic_opt['filter_relation'] ) ? esc_attr( $tourfic_opt['filter_relation'] ) : "OR";
@@ -519,12 +519,12 @@ function tf_trigger_filter_ajax(){
 
     die();
 }
-add_action( 'wp_ajax_nopriv_tf_trigger_filter', 'tf_trigger_filter_ajax' );
-add_action( 'wp_ajax_tf_trigger_filter', 'tf_trigger_filter_ajax' );
+add_action( 'wp_ajax_nopriv_tf_trigger_filter', 'tourfic_trigger_filter_ajax' );
+add_action( 'wp_ajax_tf_trigger_filter', 'tourfic_trigger_filter_ajax' );
 
 // TF Icon List Shortcode
-add_shortcode('tf_list','tf_icon_list_shortcode');
-function tf_icon_list_shortcode( $atts, $content = null ) {
+add_shortcode('tf_list','tourfic_icon_list_shortcode');
+function tourfic_icon_list_shortcode( $atts, $content = null ) {
     // Params extraction
     extract(
         shortcode_atts(
