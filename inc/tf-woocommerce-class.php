@@ -1,6 +1,6 @@
 <?php
 
-class TourficWooCommerceHandle{
+class Tourfic_WooCommerceHandle{
 
 	public function __construct() {
 
@@ -252,4 +252,4 @@ class TourficWooCommerceHandle{
 
 }
 
-new TourficWooCommerceHandle;
+new Tourfic_WooCommerceHandle;
