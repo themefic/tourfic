@@ -158,7 +158,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 							      </td>
 							      <td class="total-price-td">
 							      	<div class="tf-price-column">
-										<?php echo tf_price_html($price, $sale_price); ?>
+										<?php echo tourfic_price_html($price, $sale_price); ?>
 									</div>
 							      </td>
 							      <td class="select-rooms-td">

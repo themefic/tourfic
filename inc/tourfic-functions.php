@@ -493,7 +493,7 @@ function tourfic_booking_search_action(){
 }
 
 // Set search reult page
-function tf_booking_set_search_result( $url ){
+function tourfic_booking_set_search_result( $url ){
 	global $tourfic_opt;
 
 	if ( isset( $tourfic_opt['search-result-page'] ) ) {
@@ -503,12 +503,12 @@ function tf_booking_set_search_result( $url ){
 	return $url;
 
 }
-add_filter( 'tf_booking_search_action', 'tf_booking_set_search_result' );
+add_filter( 'tf_booking_search_action', 'tourfic_booking_set_search_result' );
 
 
 
 // price with html format
-function tf_price_html( $price = null, $sale_price = null ) {
+function tourfic_price_html( $price = null, $sale_price = null ) {
 	if ( !$price ) {
 		return;
 	}
