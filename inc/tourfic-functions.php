@@ -288,7 +288,7 @@ function tourfic_booking_widget_field( $args ){
 
     $placeholder = esc_attr( $args['placeholder'] );
 
-    //$default_val =  isset( $_POST[$name] ) ? $_POST[$name] : tf_getcookie( $name );
+    //$default_val =  isset( $_POST[$name] ) ? $_POST[$name] : tourfic_getcookie( $name );
     $default_val =  isset( $_GET[$name] ) ? $_GET[$name] : '';
     $default = $args['default'] ? sanitize_text_field( $args['default'] ) : $default_val;
 
@@ -380,7 +380,7 @@ function tourfic_posts_navigation(){
 /**
  * Set Cookie Data
  */
-function tf_setcookie( $cookie = null, $value = null ){
+function tourfic_setcookie( $cookie = null, $value = null ){
 
     $expiry = strtotime('+1 day');
 
@@ -395,7 +395,7 @@ function tf_setcookie( $cookie = null, $value = null ){
 /**
  * Get Cookie Data
  */
-function tf_getcookie( $cookie = null ){
+function tourfic_getcookie( $cookie = null ){
 	if ( $cookie && isset( $_COOKIE[$cookie] ) ) {
 		return $_COOKIE[$cookie];
 	} else {
@@ -418,7 +418,7 @@ function tourfic_setcookie_sitewide(){
     if( isset( $_GET['check-in-date'] ) ) {
 
     	foreach ( $_GET as $key => $value ) {
-    		tf_setcookie( $key, $value );
+    		tourfic_setcookie( $key, $value );
     	}
 
     }
@@ -462,7 +462,7 @@ function tf_room_booking_submit_button( $label = null ){
 
 	foreach ( $booking_fields as $key ) {
 
-		$value = isset( $_GET[$key] ) ? $_GET[$key] : tf_getcookie( $key );
+		$value = isset( $_GET[$key] ) ? $_GET[$key] : tourfic_getcookie( $key );
 
 		echo "<input type='hidden' placeholder='{$key}' name='{$key}' value='{$value}'>";
 	}
