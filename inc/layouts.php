@@ -44,7 +44,7 @@ function tourfic_archive_single() {
 									<div class="roomName_flex">
 										<div class="roomNameInner">
 											<div class="room_link">
-												<div class="tf-archive-roomname"><strong><?php echo esc_html( $name ); ?></strong> <span class="dash">-</span> <span><?php tf_pax( $pax ); ?></span></div>
+												<div class="tf-archive-roomname"><strong><?php echo esc_html( $name ); ?></strong> <span class="dash">-</span> <span><?php tourfic_pax( $pax ); ?></span></div>
 												<ul class="tf-archive-desc"><?php echo do_shortcode( $desc ); ?></ul>
 												<div class="bui-price-display__value prco-inline-block-maker-helper" aria-hidden="true"><?php echo tourfic_price_html($price, $sale_price); ?></div>
 											</div>

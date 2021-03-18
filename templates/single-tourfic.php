@@ -154,7 +154,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 									</div>
 							      </td>
 							      <td class="pax-td">
-							      	<?php tf_pax( $pax ); ?>
+							      	<?php tourfic_pax( $pax ); ?>
 							      </td>
 							      <td class="total-price-td">
 							      	<div class="tf-price-column">

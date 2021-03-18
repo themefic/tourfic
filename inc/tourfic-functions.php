@@ -929,7 +929,7 @@ add_action( 'wp_ajax_nopriv_tf_ask_question', 'tourfic_ask_question_ajax' );
 /**
  * Generate PAX
  */
-function tf_pax( $pax ) {
+function tourfic_pax( $pax ) {
 	if ( $pax ) : ?>
 	  	<div class="tf_pax">
 	  		<?php for ($i=0; $i < $pax; $i++) {
@@ -942,8 +942,8 @@ function tf_pax( $pax ) {
 /**
  * Dropdown Multiple Support
  */
-add_filter( 'wp_dropdown_cats', 'wp_dropdown_cats_multiple', 10, 2 );
-function wp_dropdown_cats_multiple( $output, $r ) {
+add_filter( 'wp_dropdown_cats', 'tourfic_wp_dropdown_cats_multiple', 10, 2 );
+function tourfic_wp_dropdown_cats_multiple( $output, $r ) {
 
     if( isset( $r['multiple'] ) && $r['multiple'] ) {
 
