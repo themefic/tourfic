@@ -161,10 +161,10 @@ function tourfic_get_review_form( ){
 /**
  * Save Comment Meta
  */
-function tf_save_comment_meta_data( $comment_id ) {
-    update_comment_meta( $comment_id, 'tf_comment_meta', $_POST[ 'tf_comment_meta' ] );
+function tourfic_save_comment_meta_data( $comment_id ) {
+    update_comment_meta( $comment_id, 'tf_comment_meta', sanitize_textarea_field( $_POST[ 'tf_comment_meta' ] ) );
 }
-add_action( 'comment_post', 'tf_save_comment_meta_data' );
+add_action( 'comment_post', 'tourfic_save_comment_meta_data' );
 
 /**
  * Generate Star
