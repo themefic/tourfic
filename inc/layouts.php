@@ -111,7 +111,7 @@ function tourfic_item_review_block(){
 		    <div class="sr-review-score">
 		        <a class="sr-review-score__link" href="<?php the_permalink(); ?>" target="_blank">
 		            <div class="bui-review-score c-score bui-review-score--end">
-		                <div class="bui-review-score__badge"> <?php _e( tf_avg_ratings($tf_overall_rate['review']) ); ?> </div>
+		                <div class="bui-review-score__badge"> <?php _e( tourfic_avg_ratings($tf_overall_rate['review']) ); ?> </div>
 		                <div class="bui-review-score__content">
 		                    <div class="bui-review-score__title"> <?php esc_html_e( 'Review score', 'tourfic' ); ?> </div>
 		                    <div class="bui-review-score__text">

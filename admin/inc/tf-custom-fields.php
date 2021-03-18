@@ -2,13 +2,13 @@
 /**
  * Calls the class on the post edit screen.
  */
-function tf_load_metabox() {
+function tourfic_load_metabox() {
     new Tourfic_Metabox_Class();
 }
 
 if ( is_admin() ) {
-    add_action( 'load-post.php',     'tf_load_metabox' );
-    add_action( 'load-post-new.php', 'tf_load_metabox' );
+    add_action( 'load-post.php',     'tourfic_load_metabox' );
+    add_action( 'load-post-new.php', 'tourfic_load_metabox' );
 }
 
 
