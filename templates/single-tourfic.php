@@ -33,17 +33,17 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 					<h2 class="tf_title"><?php the_title(); ?></h2>
 					<div class="tf_title-right">
 						<div class="share-tour">
-							<a href="#dropdown_share_center" class="share-toggle" data-toggle="true"><?php echo tf_get_svg('share'); ?></a>
+							<a href="#dropdown_share_center" class="share-toggle" data-toggle="true"><?php echo tourfic_get_svg('share'); ?></a>
 							<div id="dropdown_share_center" class="share-tour-content">
  								<ul class="tf-dropdown__content">
 									<li>
 									    <a href="http://www.facebook.com/share.php?u=<?php _e( $share_link ); ?>" class="tf-dropdown__item" target="_blank">
-									        <span class="tf-dropdown__item-content"><?php echo tf_get_svg('facebook'); ?> <?php esc_html_e( 'Share on Facebook', 'tourfic' ); ?></span>
+									        <span class="tf-dropdown__item-content"><?php echo tourfic_get_svg('facebook'); ?> <?php esc_html_e( 'Share on Facebook', 'tourfic' ); ?></span>
 									    </a>
 									</li>
 									<li>
 									    <a href="http://twitter.com/share?text=<?php _e( $share_text ); ?>&url=<?php _e( $share_link ); ?>" class="tf-dropdown__item" target="_blank">
-									        <span class="tf-dropdown__item-content"><?php echo tf_get_svg('twitter'); ?> <?php esc_html_e( 'Share on Twitter', 'tourfic' ); ?></span>
+									        <span class="tf-dropdown__item-content"><?php echo tourfic_get_svg('twitter'); ?> <?php esc_html_e( 'Share on Twitter', 'tourfic' ); ?></span>
 									    </a>
 									</li>
 									<li>

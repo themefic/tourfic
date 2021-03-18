@@ -241,7 +241,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_input-inner">
                     <span class="tf_date-icon">
-                        <?php echo tf_get_svg('calendar_today'); ?>
+                        <?php echo tourfic_get_svg('calendar_today'); ?>
                     </span>
                     <div class="checkin-date-text">Check-in</div>
                     <div class="date-sep"></div>
@@ -281,7 +281,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_input-inner">
                     <span class="tf_person-icon">
-                        <?php echo tf_get_svg('person'); ?>
+                        <?php echo tourfic_get_svg('person'); ?>
                     </span>
                     <div class="adults-text">2 Adults</div>
                     <div class="person-sep"></div>
@@ -407,8 +407,8 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
     <div class="tf_search_result">
         <div class="tf-action-top">
             <div class="tf-list-grid">
-                <a href="#list-view" data-id="list-view" class="change-view" title="List View"><?php echo tf_get_svg('list_view'); ?></a>
-                <a href="#grid-view" data-id="grid-view" class="change-view" title="Grid View"><?php echo tf_get_svg('grid_view'); ?></a>
+                <a href="#list-view" data-id="list-view" class="change-view" title="List View"><?php echo tourfic_get_svg('list_view'); ?></a>
+                <a href="#grid-view" data-id="grid-view" class="change-view" title="Grid View"><?php echo tourfic_get_svg('grid_view'); ?></a>
             </div>
         </div>
         <div class="archive_ajax_result">

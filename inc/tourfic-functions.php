@@ -304,7 +304,7 @@ function tourfic_booking_widget_field( $args ){
 	    	$output .= "<label class='tf_label-row'>";
 	    		$output .= "<div class='tf_form-inner'>";
 	    		$output .= "<span class='icon'>";
-	    			$output .= tf_get_svg($svg_icon);
+	    			$output .= tourfic_get_svg($svg_icon);
 	    		$output .= "</span>";
 	    		$output .= "<select $required name='$name' id='$id' class='$class'>";
 
@@ -324,7 +324,7 @@ function tourfic_booking_widget_field( $args ){
 	    		$output .= $label;
 	    		$output .= "<div class='tf_form-inner'>";
 	    			$output .= "<span class='icon'>";
-	    				$output .= tf_get_svg($svg_icon);
+	    				$output .= tourfic_get_svg($svg_icon);
 	    			$output .= "</span>";
 
 					$output .= "<input type='number' name='$name' $required  id='$id' $disabled class='$class' placeholder='$placeholder' value='$default' />";
@@ -340,7 +340,7 @@ function tourfic_booking_widget_field( $args ){
 	    		$output .= $label;
 	    		$output .= "<div class='tf_form-inner'>";
 	    			$output .= "<span class='icon'>";
-	    				$output .= tf_get_svg($svg_icon);
+	    				$output .= tourfic_get_svg($svg_icon);
 	    			$output .= "</span>";
 
 					$output .= "<input type='text' name='$name' $required  id='$id' $disabled class='$class' placeholder='$placeholder' value='$default' />";

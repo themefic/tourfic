@@ -2,8 +2,8 @@
 /**
  * SVG Icons function
  */
-if ( ! function_exists('tf_get_svg') ) {
-	function tf_get_svg ( $icon = null ){
+if ( ! function_exists('tourfic_get_svg') ) {
+	function tourfic_get_svg ( $icon = null ){
 
 		if ( ! $icon ) {
 			return;
@@ -72,6 +72,6 @@ if ( ! function_exists('tf_get_svg') ) {
  */
 if ( ! function_exists('tf_svg') ) {
 	function tf_svg( $icon = null ){
-		echo tf_get_svg( $icon );
+		echo tourfic_get_svg( $icon );
 	}
 }
