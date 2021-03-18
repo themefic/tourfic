@@ -71,7 +71,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 
 				<!-- Start map link -->
 				<div class="tf_map-link">
-					<?php tf_map_link(); ?>
+					<?php tourfic_map_link(); ?>
 				</div>
 				<!-- End map link -->
 			</div>
@@ -248,7 +248,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 
 			<!-- Start Sidebar -->
 			<div class="tf_sidebar">
-				<?php get_tf_sidebar( 'single' ); ?>
+				<?php tourfic_get_sidebar( 'single' ); ?>
 			</div>
 			<!-- End Sidebar -->
 		</div>

@@ -41,7 +41,7 @@ get_header('tourfic'); ?>
 
 			<!-- Start Sidebar -->
 			<div class="tf_sidebar">
-				<?php get_tf_sidebar( 'archive' ); ?>
+				<?php tourfic_get_sidebar( 'archive' ); ?>
 			</div>
 			<!-- End Sidebar -->
 		</div>

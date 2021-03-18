@@ -20,9 +20,9 @@ function tourfic_archive_single() {
 						<div class="tf-hotel__title-wrap">
 							<a href="<?php the_permalink(); ?>"><h3 class="tourfic_hotel-title"><?php the_title(); ?></h3></a>
 						</div>
-						<?php tf_map_link(); ?>
+						<?php tourfic_map_link(); ?>
 					</div>
-					<?php tf_item_review_block(); ?>
+					<?php tourfic_item_review_block(); ?>
 				</div>
 				<!-- Title area End -->
 
@@ -78,7 +78,7 @@ function tourfic_archive_single() {
 }
 
 // Review block
-function tf_item_review_block(){
+function tourfic_item_review_block(){
 
 	$comments = get_comments( array( 'post_id' => get_the_ID() ) );
 
@@ -138,7 +138,7 @@ function tf_item_review_block(){
 }
 
 // Map Link
-function tf_map_link(){
+function tourfic_map_link(){
 	$location = get_field('formatted_location') ? get_field('formatted_location') : null;
 
 	if ( !$location ) {
@@ -155,7 +155,7 @@ function tf_map_link(){
 }
 
 // Sidebar
-function get_tf_sidebar( $placement = 'single' ){
+function tourfic_get_sidebar( $placement = 'single' ){
 	?>
 
 	<!-- Start Booking widget -->
