@@ -22,9 +22,9 @@ if ( ! defined( 'TOURFIC_VERSION' ) ) {
 	define( 'TOURFIC_VERSION', '1.0.3' );
 }
 
-define( 'TF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'TF_TEMPLATES_URL', TF_PLUGIN_URL.'templates/' );
-define( 'TF_ADMIN_URL', TF_PLUGIN_URL.'admin/' );
+define( 'TOURFIC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'TOURFIC_TEMPLATES_URL', TOURFIC_PLUGIN_URL.'templates/' );
+define( 'TOURFIC_ADMIN_URL', TOURFIC_PLUGIN_URL.'admin/' );
 
 /**
 * Including Plugin file for security
@@ -118,7 +118,7 @@ class Tourfic_WordPress_Plugin{
 	public function load_text_domain() {
 		$this->includes();
 		//Internationalization
-		load_plugin_textdomain( 'tourfic', false, TF_PLUGIN_URL . '/lang/' );
+		load_plugin_textdomain( 'tourfic', false, TOURFIC_PLUGIN_URL . '/lang/' );
 
 
 		//Redux Framework calling

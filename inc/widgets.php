@@ -2,7 +2,7 @@
 /**
  * Adds Filter widget.
  */
-class TfTourFilter extends WP_Widget {
+class Tourfic_TourFilter extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -146,7 +146,7 @@ class TfTourFilter extends WP_Widget {
 /**
  * Similar Tours
  */
-class Tf_Similar_Tours extends WP_Widget {
+class Tourfic_Similar_Tours extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -190,7 +190,7 @@ class Tf_Similar_Tours extends WP_Widget {
 	        }
 			?>
 			<div class="ni-buttons">
-				<a href="<?php echo tf_booking_search_action(); ?>?destination=<?php _e( $terms[0]->name ); ?>" class="button tf_button btn-outline"><?php esc_html_e( $btn_label ); ?></a>
+				<a href="<?php echo tourfic_booking_search_action(); ?>?destination=<?php _e( $terms[0]->name ); ?>" class="button tf_button btn-outline"><?php esc_html_e( $btn_label ); ?></a>
 			</div>
 		</div>
 		<!-- End similar tour widget -->
@@ -246,7 +246,7 @@ class Tf_Similar_Tours extends WP_Widget {
 /**
  * Show On Map
  */
-class Tf_Show_On_Map extends WP_Widget {
+class Tourfic_Show_On_Map extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -282,7 +282,7 @@ class Tf_Show_On_Map extends WP_Widget {
 		<!-- Start map tour widget -->
 		<div class="tf-map-tour-wrap">
 			<?php $location = get_field('formatted_location') ? get_field('formatted_location') : null; ?>
-			<div class="map-bg"><img src="<?php echo TF_PLUGIN_URL; ?>/assets/map.png"></div>
+			<div class="map-bg"><img src="<?php echo TOURFIC_PLUGIN_URL; ?>/assets/map.png"></div>
 			<div class="map-buttons">
 				<a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank" class="button tf_button"><?php esc_html_e( $title ); ?></a>
 			</div>
@@ -334,7 +334,7 @@ class Tf_Show_On_Map extends WP_Widget {
 /**
  * Ask Question
  */
-class Tf_Ask_Question extends WP_Widget {
+class Tourfic_Ask_Question extends WP_Widget {
 
     /**
      * Register widget with WordPress.

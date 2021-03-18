@@ -30,7 +30,7 @@ if ( !function_exists('get_field') ) {
 /**
  * Review form
  */
-function get_tf_review_form( ){
+function tourfic_get_review_form( ){
 	//Declare Vars
 	$comment_send = __( 'Submit', 'tourfic' );
 	$comment_reply = __( 'Write a Review', 'tourfic' );
@@ -161,15 +161,15 @@ function get_tf_review_form( ){
 /**
  * Save Comment Meta
  */
-function tf_save_comment_meta_data( $comment_id ) {
-    update_comment_meta( $comment_id, 'tf_comment_meta', $_POST[ 'tf_comment_meta' ] );
+function tourfic_save_comment_meta_data( $comment_id ) {
+    update_comment_meta( $comment_id, 'tf_comment_meta', sanitize_textarea_field( $_POST[ 'tf_comment_meta' ] ) );
 }
-add_action( 'comment_post', 'tf_save_comment_meta_data' );
+add_action( 'comment_post', 'tourfic_save_comment_meta_data' );
 
 /**
  * Generate Star
  */
-function tf_star_generate( $count ){
+function tourfic_star_generate( $count ){
 	$stars = '';
 	// Fill Star
 	for ( $i=0; $i < $count; $i++) {
@@ -185,8 +185,8 @@ function tf_star_generate( $count ){
 /**
  * Show Comment meta
  */
-add_filter( 'get_comment_author_link', 'attach_city_to_author' );
-function attach_city_to_author( $author ) {
+add_filter( 'get_comment_author_link', 'tourfic_attach_city_to_author' );
+function tourfic_attach_city_to_author( $author ) {
 
     $tf_comment_meta = get_comment_meta( get_comment_ID(), 'tf_comment_meta', true );
 
@@ -197,7 +197,7 @@ function attach_city_to_author( $author ) {
     	<?php foreach ($tf_comment_meta as $key => $value) : ?>
 			<div class="comment-meta">
 				<label class="tf_comment_meta-key"><?php _e( $key ); ?></label>
-				<div class="tf_comment_meta-ratings"><?php _e( tf_star_generate($value) ); ?></div>
+				<div class="tf_comment_meta-ratings"><?php _e( tourfic_star_generate($value) ); ?></div>
 			</div>
     	<?php endforeach; ?>
     	</div>
@@ -257,7 +257,7 @@ function tourfic_gallery_slider( $file_list_meta_key = array(), $post_id = null 
 }
 
 
-function tf_booking_widget_field( $args ){
+function tourfic_booking_widget_field( $args ){
 	$defaults = array (
         'type' => '',
         'svg_icon' => '',
@@ -288,7 +288,7 @@ function tf_booking_widget_field( $args ){
 
     $placeholder = esc_attr( $args['placeholder'] );
 
-    //$default_val =  isset( $_POST[$name] ) ? $_POST[$name] : tf_getcookie( $name );
+    //$default_val =  isset( $_POST[$name] ) ? $_POST[$name] : tourfic_getcookie( $name );
     $default_val =  isset( $_GET[$name] ) ? $_GET[$name] : '';
     $default = $args['default'] ? sanitize_text_field( $args['default'] ) : $default_val;
 
@@ -304,7 +304,7 @@ function tf_booking_widget_field( $args ){
 	    	$output .= "<label class='tf_label-row'>";
 	    		$output .= "<div class='tf_form-inner'>";
 	    		$output .= "<span class='icon'>";
-	    			$output .= tf_get_svg($svg_icon);
+	    			$output .= tourfic_get_svg($svg_icon);
 	    		$output .= "</span>";
 	    		$output .= "<select $required name='$name' id='$id' class='$class'>";
 
@@ -324,7 +324,7 @@ function tf_booking_widget_field( $args ){
 	    		$output .= $label;
 	    		$output .= "<div class='tf_form-inner'>";
 	    			$output .= "<span class='icon'>";
-	    				$output .= tf_get_svg($svg_icon);
+	    				$output .= tourfic_get_svg($svg_icon);
 	    			$output .= "</span>";
 
 					$output .= "<input type='number' name='$name' $required  id='$id' $disabled class='$class' placeholder='$placeholder' value='$default' />";
@@ -340,7 +340,7 @@ function tf_booking_widget_field( $args ){
 	    		$output .= $label;
 	    		$output .= "<div class='tf_form-inner'>";
 	    			$output .= "<span class='icon'>";
-	    				$output .= tf_get_svg($svg_icon);
+	    				$output .= tourfic_get_svg($svg_icon);
 	    			$output .= "</span>";
 
 					$output .= "<input type='text' name='$name' $required  id='$id' $disabled class='$class' placeholder='$placeholder' value='$default' />";
@@ -360,7 +360,7 @@ function tf_booking_widget_field( $args ){
 }
 
 // Pagination
-function tf_posts_navigation(){
+function tourfic_posts_navigation(){
 	global $wp_query;
 	$max_num_pages = $wp_query->max_num_pages;
 	$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
@@ -380,7 +380,7 @@ function tf_posts_navigation(){
 /**
  * Set Cookie Data
  */
-function tf_setcookie( $cookie = null, $value = null ){
+function tourfic_setcookie( $cookie = null, $value = null ){
 
     $expiry = strtotime('+1 day');
 
@@ -395,7 +395,7 @@ function tf_setcookie( $cookie = null, $value = null ){
 /**
  * Get Cookie Data
  */
-function tf_getcookie( $cookie = null ){
+function tourfic_getcookie( $cookie = null ){
 	if ( $cookie && isset( $_COOKIE[$cookie] ) ) {
 		return $_COOKIE[$cookie];
 	} else {
@@ -418,7 +418,7 @@ function tourfic_setcookie_sitewide(){
     if( isset( $_GET['check-in-date'] ) ) {
 
     	foreach ( $_GET as $key => $value ) {
-    		tf_setcookie( $key, $value );
+    		tourfic_setcookie( $key, $value );
     	}
 
     }
@@ -430,7 +430,7 @@ add_action('init', 'tourfic_setcookie_sitewide', 5 );
 /**
  * Get Cookie Data
  */
-function tf_delete_cookie( $cookie = null ){
+function tourfic_delete_cookie( $cookie = null ){
 
     $expiry = strtotime('-1 day');
 
@@ -449,7 +449,7 @@ function tf_delete_cookie( $cookie = null ){
 /**
  * Submit button data
  */
-function tf_room_booking_submit_button( $label = null ){
+function tourfic_room_booking_submit_button( $label = null ){
 
 	$booking_fields = array(
 		'destination',
@@ -462,7 +462,7 @@ function tf_room_booking_submit_button( $label = null ){
 
 	foreach ( $booking_fields as $key ) {
 
-		$value = isset( $_GET[$key] ) ? $_GET[$key] : tf_getcookie( $key );
+		$value = isset( $_GET[$key] ) ? $_GET[$key] : tourfic_getcookie( $key );
 
 		echo "<input type='hidden' placeholder='{$key}' name='{$key}' value='{$value}'>";
 	}
@@ -473,27 +473,27 @@ function tf_room_booking_submit_button( $label = null ){
 }
 
 // Protected Pass
-function tf_proctected_product_pass(){
+function tourfic_proctected_product_pass(){
 	return "111111";
 }
 
 // Notice wrapper
-function tf_notice_wrapper(){
+function tourfic_notice_wrapper(){
 	?>
 	<div class="tf_container">
 		<div class="tf_notice_wrapper"></div>
 	</div>
 	<?php
 }
-add_action( 'tf_before_container', 'tf_notice_wrapper', 10 );
+add_action( 'tf_before_container', 'tourfic_notice_wrapper', 10 );
 
 // Booking Form Action Link
-function tf_booking_search_action(){
+function tourfic_booking_search_action(){
 	return apply_filters( 'tf_booking_search_action', esc_url( home_url('/search-result/') ) );
 }
 
 // Set search reult page
-function tf_booking_set_search_result( $url ){
+function tourfic_booking_set_search_result( $url ){
 	global $tourfic_opt;
 
 	if ( isset( $tourfic_opt['search-result-page'] ) ) {
@@ -503,12 +503,12 @@ function tf_booking_set_search_result( $url ){
 	return $url;
 
 }
-add_filter( 'tf_booking_search_action', 'tf_booking_set_search_result' );
+add_filter( 'tf_booking_search_action', 'tourfic_booking_set_search_result' );
 
 
 
 // price with html format
-function tf_price_html( $price = null, $sale_price = null ) {
+function tourfic_price_html( $price = null, $sale_price = null ) {
 	if ( !$price ) {
 		return;
 	}
@@ -528,7 +528,7 @@ function tf_price_html( $price = null, $sale_price = null ) {
 }
 
 // return only raw price
-function tf_price_raw( $price = null, $sale_price = null ) {
+function tourfic_price_raw( $price = null, $sale_price = null ) {
 	if ( !$price ) {
 		return;
 	}
@@ -541,7 +541,7 @@ function tf_price_raw( $price = null, $sale_price = null ) {
 }
 
 // Sale tag
-function tf_sale_tag( $price = null, $sale_price = null ) {
+function tourfic_sale_tag( $price = null, $sale_price = null ) {
 	if ( !$sale_price ) {
 		return;
 	}
@@ -742,7 +742,7 @@ function tourfic_fullwidth_container_end( $fullwidth ){
 /**
  * Change Post Type Slug
  */
-function tf_change_tourfic_post_type_slug( $slug ){
+function tourfic_change_tourfic_post_type_slug( $slug ){
 	global $tourfic_opt;
 
 	if ( isset( $tourfic_opt['post_type_slug'] ) && $tourfic_opt['post_type_slug'] != "" ) {
@@ -751,24 +751,24 @@ function tf_change_tourfic_post_type_slug( $slug ){
 
 	return $slug;
 }
-add_filter( 'tourfic_post_type_slug', 'tf_change_tourfic_post_type_slug', 10, 1 );
+add_filter( 'tourfic_post_type_slug', 'tourfic_change_tourfic_post_type_slug', 10, 1 );
 
 /**
  * Flush after redux save
  */
-function tf_flush_permalink( $value ){
+function tourfic_flush_permalink( $value ){
 	flush_rewrite_rules();
 }
-add_action('redux/options/tourfic_opt/saved', 'tf_flush_permalink' );
-add_action('redux/options/tourfic_opt/reset', 'tf_flush_permalink' );
-add_action('redux/options/tourfic_opt/settings/change', 'tf_flush_permalink' );
-add_action('redux/options/tourfic_opt/section/reset', 'tf_flush_permalink' );
+add_action('redux/options/tourfic_opt/saved', 'tourfic_flush_permalink' );
+add_action('redux/options/tourfic_opt/reset', 'tourfic_flush_permalink' );
+add_action('redux/options/tourfic_opt/settings/change', 'tourfic_flush_permalink' );
+add_action('redux/options/tourfic_opt/section/reset', 'tourfic_flush_permalink' );
 
 
 /**
  *	Custom CSS function
  */
-function tf_custom_css(){
+function tourfic_custom_css(){
 	global $tourfic_opt;
 
 	$output = '';
@@ -780,12 +780,12 @@ function tf_custom_css(){
 
 	wp_add_inline_style( 'tourfic-styles', $output );
 }
-add_action( 'wp_enqueue_scripts', 'tf_custom_css', 200 );
+add_action( 'wp_enqueue_scripts', 'tourfic_custom_css', 200 );
 
 /**
  * Get AVG
  */
-function tf_avg_ratings( $a = array() ){
+function tourfic_avg_ratings( $a = array() ){
 	if ( !$a ) {
 		return '5.0';
 	}
@@ -798,7 +798,7 @@ function tf_avg_ratings( $a = array() ){
 /**
  * Get Percent
  */
-function tf_avg_rating_percent( $val = 0, $total = 5 ){
+function tourfic_avg_rating_percent( $val = 0, $total = 5 ){
 
 	$percent = ($val*100)/$total;
 	return sprintf("%.2f", $percent);
@@ -807,7 +807,7 @@ function tf_avg_rating_percent( $val = 0, $total = 5 ){
 /**
  * Add Tourfic sidebar.
  */
-function tf_sidebar_widgets_init() {
+function tourfic_sidebar_widgets_init() {
     register_sidebar( array(
         'name'          => __( 'TOURFIC: Single Tour Sidebar', 'tourfic' ),
         'id'            => 'tf_single_booking_sidebar',
@@ -829,20 +829,20 @@ function tf_sidebar_widgets_init() {
 
     // Register Custom Widgets
     $custom_widgets = array(
-    	'TfTourFilter',
-    	'Tf_Show_On_Map',
-    	'Tf_Ask_Question',
-    	'Tf_Similar_Tours'
+    	'Tourfic_TourFilter',
+    	'Tourfic_Show_On_Map',
+    	'Tourfic_Ask_Question',
+    	'Tourfic_Similar_Tours'
     );
     foreach ($custom_widgets as $key => $widget) {
     	register_widget( $widget );
     }
 
 }
-add_action( 'widgets_init', 'tf_sidebar_widgets_init', 100 );
+add_action( 'widgets_init', 'tourfic_sidebar_widgets_init', 100 );
 
 // Ask Question
-function tf_ask_question(){
+function tourfic_ask_question(){
 	?>
 	<div id="tf-ask-question" style="display: none;">
 		<div class="tf-aq-overlay"></div>
@@ -873,10 +873,10 @@ function tf_ask_question(){
 	</div>
 	<?php
 }
-add_action( 'wp_footer', 'tf_ask_question' );
+add_action( 'wp_footer', 'tourfic_ask_question' );
 
 // Ask question ajax
-function tf_ask_question_ajax(){
+function tourfic_ask_question_ajax(){
 	$response = array();
 
 	if ( !check_ajax_referer( 'ask_question_nonce' ) ){
@@ -923,13 +923,13 @@ function tf_ask_question_ajax(){
 
 	die();
 }
-add_action( 'wp_ajax_tf_ask_question', 'tf_ask_question_ajax' );
-add_action( 'wp_ajax_nopriv_tf_ask_question', 'tf_ask_question_ajax' );
+add_action( 'wp_ajax_tf_ask_question', 'tourfic_ask_question_ajax' );
+add_action( 'wp_ajax_nopriv_tf_ask_question', 'tourfic_ask_question_ajax' );
 
 /**
  * Generate PAX
  */
-function tf_pax( $pax ) {
+function tourfic_pax( $pax ) {
 	if ( $pax ) : ?>
 	  	<div class="tf_pax">
 	  		<?php for ($i=0; $i < $pax; $i++) {
@@ -942,8 +942,8 @@ function tf_pax( $pax ) {
 /**
  * Dropdown Multiple Support
  */
-add_filter( 'wp_dropdown_cats', 'wp_dropdown_cats_multiple', 10, 2 );
-function wp_dropdown_cats_multiple( $output, $r ) {
+add_filter( 'wp_dropdown_cats', 'tourfic_wp_dropdown_cats_multiple', 10, 2 );
+function tourfic_wp_dropdown_cats_multiple( $output, $r ) {
 
     if( isset( $r['multiple'] ) && $r['multiple'] ) {
 

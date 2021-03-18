@@ -51,7 +51,7 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
             ?>
 
             <div class="single_recomended_item">
-                <a href="<?php echo tf_booking_search_action(); ?>?destination=<?php _e( $term->slug ); ?>">
+                <a href="<?php echo tourfic_booking_search_action(); ?>?destination=<?php _e( $term->slug ); ?>">
                   <div class="single_recomended_content" style="background-image: url(<?php echo wp_get_attachment_url( $image_id ); ?>);">
                     <div class="recomended_place_info_header">
                       <h3><?php _e($term->name); ?></h3>
@@ -207,7 +207,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
     <?php tourfic_fullwidth_container_start( $fullwidth ); ?>
 
     <!-- Start Booking widget -->
-    <form class="tf_booking-widget <?php esc_attr_e( $classes ); ?>" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+    <form class="tf_booking-widget <?php esc_attr_e( $classes ); ?>" method="get" autocomplete="off" action="<?php echo tourfic_booking_search_action(); ?>">
 
         <?php if( $title ): ?>
             <div class="tf_widget-title"><?php esc_html_e( $title ); ?></div>
@@ -223,7 +223,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
             <div class="tf_destination-wrap">
                 <div class="tf_input-inner">
                     <!-- Start form row -->
-                    <?php tf_booking_widget_field(
+                    <?php tourfic_booking_widget_field(
                         array(
                             'type' => 'text',
                             'svg_icon' => 'search',
@@ -241,7 +241,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_input-inner">
                     <span class="tf_date-icon">
-                        <?php echo tf_get_svg('calendar_today'); ?>
+                        <?php echo tourfic_get_svg('calendar_today'); ?>
                     </span>
                     <div class="checkin-date-text">Check-in</div>
                     <div class="date-sep"></div>
@@ -250,7 +250,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_date-wrap-srt screen-reader-text">
                 <!-- Start form row -->
-                <?php tf_booking_widget_field(
+                <?php tourfic_booking_widget_field(
                     array(
                         'type' => 'text',
                         'svg_icon' => '',
@@ -262,7 +262,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
                     )
                 ); ?>
 
-                <?php tf_booking_widget_field(
+                <?php tourfic_booking_widget_field(
                     array(
                         'type' => 'text',
                         'svg_icon' => '',
@@ -281,7 +281,7 @@ function tourfic_search_shortcode( $atts, $content = null ){
 
                 <div class="tf_input-inner">
                     <span class="tf_person-icon">
-                        <?php echo tf_get_svg('person'); ?>
+                        <?php echo tourfic_get_svg('person'); ?>
                     </span>
                     <div class="adults-text">2 Adults</div>
                     <div class="person-sep"></div>
@@ -407,8 +407,8 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
     <div class="tf_search_result">
         <div class="tf-action-top">
             <div class="tf-list-grid">
-                <a href="#list-view" data-id="list-view" class="change-view" title="List View"><?php echo tf_get_svg('list_view'); ?></a>
-                <a href="#grid-view" data-id="grid-view" class="change-view" title="Grid View"><?php echo tf_get_svg('grid_view'); ?></a>
+                <a href="#list-view" data-id="list-view" class="change-view" title="List View"><?php echo tourfic_get_svg('list_view'); ?></a>
+                <a href="#grid-view" data-id="grid-view" class="change-view" title="Grid View"><?php echo tourfic_get_svg('grid_view'); ?></a>
             </div>
         </div>
         <div class="archive_ajax_result">
@@ -421,7 +421,7 @@ function tourfic_search_result_shortcode( $atts, $content = null ){
             <?php endif; ?>
         </div>
         <div class="tf_posts_navigation">
-            <?php tf_posts_navigation(); ?>
+            <?php tourfic_posts_navigation(); ?>
         </div>
 
     </div>
@@ -436,7 +436,7 @@ add_shortcode('tf_search_result', 'tourfic_search_result_shortcode');
 /**
  * Filter Ajax
  */
-function tf_trigger_filter_ajax(){
+function tourfic_trigger_filter_ajax(){
     global $tourfic_opt;
     $relation = isset( $tourfic_opt['search_relation'] ) ? esc_attr( $tourfic_opt['search_relation'] ) : "AND";
     $filter_relation = isset( $tourfic_opt['filter_relation'] ) ? esc_attr( $tourfic_opt['filter_relation'] ) : "OR";
@@ -519,12 +519,12 @@ function tf_trigger_filter_ajax(){
 
     die();
 }
-add_action( 'wp_ajax_nopriv_tf_trigger_filter', 'tf_trigger_filter_ajax' );
-add_action( 'wp_ajax_tf_trigger_filter', 'tf_trigger_filter_ajax' );
+add_action( 'wp_ajax_nopriv_tf_trigger_filter', 'tourfic_trigger_filter_ajax' );
+add_action( 'wp_ajax_tf_trigger_filter', 'tourfic_trigger_filter_ajax' );
 
 // TF Icon List Shortcode
-add_shortcode('tf_list','tf_icon_list_shortcode');
-function tf_icon_list_shortcode( $atts, $content = null ) {
+add_shortcode('tf_list','tourfic_icon_list_shortcode');
+function tourfic_icon_list_shortcode( $atts, $content = null ) {
     // Params extraction
     extract(
         shortcode_atts(

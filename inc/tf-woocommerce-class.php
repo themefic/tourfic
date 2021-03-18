@@ -1,6 +1,6 @@
 <?php
 
-class TourficWooCommerceHandle{
+class Tourfic_WooCommerceHandle{
 
 	public function __construct() {
 
@@ -66,7 +66,7 @@ class TourficWooCommerceHandle{
 		    'post_title' => $post_title,
 		    'post_type' => 'product',
 		    'post_status' => 'publish',
-		    'post_password' => tf_proctected_product_pass(),
+		    'post_password' => tourfic_proctected_product_pass(),
 		    'meta_input'   => array(
 		        '_price' => '0',
 		        '_regular_price' => '0',
@@ -119,7 +119,7 @@ class TourficWooCommerceHandle{
 				$tf_room_data['tf_data']['price'] = $get_room_type['price'];
 				$tf_room_data['tf_data']['sale_price'] = $get_room_type['sale_price'];
 
-				$price_total = tf_price_raw($get_room_type['price'], $get_room_type['sale_price']);
+				$price_total = tourfic_price_raw($get_room_type['price'], $get_room_type['sale_price']);
 				$price_total = $price_total*$room_selected;
 
 				$tf_room_data['tf_data']['price_total'] = $price_total;
@@ -252,4 +252,4 @@ class TourficWooCommerceHandle{
 
 }
 
-new TourficWooCommerceHandle;
+new Tourfic_WooCommerceHandle;

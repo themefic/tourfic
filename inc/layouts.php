@@ -20,9 +20,9 @@ function tourfic_archive_single() {
 						<div class="tf-hotel__title-wrap">
 							<a href="<?php the_permalink(); ?>"><h3 class="tourfic_hotel-title"><?php the_title(); ?></h3></a>
 						</div>
-						<?php tf_map_link(); ?>
+						<?php tourfic_map_link(); ?>
 					</div>
-					<?php tf_item_review_block(); ?>
+					<?php tourfic_item_review_block(); ?>
 				</div>
 				<!-- Title area End -->
 
@@ -44,9 +44,9 @@ function tourfic_archive_single() {
 									<div class="roomName_flex">
 										<div class="roomNameInner">
 											<div class="room_link">
-												<div class="tf-archive-roomname"><strong><?php echo esc_html( $name ); ?></strong> <span class="dash">-</span> <span><?php tf_pax( $pax ); ?></span></div>
+												<div class="tf-archive-roomname"><strong><?php echo esc_html( $name ); ?></strong> <span class="dash">-</span> <span><?php tourfic_pax( $pax ); ?></span></div>
 												<ul class="tf-archive-desc"><?php echo do_shortcode( $desc ); ?></ul>
-												<div class="bui-price-display__value prco-inline-block-maker-helper" aria-hidden="true"><?php echo tf_price_html($price, $sale_price); ?></div>
+												<div class="bui-price-display__value prco-inline-block-maker-helper" aria-hidden="true"><?php echo tourfic_price_html($price, $sale_price); ?></div>
 											</div>
 										</div>
 									</div>
@@ -78,7 +78,7 @@ function tourfic_archive_single() {
 }
 
 // Review block
-function tf_item_review_block(){
+function tourfic_item_review_block(){
 
 	$comments = get_comments( array( 'post_id' => get_the_ID() ) );
 
@@ -111,7 +111,7 @@ function tf_item_review_block(){
 		    <div class="sr-review-score">
 		        <a class="sr-review-score__link" href="<?php the_permalink(); ?>" target="_blank">
 		            <div class="bui-review-score c-score bui-review-score--end">
-		                <div class="bui-review-score__badge"> <?php _e( tf_avg_ratings($tf_overall_rate['review']) ); ?> </div>
+		                <div class="bui-review-score__badge"> <?php _e( tourfic_avg_ratings($tf_overall_rate['review']) ); ?> </div>
 		                <div class="bui-review-score__content">
 		                    <div class="bui-review-score__title"> <?php esc_html_e( 'Review score', 'tourfic' ); ?> </div>
 		                    <div class="bui-review-score__text">
@@ -138,7 +138,7 @@ function tf_item_review_block(){
 }
 
 // Map Link
-function tf_map_link(){
+function tourfic_map_link(){
 	$location = get_field('formatted_location') ? get_field('formatted_location') : null;
 
 	if ( !$location ) {
@@ -147,7 +147,7 @@ function tf_map_link(){
 	?>
 	<!-- Start map link -->
 	<div class="tf_map-link">
-		<?php echo tf_get_svg('checkin'); ?> <a title="<?php echo esc_attr( $location ); ?>" href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank"><?php echo esc_html( $location ); ?></a>
+		<?php echo tourfic_get_svg('checkin'); ?> <a title="<?php echo esc_attr( $location ); ?>" href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank"><?php echo esc_html( $location ); ?></a>
 
 	</div>
 	<!-- End map link -->
@@ -155,15 +155,15 @@ function tf_map_link(){
 }
 
 // Sidebar
-function get_tf_sidebar( $placement = 'single' ){
+function tourfic_get_sidebar( $placement = 'single' ){
 	?>
 
 	<!-- Start Booking widget -->
-	<form class="tf_booking-widget widget" method="get" autocomplete="off" action="<?php echo tf_booking_search_action(); ?>">
+	<form class="tf_booking-widget widget" method="get" autocomplete="off" action="<?php echo tourfic_booking_search_action(); ?>">
 		<div class="tf_widget-title"><?php esc_html_e( 'Search', 'tourfic' ); ?></div>
 
 		<!-- Start form row -->
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'text',
 				'svg_icon' => 'search',
@@ -176,7 +176,7 @@ function get_tf_sidebar( $placement = 'single' ){
 		<!-- End form row -->
 
 		<!-- Start form row -->
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'select',
 				'svg_icon' => 'person',
@@ -196,7 +196,7 @@ function get_tf_sidebar( $placement = 'single' ){
 
 		<!-- Start form row -->
 
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'select',
 				'svg_icon' => 'checkin',
@@ -212,7 +212,7 @@ function get_tf_sidebar( $placement = 'single' ){
 			)
 		); ?>
 
-		<?php tf_booking_widget_field(
+		<?php tourfic_booking_widget_field(
 			array(
 				'type' => 'select',
 				'svg_icon' => 'people_outline',
@@ -232,7 +232,7 @@ function get_tf_sidebar( $placement = 'single' ){
 
 		<div class="tf_booking-dates">
 			<!-- Start form row -->
-			<?php tf_booking_widget_field(
+			<?php tourfic_booking_widget_field(
 				array(
 					'type' => 'text',
 					'svg_icon' => 'calendar_today',
@@ -247,7 +247,7 @@ function get_tf_sidebar( $placement = 'single' ){
 
 			<div class="screen-reader-text">
 				<!-- Start form row -->
-				<?php tf_booking_widget_field(
+				<?php tourfic_booking_widget_field(
 					array(
 						'type' => 'text',
 						'svg_icon' => 'calendar_today',
@@ -261,7 +261,7 @@ function get_tf_sidebar( $placement = 'single' ){
 				<!-- End form row -->
 
 				<!-- Start form row -->
-				<?php tf_booking_widget_field(
+				<?php tourfic_booking_widget_field(
 					array(
 						'type' => 'text',
 						'svg_icon' => 'calendar_today',

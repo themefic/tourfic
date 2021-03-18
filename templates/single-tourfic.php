@@ -33,17 +33,17 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 					<h2 class="tf_title"><?php the_title(); ?></h2>
 					<div class="tf_title-right">
 						<div class="share-tour">
-							<a href="#dropdown_share_center" class="share-toggle" data-toggle="true"><?php echo tf_get_svg('share'); ?></a>
+							<a href="#dropdown_share_center" class="share-toggle" data-toggle="true"><?php echo tourfic_get_svg('share'); ?></a>
 							<div id="dropdown_share_center" class="share-tour-content">
  								<ul class="tf-dropdown__content">
 									<li>
 									    <a href="http://www.facebook.com/share.php?u=<?php _e( $share_link ); ?>" class="tf-dropdown__item" target="_blank">
-									        <span class="tf-dropdown__item-content"><?php echo tf_get_svg('facebook'); ?> <?php esc_html_e( 'Share on Facebook', 'tourfic' ); ?></span>
+									        <span class="tf-dropdown__item-content"><?php echo tourfic_get_svg('facebook'); ?> <?php esc_html_e( 'Share on Facebook', 'tourfic' ); ?></span>
 									    </a>
 									</li>
 									<li>
 									    <a href="http://twitter.com/share?text=<?php _e( $share_text ); ?>&url=<?php _e( $share_link ); ?>" class="tf-dropdown__item" target="_blank">
-									        <span class="tf-dropdown__item-content"><?php echo tf_get_svg('twitter'); ?> <?php esc_html_e( 'Share on Twitter', 'tourfic' ); ?></span>
+									        <span class="tf-dropdown__item-content"><?php echo tourfic_get_svg('twitter'); ?> <?php esc_html_e( 'Share on Twitter', 'tourfic' ); ?></span>
 									    </a>
 									</li>
 									<li>
@@ -71,7 +71,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 
 				<!-- Start map link -->
 				<div class="tf_map-link">
-					<?php tf_map_link(); ?>
+					<?php tourfic_map_link(); ?>
 				</div>
 				<!-- End map link -->
 			</div>
@@ -154,11 +154,11 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 									</div>
 							      </td>
 							      <td class="pax-td">
-							      	<?php tf_pax( $pax ); ?>
+							      	<?php tourfic_pax( $pax ); ?>
 							      </td>
 							      <td class="total-price-td">
 							      	<div class="tf-price-column">
-										<?php echo tf_price_html($price, $sale_price); ?>
+										<?php echo tourfic_price_html($price, $sale_price); ?>
 									</div>
 							      </td>
 							      <td class="select-rooms-td">
@@ -174,7 +174,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 										<div class="room-submit-wrap">
 											<input type="hidden" name="tour_id" value="<?php echo get_the_ID(); ?>">
 											<input type="hidden" name="room_key" value="<?php echo esc_attr( $key ); ?>">
-											<?php tf_room_booking_submit_button( 'I\'ll reserve' ); ?>
+											<?php tourfic_room_booking_submit_button( 'I\'ll reserve' ); ?>
 										</div>
 										<div class="tf_desc"></div>
 									</form>
@@ -248,7 +248,7 @@ $tf_faqs = ( get_post_meta( $post->ID, 'tf_faqs', true ) ) ? get_post_meta( $pos
 
 			<!-- Start Sidebar -->
 			<div class="tf_sidebar">
-				<?php get_tf_sidebar( 'single' ); ?>
+				<?php tourfic_get_sidebar( 'single' ); ?>
 			</div>
 			<!-- End Sidebar -->
 		</div>
