@@ -282,7 +282,7 @@ class Tf_Show_On_Map extends WP_Widget {
 		<!-- Start map tour widget -->
 		<div class="tf-map-tour-wrap">
 			<?php $location = get_field('formatted_location') ? get_field('formatted_location') : null; ?>
-			<div class="map-bg"><img src="<?php echo TF_PLUGIN_URL; ?>/assets/map.png"></div>
+			<div class="map-bg"><img src="<?php echo TOURFIC_PLUGIN_URL; ?>/assets/map.png"></div>
 			<div class="map-buttons">
 				<a href="https://www.google.com/maps/search/<?php _e( $location ); ?>" target="_blank" class="button tf_button"><?php esc_html_e( $title ); ?></a>
 			</div>

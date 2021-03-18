@@ -34,8 +34,8 @@ if ( ! class_exists( 'Tourfic_Admin_Init' ) ) :
             $ver = current_time( 'timestamp' );
 
             wp_enqueue_media();
-            wp_enqueue_style( 'tf-admin', TF_ADMIN_URL . 'assets/css/tf-admin.css', null, $ver );
-            wp_enqueue_script( 'tf-admin', TF_ADMIN_URL . 'assets/js/tf-admin.js', array('jquery'), $ver );
+            wp_enqueue_style( 'tf-admin', TOURFIC_ADMIN_URL . 'assets/css/tf-admin.css', null, $ver );
+            wp_enqueue_script( 'tf-admin', TOURFIC_ADMIN_URL . 'assets/js/tf-admin.js', array('jquery'), $ver );
         }
 
     }

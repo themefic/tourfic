@@ -1,13 +1,13 @@
 <?php
 
-add_action( 'wp_ajax_tf_add_new_room', 'tf_add_room_data_action' );
-function tf_add_room_data_action(){
+add_action( 'wp_ajax_tf_add_new_room', 'tourfic_add_room_data_action' );
+function tourfic_add_room_data_action(){
 
 	$key = sanitize_text_field( $_POST['key'] );
 
 	ob_start();
 
-	echo tf_add_single_room_wrap( array(
+	echo tourfic_add_single_room_wrap( array(
 		'key' => $key,
 	) );
 
@@ -19,7 +19,7 @@ function tf_add_room_data_action(){
 }
 
 // Single room data
-function tf_add_single_room_wrap( $args ){
+function tourfic_add_single_room_wrap( $args ){
     $defaults = array (
         'key' => '',
         'room' => array(),
@@ -113,14 +113,14 @@ function tf_add_single_room_wrap( $args ){
 
 }
 
-add_action( 'wp_ajax_tf_add_new_faq', 'tf_add_faq_data_action' );
-function tf_add_faq_data_action(){
+add_action( 'wp_ajax_tf_add_new_faq', 'tourfic_add_faq_data_action' );
+function tourfic_add_faq_data_action(){
 
 	$key = sanitize_text_field( $_POST['key'] );
 
 	ob_start();
 
-	echo tf_add_single_faq( array(
+	echo tourfic_add_single_faq( array(
 		'key' => $key,
 	) );
 
@@ -132,7 +132,7 @@ function tf_add_faq_data_action(){
 }
 
 // Single room data
-function tf_add_single_faq( $args ){
+function tourfic_add_single_faq( $args ){
     $defaults = array (
         'key' => '',
         'faq' => '',

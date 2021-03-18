@@ -200,7 +200,7 @@ class Tourfic_Metabox_Class {
 							<div class="tf_room-fields">
 								<?php if ( $tf_room ) {
 									foreach ( $tf_room as $key => $room ) {
-										echo tf_add_single_room_wrap( array(
+										echo tourfic_add_single_room_wrap( array(
 											'key' => $key,
 											'room' => $room,
 										) );
@@ -317,7 +317,7 @@ class Tourfic_Metabox_Class {
                             <div class="tf_faqs-fields">
                                 <?php if ( $tf_faqs ) {
                                     foreach ( $tf_faqs as $key => $faq ) {
-                                        echo tf_add_single_faq( array(
+                                        echo tourfic_add_single_faq( array(
                                             'key' => $key,
                                             'faq' => $faq,
                                         ) );
