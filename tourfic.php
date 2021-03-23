@@ -122,8 +122,8 @@ class Tourfic_WordPress_Plugin{
 
 
 		//Redux Framework calling
-		if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/inc/redux-framework/ReduxCore/framework.php' ) ) {
-		    require_once( dirname( __FILE__ ) . '/inc/redux-framework/ReduxCore/framework.php' );
+		if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/inc/redux-framework/redux-core/framework.php' ) ) {
+		    require_once( dirname( __FILE__ ) . '/inc/redux-framework/redux-core/framework.php' );
 		}
 
 	    // Load the plugin options
