@@ -122,14 +122,14 @@ class Tourfic_Metabox_Class {
 		// Set room
 		$tf_room = isset( $_POST['tf_room'] ) ? (array) $_POST['tf_room'] : array();
 		// Sanitize
-		$tf_room = array_map( 'esc_attr', $tf_room );
+		//$tf_room = array_map( 'esc_attr', $tf_room );
  		// Push to post meta
         update_post_meta( $post_id, 'tf_room', (array) $tf_room );
 
         // Set faq
         $tf_faqs = isset( $_POST['tf_faqs'] ) ? (array) $_POST['tf_faqs'] : array();
         // Sanitize
-        $tf_faqs = array_map( 'esc_attr', $tf_faqs );
+        //$tf_faqs = array_map( 'esc_attr', $tf_faqs );
         // Push to post meta
         update_post_meta( $post_id, 'tf_faqs', (array) $tf_faqs );
 
