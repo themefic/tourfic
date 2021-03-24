@@ -660,9 +660,7 @@ if ( ! class_exists( 'TOURFIC_TAX_META' ) ) {
 	public function add_script() {
 		global $pagenow;
 
-		if( $pagenow != "edit-tags.php" ) {
-			return;
-		}
+		if( $pagenow == "edit-tags.php" || $pagenow == "term.php" ) {			
 		?>
 		<script>
 		    jQuery(document).ready( function($) {
@@ -706,7 +704,8 @@ if ( ! class_exists( 'TOURFIC_TAX_META' ) ) {
 		    });
 		  });
 		</script>
-		<?php }
+		<?php } 
+	  }
 
 	}
 

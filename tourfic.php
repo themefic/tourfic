@@ -221,7 +221,7 @@ class Tourfic_WordPress_Plugin{
 
 	// Show Page Template
 	public function page_templates ($templates, $wp_theme, $post, $post_type) {
-	    $templates['tf_search-result'] = 'Torufic - Search Result';
+	    $templates['tf_search-result'] = 'Tourfic - Search Result';
 	    return $templates;
 	}
 

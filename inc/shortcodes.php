@@ -31,7 +31,7 @@ function tourfic_destinations_shortcode( $atts, $content = null ){
         'hide_empty' => $hide_empty, //can be 1, '1' too
         'hierarchical' => 0, //can be 1, '1' too
         'search' => '',
-        'number' => 5,
+        'number' => 6,
         //'name__like' => '',
     ) );
 

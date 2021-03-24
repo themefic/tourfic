@@ -14,12 +14,24 @@
 }
 
 .recomended_inner .single_recomended_item {
+    width: calc( (100% - 30px) / 3 );
+    float: left;
+    margin-right: 14.9px;
+}
+
+.recomended_inner .single_recomended_item {
+    &:nth-child(3), &:nth-child(6) {
+        margin-right: 0;
+      }
+}
+
+/*.recomended_inner .single_recomended_item {
   &:nth-child(1), &:nth-child(2) {
-    width: calc( (100% - 15px) / 2 );
+    width: calc( (100% - 30px) / 3 );
     float: left;
   }
 
-  &:nth-child(1) {
+  &:nth-child(1), &:nth-child(2) {
     margin-right: 14.9px;
   }
 
@@ -31,7 +43,7 @@
   &:nth-child(3), &:nth-child(4) {
     margin-right: 14.9px;
   }
-}
+}*/
 
 
 /* Inner Style */
@@ -49,7 +61,6 @@
     margin: 0px;
     padding: 0px;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
     font-weight: bold;
     text-decoration: none;
   }
@@ -58,7 +69,6 @@
     margin: 0px;
     padding: 0px;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
     text-decoration: none;
   }
 }
@@ -77,7 +87,6 @@
     margin: 0px;
     padding: 0px;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
     font-weight: bold;
     font-size: 12px;
     text-decoration: none;
@@ -87,7 +96,6 @@
     margin: 0px;
     padding: 0px;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
     font-size: 14px;
     font-weight: 700;
     text-decoration: none;
@@ -96,15 +104,13 @@
 }
 
 .recomended_place_info_header {
-  text-align: left;
-  padding: 21px 15px;
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 27, 65, 0.65)), color-stop(100%, rgba(0, 27, 65, 0)));
-  background: -webkit-linear-gradient(top, rgba(0, 27, 65, 0.65) 0, rgba(0, 27, 65, 0) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 27, 65, 0.65)), to(rgba(0, 27, 65, 0)));
-  background: linear-gradient(to bottom, #001c42a6 0, rgba(0, 27, 65, 0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00224F',endColorstr='#00001e47',GradientType=0);
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+    text-align: left;
+    padding: 10px 18px;
+    background: rgba(0,0,0,0.5);
+    display: inline-block;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .single_recomended_item:hover {
@@ -189,9 +195,8 @@ span.review_num {
 
 // Homepage Widget
 .tf_tf_booking-widget-wrap {
-    padding: 44px 0;
+    padding: 50px 0;
     position: relative;
-    background: #f5f5f5;
 }
 
 .tf_custom-container {
@@ -208,7 +213,7 @@ span.review_num {
     color: #333;
     border-radius: 4px;
     position: relative;
-    border: 4px solid #febb02;
+    border: 1px solid #cccccc;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -227,7 +232,7 @@ span.review_num {
 .tf_selectdate-wrap,
 .tf_selectperson-wrap,
 .tf_submit-wrap {
-    border-right: 4px solid #febb02;
+    border-right: 1px solid #cccccc;
     display: table-cell;
     vertical-align: middle;
 }
@@ -239,6 +244,7 @@ span.review_num {
 
 .tf_submit-wrap {
     border-right: 0;
+    background: #0071c2;
 }
 
 .tf_selectdate-wrap .tf_input-inner,

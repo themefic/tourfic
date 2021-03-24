@@ -155,7 +155,7 @@
                 'type'     => 'select',
                 'data'     => 'pages',
                 'title'    => __( 'Select Search Result Page', 'tourfic' ),
-                'desc'     => __( 'Page template: <code>Torufic - Search Result</code> must be selected', 'tourfic' ),
+                'desc'     => __( 'Page template: <code>Tourfic - Search Result</code> must be selected', 'tourfic' ),
             ),
             array(
                 'id'       => 'single_tour_style',
@@ -172,7 +172,7 @@
                 'id'       => 'post_type_slug',
                 'type'     => 'text',
                 'title'    => __( 'Select post type slug', 'tourfic' ),
-                'desc'     => __( 'Default is: <code>torufic</code> - <strong>Save 2 times if you change this field for permalink flush</strong>', 'tourfic' ),
+                'desc'     => __( 'Default is: <code>tourfic</code> - <strong>Save 2 times if you change this field for permalink flush</strong>', 'tourfic' ),
             ),
         )
     ) );

@@ -149,7 +149,7 @@ msgid "Custom CSS"
 msgstr ""
 
 #: inc/options.php:164
-msgid "Default is: <code>torufic</code>"
+msgid "Default is: <code>tourfic</code>"
 msgstr ""
 
 #: templates/single-tourfic.php:152 admin/inc/tf-field-functions.php:71
@@ -271,7 +271,7 @@ msgid "No Destination found"
 msgstr ""
 
 #: inc/options.php:158
-msgid "Page template: <code>Torufic - Search Result</code> must be selected"
+msgid "Page template: <code>Tourfic - Search Result</code> must be selected"
 msgstr ""
 
 #: inc/post-type.php:144
